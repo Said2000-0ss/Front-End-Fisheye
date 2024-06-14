@@ -1,7 +1,16 @@
 #contact_modal {
     display: none;
 }
-
+/* mon code a été ajouté ici  */
+/* ============================================================================================ */
+p{
+    margin:0;
+    padding:0; 
+}
+h2{
+    margin-bottom: 0;
+}
+/* ============================================================================================ */
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;

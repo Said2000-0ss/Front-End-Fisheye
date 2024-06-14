@@ -12,25 +12,34 @@ function photographerTemplate(data) {
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
         //=============================================================================================================================================
-        const p = document.createElement( 'p' );
-        const p1 = document.createElement( 'p' );
-        const p2 = document.createElement( 'p' );
-        const p3 = document.createElement( 'p' );
-        const p4 = document.createElement( 'p' );
-        p.textContent = id;
-        p1.textContent=city;
-        p2.textContent=country;
-        p3.textContent=tagline;
-        p4.textContent=price;
+        const villePays= document.createElement('p');
+        villePays.textContent = city+", "+country;
+        const description = document.createElement('p');
+        description.textContent=tagline; 
+        const prix=document.createElement('p');
+        prix.textContent=price+"€/jour"; 
+        // const p = document.createElement( 'p' );
+        // const p1 = document.createElement( 'p' );
+        // const p2 = document.createElement( 'p' );
+        // const p3 = document.createElement( 'p' );
+        // const p4 = document.createElement( 'p' );
+        // p.textContent = id;
+        // p1.textContent=city;
+        // p2.textContent=country;
+        // p3.textContent=tagline;
+        // p4.textContent=price;
         //=============================================================================================================================================
         article.appendChild(img);
         article.appendChild(h2);
+        article.appendChild(villePays);
+        article.appendChild(description);
+        article.appendChild(prix);
         //=============================================================================================================================================
-        article.appendChild(p);
-        article.appendChild(p1);
-        article.appendChild(p2);
-        article.appendChild(p3);
-        article.appendChild(p4);
+        // article.appendChild(p);
+        // article.appendChild(p1);
+        // article.appendChild(p2);
+        // article.appendChild(p3);
+        // article.appendChild(p4);
         console.log(name + " "+ id + " "+ city+ " "+  country+ " "+  tagline+ " "+  price + " "+ portrait )
         //=============================================================================================================================================
         return (article);
