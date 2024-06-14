@@ -14,10 +14,24 @@ function photographerTemplate(data) {
         //=============================================================================================================================================
         const villePays= document.createElement('p');
         villePays.textContent = city+", "+country;
+        villePays.style.color='#901c1c';
+        // villePays.style.fontWeight='bold';
         const description = document.createElement('p');
         description.textContent=tagline; 
+        description.style.color="#000000";
+        // description.style.fontWeight="bold"; 
         const prix=document.createElement('p');
         prix.textContent=price+"€/jour"; 
+        prix.style.color="#848484"; 
+        // prix.style.fontWeight="bold";
+        
+        //=====================================================================================================
+   //tu peux effacer , c'est juste à titre d'exemple     
+//         p1.style.color = 'blue';  // Change la couleur du texte
+// p1.style.fontSize = '20px';  // Change la taille de la police
+// p1.style.fontWeight = 'bold';  // Rend le texte en gras
+// p1.style.backgroundColor = 'lightyellow';  // Change la couleur de fond
+//===================================================================================================
         // const p = document.createElement( 'p' );
         // const p1 = document.createElement( 'p' );
         // const p2 = document.createElement( 'p' );
