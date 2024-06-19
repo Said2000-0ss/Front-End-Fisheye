@@ -7,6 +7,11 @@ function photographerTemplate(data) {
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
+        //================================================================================
+        const link = document.createElement('a'); // Création de la balise <a> pour le lien
+        link.setAttribute('href', `photographer.html?id=${id}`); // URL avec l'id du photographe
+        //================================================================================
+
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
         const h2 = document.createElement( 'h2' );
@@ -15,18 +20,27 @@ function photographerTemplate(data) {
         const villePays= document.createElement('p');
         villePays.textContent = city+", "+country;
         villePays.style.color='#901c1c';
+        villePays.setAttribute('aria-label', 'Paragraphe : Ceci est le paragraphe de la ville est du pays');
         // villePays.style.fontWeight='bold';
         const description = document.createElement('p');
         description.textContent=tagline; 
         description.style.color="#000000";
+        description.style.fontSize='25px';
         // description.style.fontWeight="bold"; 
+        description.setAttribute('aria-label', 'Paragraphe : Ceci est la description de mes passions');
         const prix=document.createElement('p');
         prix.textContent=price+"€/jour"; 
         prix.style.color="#848484"; 
         // prix.style.fontWeight="bold";
+        prix.setAttribute('aria-label', 'Paragraphe : Ceci est le prix de mes prestations journalieres');
         
         //=====================================================================================================
    //tu peux effacer , c'est juste à titre d'exemple     
+   // ici j'ai mis mon aria-label 
+   // Ajoute des attributs aria-label aux paragraphes pour l'accessibilité
+//    p1.setAttribute('aria-label', 'Paragraphe stylisé : Ceci est le premier paragraphe');
+//    p2.setAttribute('aria-label', 'Paragraphe : Ceci est le deuxième paragraphe');
+//    p3.setAttribute('aria-label', 'Paragraphe : Ceci est le troisième paragraphe');
 //         p1.style.color = 'blue';  // Change la couleur du texte
 // p1.style.fontSize = '20px';  // Change la taille de la police
 // p1.style.fontWeight = 'bold';  // Rend le texte en gras
@@ -43,7 +57,11 @@ function photographerTemplate(data) {
         // p3.textContent=tagline;
         // p4.textContent=price;
         //=============================================================================================================================================
-        article.appendChild(img);
+        //================================================================================
+        link.appendChild(img); // Ajoutez l'image à la balise <a>
+        article.appendChild(link); // Ajoutez le lien à l'article
+        //================================================================================
+        //article.appendChild(img);// j'ai ajouté audessus l'image au lien 
         article.appendChild(h2);
         article.appendChild(villePays);
         article.appendChild(description);

@@ -10,7 +10,7 @@ Ici, vous pouvez utiliser l'API native de JavaScript Fetch afin de récupérer d
 //================================================================================================================================================
 // j'ai rajouté le mot clé export devant cette fonction , afin qu'elle soit exportable dans un autre fichier.
 //    export  async function getPhotographers() {
-    async function getPhotographers() {
+   async function getPhotographers() {
 //================================================================ MON CODE ======================================================================
 const reponse = await fetch("../../data/photographers.json");
 const photographers = await reponse.json();
