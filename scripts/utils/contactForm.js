@@ -1,67 +1,82 @@
-// import { getPhotographers } from "../pages/index.js";
+// // import { getPhotographers } from "../pages/index.js";
 
+
+// Afficher le modal
 function displayModal() {
     const modal = document.getElementById("contact_modal");
-	modal.style.display = "block";
+    modal.style.display = "block";
 }
 
+// Fermer le modal
 function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
 }
-//==================================================================================
+
+// Récupérer les paramètres de l'URL
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
-console.log(id); // Affiche l'ID récupéré (par exemple, '123')
-console.log("je suis passé par le fichier contactForm.js")
-//==================================================================================
-// ==============je vais afficher ici mes différents id et autres propriétés
-/// je teste ce code pour voir si il fonctionne ====================================
-// Vérifier si l'objet photographe a été trouvé
-//=========================================================================================================================
+console.log("Mon id est le : "+id); // Affiche l'ID récupéré (par exemple, '123')
+// console.log("je suis passé par le fichier contactForm.js");
+
+// Fonction pour obtenir les photographes
 async function getPhotographers() {
-    //================================================================ MON CODE ======================================================================
-    const reponse = await fetch("../../data/photographers.json");
-    const photographers = await reponse.json();
-    console.log(photographers); 
-    // return photographers; 
-    
-    //================================================================================================================================================
-    return photographers; }
-if (id !== null) {
-    // Faire quelque chose si id est différent de null
-    
-    console.log("L'ID n'est pas null : " + id);
-    const said = getPhotographers();
-    console.log(said);
-    // data.id=id;
-    // console.log(data.id +"je suis")
-    // console.log(`Name: ${data.name}`);
-    // console.log(`City: ${photographer.city}`);
-//     const reponse = fetch("../../data/photographers.json");
-// const photographers = await reponse.json();
-// console.log(photographers); 
-console.log("test")
-} else {
-    // Faire quelque chose si id est null
-    console.log("L'ID est null.");
+    const response = await fetch("../../data/photographers.json");
+    const data = await response.json();
+    return data;
 }
-// getPhotographers(); 
-// const reponse = await fetch("../../data/photographers.json");
-// const photographers = await reponse.json();
-// console.log(photographers); 
-// console.log("je passe avant");
-// const said = getPhotographers();
-// console.log(said);
-// console.log("je passe apres");
-// if (id) {
-//     // Afficher les propriétés dans la console
-//     console.log(`Name: ${data.name}`);
-//     console.log(`City: ${photographer.city}`);
-//     console.log(`Country: ${photographer.country}`);
-//     console.log(`Tagline: ${photographer.tagline}`);
-//     console.log(`Price: ${photographer.price}`);
-//     console.log(`Portrait: ${photographer.portrait}`);
-// } else {
-//     console.log(`Photographer with ID ${id} not found.`);
-// }
+//====A effacer , une fois utilisé========================
+// const { name,id, city, country, tagline, price ,  portrait } = data;
+// const picture = `assets/photographers/${portrait}`;
+//========================================================
+// Fonction principale pour traiter les données
+async function main() {
+    const data = await getPhotographers();
+
+    // Vérifier et afficher les informations du photographe correspondant à l'ID
+    const photographer = data.photographers.find(photographer => photographer.id == id);
+    if (photographer) {
+        // console.log(`Name: ${photographer.name}`);
+        // console.log(`City: ${photographer.city}`);
+        // console.log(`Country: ${photographer.country}`);
+        // console.log(`Tagline: ${photographer.tagline}`);
+        // console.log(`Price: ${photographer.price}`);
+        // console.log(`Portrait: ${photographer.portrait}`);
+        console.log("je suis de passage ici , maintenant il faut que je mette la photo");
+        console.log("mon id url "+id +" mon id dans mon tableau " +  `${photographer.id}`);
+        console.log(`Name: ${photographer.name}`+ ` City: ${photographer.city}`+` Country: ${photographer.country}`+` Tagline: ${photographer.tagline}`+` Price: ${photographer.price}`+ ` Portrait: ${photographer.portrait}`);
+        //c'est le lien de ma photo qu'il faut que je mette dans un src
+        //=======================================================je viens d'ajouter ce code============================================================
+        const picture = `assets/photographers/${photographer.portrait}`;
+        console.log(picture);
+        const img = document.createElement( 'img' );
+        img.setAttribute("src", picture)
+        img.setAttribute("alt", "Photographer's portrait"); // Ajoutez un alt pour l'accessibilité
+        const maBaliseImage = document.querySelector('.photograph-header');
+        maBaliseImage.appendChild(img); // Ajoutez l'image à la balise <a> //a verifier et voir si cela fonctionne apres la pause
+        //=============================================================================================================================================
+    } else {
+        console.log(`Photographe avec cet ID ${id} non trouvé.`);
+    }
+
+    // Vérifier et afficher les médias correspondant à l'ID du photographe
+    const mediaItems = data.media.filter(media => media.photographerId == id);
+    if (mediaItems.length > 0) {
+        mediaItems.forEach(media => {
+            // console.log(`Title: ${media.title}`);
+            // console.log(`Image: ${media.image}`);
+            // console.log(`Video: ${media.video}`);
+            // console.log(`Likes: ${media.likes}`);
+            // console.log(`Date: ${media.date}`);
+            // console.log(`Price: ${media.price}`);
+            console.log(`Title: ${media.title}`+` Image: ${media.image}`+` Video: ${media.video}`+` Likes: ${media.likes}`+` Date: ${media.date}`+` Price: ${media.price}`);
+        });
+    } else {
+        console.log(`Pas de media trouvé pour le photographe avec cet id ${id}.`);
+    }
+}
+
+// Exécuter la fonction principale
+main();
+
+

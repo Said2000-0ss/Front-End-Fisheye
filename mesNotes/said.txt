@@ -1,0 +1,280 @@
+
+=========================================================================================================================================================
+=========================================================================================================================================================
+
+// console.log("============= Debut de test ===========================");
+// console.log("je suis passé par ici");
+// console.log("============= Fin de test ===========================");
+
+
+
+=========================================================================================================================================================
+==============================================================Mes codes de contactForm.json==============================================================
+=========================================================================================================================================================
+// function displayModal() {
+//     const modal = document.getElementById("contact_modal");
+// 	modal.style.display = "block";
+// }
+
+// function closeModal() {
+//     const modal = document.getElementById("contact_modal");
+//     modal.style.display = "none";
+// }
+// //==================================================================================
+// const urlParams = new URLSearchParams(window.location.search);
+// const id = urlParams.get('id');
+// console.log(id); // Affiche l'ID récupéré (par exemple, '123')
+// console.log("je suis passé par le fichier contactForm.js")
+// //==================================================================================
+// // ==============je vais afficher ici mes différents id et autres propriétés
+// /// je teste ce code pour voir si il fonctionne ====================================
+// // Vérifier si l'objet photographe a été trouvé
+// //=========================================================================================================================
+// async function getPhotographers() {
+//     //================================================================ MON CODE ======================================================================
+//     const reponse = await fetch("../../data/photographers.json");
+//     const photographers = await reponse.json();
+//     // console.log(photographers); //il me faisait apparaitre deux tableaux de mon fichier json.
+//     // return photographers; 
+    
+//     //================================================================================================================================================
+//     return photographers; }
+//     //======================================================================================================================================================
+// // if (id !== null) {
+// //     // Faire quelque chose si id est différent de null
+    
+// //     console.log("L'ID n'est pas null : " + id);
+// //     const said = getPhotographers();
+// //     console.log(said);
+// //     if (id===said.id){
+// //         console.log("je suis said id")
+// //     }else{
+// //         console.log("je suis nul"+ said.id);
+// //     }
+// //     console.log("je suis sorti");
+// //     // data.id=id;
+// //     // console.log(data.id +"je suis")
+// //     // console.log(`Name: ${data.name}`);
+// //     // console.log(`City: ${photographer.city}`);
+// // //     const reponse = fetch("../../data/photographers.json");
+// // // const photographers = await reponse.json();
+// // // console.log(photographers); 
+// // console.log("test")
+// // } else {
+// //     // Faire quelque chose si id est null
+// //     console.log("L'ID est null.");
+// // }
+// // getPhotographers(); 
+// // const reponse = await fetch("../../data/photographers.json");
+// // const photographers = await reponse.json();
+// // console.log(photographers); 
+// // console.log("je passe avant");
+// // const said = getPhotographers();
+// // console.log(said);
+// // console.log("je passe apres");
+// // if (id) {
+// //     // Afficher les propriétés dans la console
+// //     console.log(`Name: ${data.name}`);
+// //     console.log(`City: ${photographer.city}`);
+// //     console.log(`Country: ${photographer.country}`);
+// //     console.log(`Tagline: ${photographer.tagline}`);
+// //     console.log(`Price: ${photographer.price}`);
+// //     console.log(`Portrait: ${photographer.portrait}`);
+// // } else {
+// //     console.log(`Photographer with ID ${id} not found.`);
+// // }
+// //======================================================================================================================================================
+// // getPhotographers();
+// // const PhotographeInconnu=getPhotographers;
+// console.log("============= Debut de  test ===========================");
+// console.log("je suis passé par la console"+getPhotographers());
+
+// console.log("je suis l'objet json mis dans une variable data")
+// const data=getPhotographers(); 
+// console.log(data);
+
+// console.log("============= Fin  de  test ===========================");
+
+// console.log("=================================================================");
+// // Exemple d'URL pour récupérer l'ID
+// // const url = new URL('http://example.com?photographerId=82'); // Remplacez par l'URL réelle
+// // const photographerIdFromUrl = parseInt(url.searchParams.get('photographerId'), 10); // Récupère et convertit l'ID de l'URL en entier
+
+// // JSON des photographes et des médias (remplacez cela par l'importation ou la récupération de votre fichier JSON)
+// // const data = {
+// //     "photographers": [
+// //         {
+// //             "name": "Mimi Keel",
+// //             "id": 243,
+// //             "city": "London",
+// //             "country": "UK",
+// //             "tagline": "Voir le beau dans le quotidien",
+// //             "price": 400,
+// //             "portrait": "MimiKeel.jpg"
+// //         },
+// //         {
+// //             "name": "Ellie-Rose Wilkens",
+// //             "id": 930,
+// //             "city": "Paris",
+// //             "country": "France",
+// //             "tagline": "Capturer des compositions complexes",
+// //             "price": 250,
+// //             "portrait": "EllieRoseWilkens.jpg"
+// //         },
+// //         // Ajoutez les autres photographes ici
+// //     ],
+// //     "media": [
+// //         {
+// //             "id": 342550,
+// //             "photographerId": 82,
+// //             "title": "Fashion Yellow Beach",
+// //             "image": "Fashion_Yellow_Beach.jpg",
+// //             "likes": 62,
+// //             "date": "2011-12-08",
+// //             "price": 55
+// //         },
+// //         {
+// //             "id": 8520927,
+// //             "photographerId": 82,
+// //             "title": "Fashion Urban Jungle",
+// //             "image": "Fashion_Urban_Jungle.jpg",
+// //             "likes": 11,
+// //             "date": "2011-11-06",
+// //             "price": 55
+// //         },
+// //         // Ajoutez les autres médias ici
+// //     ]
+// // };
+
+// // Trouver le photographe correspondant à l'ID de l'URL
+// // const photographer = data.photographers.find(p => p.id === id);
+
+
+// // // Si un photographe est trouvé, afficher ses propriétés
+// // if (photographer) {
+// //     console.log("Photographer found:", photographer);
+
+// //     // Trouver tous les médias correspondant à l'ID du photographe
+// //     const mediaForPhotographer = data.media.filter(m => m.photographerId === id);
+
+// //     // Afficher les propriétés des médias
+// //     console.log("Media for photographer:", mediaForPhotographer);
+// // } else {
+// //     console.log(`No photographer found with ID: ${id}`);
+// // }
+
+// console.log("=================================================================");
+
+
+
+
+=========================================================================================================================================================
+=======================================================Mes codes photographer.js=========================================================================
+=========================================================================================================================================================
+function photographerTemplate(data) {
+    // Ajout des donnees 
+    // const { name, portrait } = data;
+    const { name,id, city, country, tagline, price ,  portrait } = data;
+
+    const picture = `assets/photographers/${portrait}`;
+
+    function getUserCardDOM() {
+        const article = document.createElement( 'article' );
+        //================================================================================
+        const link = document.createElement('a'); // Création de la balise <a> pour le lien
+        link.setAttribute('href', `photographer.html?id=${id}`); // URL avec l'id du photographe
+        //================================================================================
+
+        const img = document.createElement( 'img' );
+        img.setAttribute("src", picture)
+        const h2 = document.createElement( 'h2' );
+        h2.textContent = name;
+        //=============================================================================================================================================
+        const villePays= document.createElement('p');
+        villePays.textContent = city+", "+country;
+        villePays.style.color='#901c1c';
+        villePays.setAttribute('aria-label', 'Paragraphe : Ceci est le paragraphe de la ville est du pays');
+        // villePays.style.fontWeight='bold';
+        const description = document.createElement('p');
+        description.textContent=tagline; 
+        description.style.color="#000000";
+        description.style.fontSize='25px';
+        // description.style.fontWeight="bold"; 
+        description.setAttribute('aria-label', 'Paragraphe : Ceci est la description de mes passions');
+        const prix=document.createElement('p');
+        prix.textContent=price+"€/jour"; 
+        prix.style.color="#848484"; 
+        // prix.style.fontWeight="bold";
+        prix.setAttribute('aria-label', 'Paragraphe : Ceci est le prix de mes prestations journalieres');
+        
+        //=====================================================================================================
+   //tu peux effacer , c'est juste à titre d'exemple     
+   // ici j'ai mis mon aria-label 
+   // Ajoute des attributs aria-label aux paragraphes pour l'accessibilité
+//    p1.setAttribute('aria-label', 'Paragraphe stylisé : Ceci est le premier paragraphe');
+//    p2.setAttribute('aria-label', 'Paragraphe : Ceci est le deuxième paragraphe');
+//    p3.setAttribute('aria-label', 'Paragraphe : Ceci est le troisième paragraphe');
+//         p1.style.color = 'blue';  // Change la couleur du texte
+// p1.style.fontSize = '20px';  // Change la taille de la police
+// p1.style.fontWeight = 'bold';  // Rend le texte en gras
+// p1.style.backgroundColor = 'lightyellow';  // Change la couleur de fond
+//===================================================================================================
+        // const p = document.createElement( 'p' );
+        // const p1 = document.createElement( 'p' );
+        // const p2 = document.createElement( 'p' );
+        // const p3 = document.createElement( 'p' );
+        // const p4 = document.createElement( 'p' );
+        // p.textContent = id;
+        // p1.textContent=city;
+        // p2.textContent=country;
+        // p3.textContent=tagline;
+        // p4.textContent=price;
+        //=============================================================================================================================================
+        //================================================================================
+        link.appendChild(img); // Ajoutez l'image à la balise <a>
+        article.appendChild(link); // Ajoutez le lien à l'article
+        //================================================================================
+        //article.appendChild(img);// j'ai ajouté audessus l'image au lien 
+        article.appendChild(h2);
+        article.appendChild(villePays);
+        article.appendChild(description);
+        article.appendChild(prix);
+        //=============================================================================================================================================
+        // article.appendChild(p);
+        // article.appendChild(p1);
+        // article.appendChild(p2);
+        // article.appendChild(p3);
+        // article.appendChild(p4);
+        console.log(name + " "+ id + " "+ city+ " "+  country+ " "+  tagline+ " "+  price + " "+ portrait )
+        //=============================================================================================================================================
+        return (article);
+    }
+    return { name, picture, getUserCardDOM }
+}
+//==============================================================================================================================
+// function photographerTemplate(data) {
+//     // Ajout des donnees 
+//     // const { name, portrait } = data;
+//     const { name, portrait } = data;
+
+//     const picture = `assets/photographers/${portrait}`;
+
+//     function getUserCardDOM() {
+//         const article = document.createElement( 'article' );
+//         const img = document.createElement( 'img' );
+//         img.setAttribute("src", picture)
+//         const h2 = document.createElement( 'h2' );
+//         h2.textContent = name;
+        
+//         article.appendChild(img);
+//         article.appendChild(h2);
+      
+//         return (article);
+//     }
+//     return { name, picture, getUserCardDOM }
+// }
+
+=========================================================================================================================================================
+=========================================================================================================================================================
+=========================================================================================================================================================
+
