@@ -65,6 +65,12 @@ async function main() {
         villePays.setAttribute('aria-label', 'Paragraphe : Ceci est le paragraphe de la ville est du pays');
         maBalise.appendChild(villePays);
 
+        const description = document.createElement('p');
+        description.textContent=`${photographer.tagline}`; 
+        description.style.color="#000000";
+        description.style.fontSize='25px';
+        maBalise.appendChild(description);
+
     } else {
         console.log(`Photographe avec cet ID ${id} non trouvé.`);
     }
