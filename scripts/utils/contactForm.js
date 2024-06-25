@@ -52,9 +52,13 @@ async function main() {
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
         img.setAttribute("alt", "Photographer's portrait"); // Ajoutez un alt pour l'accessibilité
-        const maBaliseImage = document.querySelector('.photograph-header');
-        maBaliseImage.appendChild(img); // Ajoutez l'image à la balise <a> //a verifier et voir si cela fonctionne apres la pause
+        const maBalise = document.querySelector('.photograph-header');
+        maBalise.appendChild(img); // Ajoutez l'image à la balise <a> //a verifier et voir si cela fonctionne apres la pause
         //=============================================================================================================================================
+        const h2 = document.createElement( 'h2' );
+        h2.textContent = `${photographer.name}`;
+        maBalise.appendChild(h2);
+
     } else {
         console.log(`Photographe avec cet ID ${id} non trouvé.`);
     }
