@@ -58,6 +58,12 @@ async function main() {
         const h2 = document.createElement( 'h2' );
         h2.textContent = `${photographer.name}`;
         maBalise.appendChild(h2);
+        const villePays= document.createElement('p');
+        // villePays.textContent = city+", "+country;
+        villePays.textContent = `${photographer.city}`+", "+`${photographer.country}`;
+        villePays.style.color='#901c1c';
+        villePays.setAttribute('aria-label', 'Paragraphe : Ceci est le paragraphe de la ville est du pays');
+        maBalise.appendChild(villePays);
 
     } else {
         console.log(`Photographe avec cet ID ${id} non trouvé.`);
