@@ -91,6 +91,15 @@ async function main() {
         img.setAttribute("alt", "Photographer's portrait"); // Ajoutez un alt pour l'accessibilité
         newDivC.appendChild(img);
         maBalise.appendChild(newDivC); 
+        //****************************************************************************************************************************************** */
+        const said= document.querySelector('.said'); 
+        said.textContent=`${photographer.name}`;// voir avec Marie , pourquoi cela se centre au milieu, je l'ai mis dans un label , 
+        //pratique peu recommandable
+        // const h2A = document.createElement( 'h2' );
+        // h2A.textContent = `${photographer.name}`;
+        // const said= document.querySelector('.said'); 
+        // said.appendChild(h2A);
+
     } else {
         console.log(`Photographe avec cet ID ${id} non trouvé.`);
     }

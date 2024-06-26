@@ -60,28 +60,6 @@ h1 {
 .photograph-header{
     display:grid; 
     grid-template-columns: 1fr 1fr 1fr; 
- 
-    /* display: flex;
-    flex-direction: row; /* Disposer les éléments en ligne */
-    /* align-items: center; /* Centrer verticalement */
-    /* justify-content: space-between; Espacement entre les éléments */
-    /* padding: 20px;
-    border: 1px solid #ccc;
-    background-color: #fff;  */
-}
-
-.contact_button{
-    /* flex:1; 
-    text-align: center; */
-    /* flex: 1; /* Ne prend que la place nécessaire pour le bouton */
-    /*margin: 0 20px;*/ /*Marge pour l'espacement */
-}
-
-
-.photograph-header h2 p {
-    /* flex:0; 
-    text-align: left; */
-    /*flex: 0;*/ /* Prend tout l'espace disponible */
 }
 
 
@@ -99,7 +77,4 @@ h1 {
 }
 .sousDivDeDivA{
    text-align: center;
-    /* justify-content: center;  */
-    /* align-items: center; Centrer verticalement */
-
 }
