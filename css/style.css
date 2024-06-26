@@ -51,8 +51,43 @@ h1 {
     width: 200px;
 }
 /* je viens de rajouter ce code sur photographer.html */
-.photograph-header img {
+/* .photograph-header img {
     height: 200px;
     width: 200px;
     border-radius: 50%;
+} */
+/* j'aligne les element de ma fenetre modale ================================*/
+.photograph-header{
+ 
+    /* display: flex;
+    flex-direction: row; /* Disposer les éléments en ligne */
+    /* align-items: center; /* Centrer verticalement */
+    /* justify-content: space-between; Espacement entre les éléments */
+    /* padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #fff;  */
+}
+
+.contact_button{
+    /* flex:1; 
+    text-align: center; */
+    /* flex: 1; /* Ne prend que la place nécessaire pour le bouton */
+    /*margin: 0 20px;*/ /*Marge pour l'espacement */
+}
+
+
+.photograph-header h2 p {
+    /* flex:0; 
+    text-align: left; */
+    /*flex: 0;*/ /* Prend tout l'espace disponible */
+}
+
+
+.photograph-header img {
+   
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    
+  
 }

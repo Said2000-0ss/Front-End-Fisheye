@@ -47,30 +47,46 @@ async function main() {
         console.log(`Name: ${photographer.name}`+ ` City: ${photographer.city}`+` Country: ${photographer.country}`+` Tagline: ${photographer.tagline}`+` Price: ${photographer.price}`+ ` Portrait: ${photographer.portrait}`);
         //c'est le lien de ma photo qu'il faut que je mette dans un src
         //=======================================================je viens d'ajouter ce code============================================================
-        const picture = `assets/photographers/${photographer.portrait}`;
-        console.log(picture);
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
-        img.setAttribute("alt", "Photographer's portrait"); // Ajoutez un alt pour l'accessibilité
         const maBalise = document.querySelector('.photograph-header');
-        maBalise.appendChild(img); // Ajoutez l'image à la balise <a> //a verifier et voir si cela fonctionne apres la pause
+        // Création de mes 3 div avec le nom de classe .griditem **************************************************************************************
+        const newDivA=document.createElement('div');
+        newDivA.classList.add('gridItem');
+        const newDivB=document.createElement('div');
+        newDivB.classList.add('gridItem');
+        const newDivC=document.createElement('div');
+        newDivC.classList.add('gridItem');
+        //*********************************************************************************************************************************************
+  
         //=============================================================================================================================================
+       
+        //********************************************* MES TEXTES ***********************************************************************************
         const h2 = document.createElement( 'h2' );
         h2.textContent = `${photographer.name}`;
-        maBalise.appendChild(h2);
+        newDivA.appendChild(h2);
         const villePays= document.createElement('p');
         // villePays.textContent = city+", "+country;
         villePays.textContent = `${photographer.city}`+", "+`${photographer.country}`;
         villePays.style.color='#901c1c';
         villePays.setAttribute('aria-label', 'Paragraphe : Ceci est le paragraphe de la ville est du pays');
-        maBalise.appendChild(villePays);
-
+        newDivA.appendChild(villePays);
         const description = document.createElement('p');
         description.textContent=`${photographer.tagline}`; 
         description.style.color="#000000";
         description.style.fontSize='25px';
-        maBalise.appendChild(description);
-
+        newDivA.appendChild(description);
+        maBalise.appendChild(newDivA);
+        //********************************************* MON BOUTON ***********************************************************************************
+        const monBouton = document.querySelector('.contact_button');
+        newDivB.appendChild(monBouton);
+        maBalise.appendChild(newDivB);
+        //********************************************* MON IMAGE ************************************************************************************
+        const picture = `assets/photographers/${photographer.portrait}`;
+        console.log(picture);
+        const img = document.createElement( 'img' );
+        img.setAttribute("src", picture)
+        img.setAttribute("alt", "Photographer's portrait"); // Ajoutez un alt pour l'accessibilité
+        newDivC.appendChild(img);
+        maBalise.appendChild(newDivC); 
     } else {
         console.log(`Photographe avec cet ID ${id} non trouvé.`);
     }
