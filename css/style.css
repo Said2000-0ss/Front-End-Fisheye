@@ -58,6 +58,8 @@ h1 {
 } */
 /* j'aligne les element de ma fenetre modale ================================*/
 .photograph-header{
+    display:grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
  
     /* display: flex;
     flex-direction: row; /* Disposer les éléments en ligne */
@@ -84,10 +86,14 @@ h1 {
 
 
 .photograph-header img {
-   
+  
     height: 200px;
     width: 200px;
     border-radius: 50%;
-    
-  
+}
+
+.gridItem{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
 }

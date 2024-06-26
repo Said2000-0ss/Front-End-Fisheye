@@ -60,20 +60,23 @@ async function main() {
         //=============================================================================================================================================
        
         //********************************************* MES TEXTES ***********************************************************************************
+        const newDivAA=document.createElement('div');
+        // newDivAA.classList.add('gridItem');
         const h2 = document.createElement( 'h2' );
         h2.textContent = `${photographer.name}`;
-        newDivA.appendChild(h2);
+        newDivAA.appendChild(h2);
         const villePays= document.createElement('p');
         // villePays.textContent = city+", "+country;
         villePays.textContent = `${photographer.city}`+", "+`${photographer.country}`;
         villePays.style.color='#901c1c';
         villePays.setAttribute('aria-label', 'Paragraphe : Ceci est le paragraphe de la ville est du pays');
-        newDivA.appendChild(villePays);
+        newDivAA.appendChild(villePays);
         const description = document.createElement('p');
         description.textContent=`${photographer.tagline}`; 
         description.style.color="#000000";
         description.style.fontSize='25px';
-        newDivA.appendChild(description);
+        newDivAA.appendChild(description);
+        newDivA.appendChild(newDivAA);
         maBalise.appendChild(newDivA);
         //********************************************* MON BOUTON ***********************************************************************************
         const monBouton = document.querySelector('.contact_button');
