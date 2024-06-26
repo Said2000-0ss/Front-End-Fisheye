@@ -65,6 +65,7 @@ async function main() {
         const h2 = document.createElement( 'h2' );
         h2.textContent = `${photographer.name}`;
         newDivAA.appendChild(h2);
+        newDivAA.classList.add('sousDivDeDivA');
         const villePays= document.createElement('p');
         // villePays.textContent = city+", "+country;
         villePays.textContent = `${photographer.city}`+", "+`${photographer.country}`;
