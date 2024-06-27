@@ -1,5 +1,30 @@
 // // import { getPhotographers } from "../pages/index.js";
+//=========================================================== CODE DE MA MODAL CONTACT ===================================================================
+// Attendre que le DOM soit chargé
+document.addEventListener('DOMContentLoaded', () => {
+    // Sélectionner le formulaire
+    const form = document.getElementById('contactForm');
 
+    // Ajouter un écouteur d'événement pour la soumission du formulaire
+    form.addEventListener('submit', (event) => {
+        // Empêcher le comportement par défaut de la soumission du formulaire
+        event.preventDefault();
+
+        // Récupérer les valeurs des champs
+        const firstName = document.getElementById('firstName').value;
+        const lastName = document.getElementById('lastName').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        // Afficher les valeurs dans la console
+        console.log('Prénom:', firstName);
+        console.log('Nom:', lastName);
+        console.log('Email:', email);
+        console.log('Message:', message);
+        closeModal();
+    });
+});
+//========================================================================================================================================================
 
 // Afficher le modal
 function displayModal() {
