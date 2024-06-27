@@ -112,7 +112,18 @@ height: 100px;
 }
 
 .lightBox{
+
+    display: none;
+  
     border: 5px solid black; /* Bordure noire de 5px */
-            height: 500px;           /* Hauteur de 500px */
-            width: 500px;            /* Largeur de 500px */
+    height: 500px;           /* Hauteur de 500px */
+    width: 500px;            /* Largeur de 500px */
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
