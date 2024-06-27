@@ -101,8 +101,18 @@ form input {
     }
 
     /* Style pour les options du select */
-    .custom-select option {
+    /* .custom-select option {
         background-color: #901C1C; /* Couleur de fond des options */
-        color: white; /* Couleur du texte des options */
-    }
+        /* color: white; /* Couleur du texte des options */
+    /* } */ 
 /* ******************************************************************************************************************************************************* */
+.mesMedias img {
+width: 100px;
+height: 100px;
+}
+
+.lightBox{
+    border: 5px solid black; /* Bordure noire de 5px */
+            height: 500px;           /* Hauteur de 500px */
+            width: 500px;            /* Largeur de 500px */
+}

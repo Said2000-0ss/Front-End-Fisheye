@@ -140,11 +140,59 @@ async function main() {
             // console.log(`Date: ${media.date}`);
             // console.log(`Price: ${media.price}`);
             console.log(`Title: ${media.title}`+` Image: ${media.image}`+` Video: ${media.video}`+` Likes: ${media.likes}`+` Date: ${media.date}`+` Price: ${media.price}`);
+            
+        //====================================== mon code crée pour afficher mes productions médiatiques================
+        let pictureMedia = "";
+        const test = media.image;
+        
+        if (test === undefined || test === "") {
+            console.log("=============== mon image est pas définie =====================================");
+        } else {
+            // pictureMedia = `assets/images/Sample Photos/${media.image}`;
+            pictureMedia = `assets/images/Sample Photos/${photographer.name}/${media.image}`;
+
+            console.log(pictureMedia);
+            const imgMedia = document.createElement('img');
+            imgMedia.setAttribute("src", pictureMedia);
+            imgMedia.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
+            const mesPhotosMedias = document.querySelector('.mesMedias');
+            mesPhotosMedias.appendChild(imgMedia);
+
+
+        }
+        
+        // const imgMedia = document.createElement('img');
+        // imgMedia.setAttribute("src", pictureMedia);
+        // imgMedia.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
+        // const saidTest = document.querySelector('.mesMedias');
+        // saidTest.appendChild(imgMedia);
+        //============================================================================================================
         });
     } else {
         console.log(`Pas de media trouvé pour le photographe avec cet id ${id}.`);
     }
 }
+//***************************************************************************************************************************************************** 
+/* // CODE POUR LE CARROUSSEL DU SELECT 
+  document.addEventListener('DOMContentLoaded', () => {
+            const selectElement = document.getElementById('order-by');
+
+            selectElement.addEventListener('change', (event) => {
+                const selectedValue = event.target.value;
+                console.log(`Selected order: ${selectedValue}`);
+                // Vous pouvez ajouter ici votre logique de tri en fonction de selectedValue
+            });
+        });
+
+        /* 
+DOMContentLoaded : Attendre que le DOM soit complètement chargé avant d'exécuter le script.
+selectElement : Sélectionne l'élément <select> par son identifiant.
+change : Ajoute un écouteur d'événement pour l'événement change, qui est déclenché lorsque 
+l'utilisateur sélectionne une nouvelle option.
+selectedValue : Récupère la valeur de l'option sélectionnée et l'affiche dans la console.
+ Vous pouvez remplacer la ligne de console.log par votre propre logique pour trier les éléments en fonction de la sélection de l'utilisateur.
+        */
+//*****************************************************************************************************************************************************
 
 // Exécuter la fonction principale
 main();
