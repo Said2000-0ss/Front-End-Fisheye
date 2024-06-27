@@ -9,13 +9,19 @@
   </head>
   <body>
     <header>
+      <a href="index.html">
       <img src="assets/images/logo.png" class="logo" />
+      </a>
     </header>
     <main id="main">
+
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
+
     </main>
+
+  <!------------------------------------------------------------ CONTACT MODAL ------------------------------------------------------------------------------->
     <div id="contact_modal">
 			<div class="modal">
 				<header>
@@ -54,7 +60,7 @@
           <button type="submit" class="contact_button">Envoyer</button>
       </form> -->
       <form id="contactForm"> 
-        <label class="said"></label> 
+        <label class="labelNomPhotographe"></label> 
         <div>
             <label for="firstName">Prénom</label>
             <input type="text" id="firstName" />
@@ -69,8 +75,12 @@
     </form>
 			</div>
 		</div>
+    <!------------------------------------------------------- FIN DE LA CONTACT MODAL--------------------------------------------------------------------->
+    
+    <!---------------------------------------------------------MES SCRIPTS ------------------------------------------------------------------------------->
     <!-- j'ai ajouté le type module -->
     <script type="module" src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
+      <!------------------------------------------------------FIN DE MES SCRIPTS ----------------------------------------------------------------------------->
   </body>
 </html>

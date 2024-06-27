@@ -117,8 +117,8 @@ async function main() {
         newDivC.appendChild(img);
         maBalise.appendChild(newDivC); 
         //****************************************************************************************************************************************** */
-        const said= document.querySelector('.said'); 
-        said.textContent=`${photographer.name}`;// voir avec Marie , pourquoi cela se centre au milieu, je l'ai mis dans un label , 
+        const labelNomPhotographe= document.querySelector('.labelNomPhotographe'); 
+        labelNomPhotographe.textContent=`${photographer.name}`;// voir avec Marie , pourquoi cela se centre au milieu, je l'ai mis dans un label , 
         //pratique peu recommandable
         // const h2A = document.createElement( 'h2' );
         // h2A.textContent = `${photographer.name}`;
