@@ -166,8 +166,10 @@ async function main() {
             console.log("================================== MON IMAGE EST PAS DEFINIE =====================================");
         } else {
             // pictureMedia = `assets/images/Sample Photos/${media.image}`;
-            pictureMedia = `assets/images/Sample Photos/${photographer.name}/${media.image}`;
             const maBoxMedia = document.querySelector('.mesMedias');
+            pictureMedia = `assets/images/Sample Photos/${photographer.name}/${media.image}`;
+            const maSousBoxImgTitle= document.createElement(`div`);
+            maSousBoxImgTitle.id='maSousBox';
             console.log(pictureMedia);
             const imgMedia = document.createElement('img');
             imgMedia.setAttribute("src", pictureMedia);
@@ -176,11 +178,16 @@ async function main() {
             titleMedia.textContent=`${media.title}`; 
             const likeMedia = document.createElement('div');
             likeMedia.textContent=`${media.likes}`; 
-             maBoxMedia.appendChild(imgMedia);
-             maBoxMedia.appendChild(titleMedia);
-             maBoxMedia.appendChild(likeMedia);
+            // je mets ici mon coeur
+            let heartIcon = document.createElement('div');
+            heartIcon.className = 'fas fa-heart';
+            maSousBoxImgTitle.appendChild(imgMedia);
+            maSousBoxImgTitle.appendChild(titleMedia);
+            maSousBoxImgTitle.appendChild(likeMedia);
+            maSousBoxImgTitle.appendChild(heartIcon);
+            maBoxMedia.appendChild(maSousBoxImgTitle);
              // calculer le total de mes likes
-           
+           console.log(heartIcon);
             totalLikes +=media.likes;
             
 
