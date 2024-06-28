@@ -30,6 +30,10 @@ h2{
     cursor: pointer;
 }
 
+.contact_button:hover{
+background-color: #D3573C;
+}
+
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
@@ -133,6 +137,15 @@ justify-content: space-between; */
 margin-top:10%;
 margin-left:50px; 
 margin-right:50px; 
+}
+
+#heartIcon{
+    color: #901C1C; 
+    font-size: 2em; /* Vous pouvez ajuster la taille si nécessaire */
+}
+
+#heartIcon:hover {
+    color:#D3573C; /* Change la couleur au survol */
 }
 
 .lightBox{

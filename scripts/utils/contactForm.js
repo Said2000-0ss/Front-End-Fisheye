@@ -180,6 +180,7 @@ async function main() {
             likeMedia.textContent=`${media.likes}`; 
             // je mets ici mon coeur
             let heartIcon = document.createElement('div');
+            heartIcon.id = 'heartIcon';
             heartIcon.className = 'fas fa-heart';
             maSousBoxImgTitle.appendChild(imgMedia);
             maSousBoxImgTitle.appendChild(titleMedia);
