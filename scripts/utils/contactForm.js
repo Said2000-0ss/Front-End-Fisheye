@@ -37,7 +37,7 @@ function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
 }
-
+//Mes fonctions , afin d'afficher la lightBox
 function displayLightBox() {
     const modal = document.getElementById("light_box");
     modal.style.display = "block";
@@ -69,7 +69,7 @@ async function getPhotographers() {
 // Fonction principale pour traiter les données
 async function main() {
     const data = await getPhotographers();
-
+    let totalLikes= 0;
     // Vérifier et afficher les informations du photographe correspondant à l'ID
     const photographer = data.photographers.find(photographer => photographer.id == id);
     if (photographer) {
@@ -156,7 +156,7 @@ async function main() {
         //====================================== mon code crée pour afficher mes productions médiatiques================
         let pictureMedia = "";
         const test = media.image;
-        
+       
         if (test === undefined || test === "") {
             console.log("=============== mon image est pas définie =====================================");
         } else {
@@ -174,7 +174,10 @@ async function main() {
              maBoxMedia.appendChild(imgMedia);
              maBoxMedia.appendChild(titleMedia);
              maBoxMedia.appendChild(likeMedia);
-
+             // calculer le total de mes likes
+           
+            totalLikes +=media.likes;
+            
 
         }
         
@@ -188,6 +191,7 @@ async function main() {
     } else {
         console.log(`Pas de media trouvé pour le photographe avec cet id ${id}.`);
     }
+    console.log("Je suis le total des likes"+totalLikes);
 }
 //***************************************************************************************************************************************************** 
 /* // CODE POUR LE CARROUSSEL DU SELECT 
