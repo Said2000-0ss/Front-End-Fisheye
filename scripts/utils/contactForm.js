@@ -191,7 +191,7 @@ async function main() {
     } else {
         console.log(`Pas de media trouvé pour le photographe avec cet id ${id}.`);
     }
-    console.log("Je suis le total des likes"+totalLikes);
+    console.log("Mon total de like : "+totalLikes+ ` Price: ${photographer.price} euros`);
 }
 //***************************************************************************************************************************************************** 
 /* // CODE POUR LE CARROUSSEL DU SELECT 
