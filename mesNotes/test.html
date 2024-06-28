@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <!-- Autres balises meta et liens -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      </head>
+
+      
+      <body>
+        <h1>Mon site web avec Font Awesome</h1>
+        <p>Voici une icône de cœur : <i class="fas fa-heart"></i></p>
+
+
+        <style>
+            .fa-heart {
+              color: red;
+              font-size: 2em;
+            }
+          </style>
+          
+
+        <p>Voici une icône de cœur stylisée : <i class="fas fa-heart"></i></p>
+
+        <p id="dynamicHeart">Voici une icône de cœur dynamique : </p>
+<div id="dynamicHeart"></div>
+        <script>
+        var heartIcon = document.createElement('i');
+        heartIcon.className = 'fas fa-heart';
+        document.getElementById('dynamicHeart').appendChild(heartIcon);
+        </script>
+
+
+
+      </body>
+
+
+</html>

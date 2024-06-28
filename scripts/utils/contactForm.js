@@ -17,10 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const message = document.getElementById('message').value;
 
         // Afficher les valeurs dans la console
+        console.log('================================== INFORMATIONS DE MA CONSOLE LOG ================================')
         console.log('Prénom:', firstName);
         console.log('Nom:', lastName);
         console.log('Email:', email);
         console.log('Message:', message);
+        console.log('============================= FIN DES INFORMATIONS DE MA CONSOLE LOG =============================')
         closeModal();
     });
 });
@@ -79,9 +81,11 @@ async function main() {
         // console.log(`Tagline: ${photographer.tagline}`);
         // console.log(`Price: ${photographer.price}`);
         // console.log(`Portrait: ${photographer.portrait}`);
+        console.log('================================== INFORMATIONS SUR LE PHOTOGRAPHE ===============================');
         console.log("je suis de passage ici , maintenant il faut que je mette la photo");
         console.log("mon id url "+id +" mon id dans mon tableau " +  `${photographer.id}`);
         console.log(`Name: ${photographer.name}`+ ` City: ${photographer.city}`+` Country: ${photographer.country}`+` Tagline: ${photographer.tagline}`+` Price: ${photographer.price}`+ ` Portrait: ${photographer.portrait}`);
+        console.log('=========================== FIN DES INFORMATIONS SUR LE PHOTOGRAPHE ==============================');
         //c'est le lien de ma photo qu'il faut que je mette dans un src
         //=======================================================je viens d'ajouter ce code============================================================
         const maBalise = document.querySelector('.photograph-header');
@@ -158,7 +162,8 @@ async function main() {
         const test = media.image;
        
         if (test === undefined || test === "") {
-            console.log("=============== mon image est pas définie =====================================");
+          
+            console.log("================================== MON IMAGE EST PAS DEFINIE =====================================");
         } else {
             // pictureMedia = `assets/images/Sample Photos/${media.image}`;
             pictureMedia = `assets/images/Sample Photos/${photographer.name}/${media.image}`;
