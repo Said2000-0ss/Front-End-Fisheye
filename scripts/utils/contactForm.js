@@ -38,6 +38,18 @@ function closeModal() {
     modal.style.display = "none";
 }
 
+function displayLightBox() {
+    const modal = document.getElementById("light_box");
+    modal.style.display = "block";
+}
+
+
+function closeLightBox() {
+    const modal = document.getElementById("light_box");
+    modal.style.display = "none";
+}
+
+
 // Récupérer les paramètres de l'URL
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
@@ -150,13 +162,18 @@ async function main() {
         } else {
             // pictureMedia = `assets/images/Sample Photos/${media.image}`;
             pictureMedia = `assets/images/Sample Photos/${photographer.name}/${media.image}`;
-
+            const maBoxMedia = document.querySelector('.mesMedias');
             console.log(pictureMedia);
             const imgMedia = document.createElement('img');
             imgMedia.setAttribute("src", pictureMedia);
             imgMedia.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
-            const mesPhotosMedias = document.querySelector('.mesMedias');
-            mesPhotosMedias.appendChild(imgMedia);
+            const titleMedia = document.createElement('div');
+            titleMedia.textContent=`${media.title}`; 
+            const likeMedia = document.createElement('div');
+            likeMedia.textContent=`${media.likes}`; 
+             maBoxMedia.appendChild(imgMedia);
+             maBoxMedia.appendChild(titleMedia);
+             maBoxMedia.appendChild(likeMedia);
 
 
         }
