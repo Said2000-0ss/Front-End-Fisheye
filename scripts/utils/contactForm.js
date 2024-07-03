@@ -54,31 +54,40 @@ document.addEventListener('DOMContentLoaded', () => {
         closeModal();
     });
 });
-//========================================================================================================================================================
+//==================================================== MES FONCTIONS OUVERTURE/FERMETURE MODAL=============================================================
 
 // Afficher le modal
 function displayModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "block";
 }
-
 // Fermer le modal
 function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
+    console.log("je viens de fermer la close modal"); 
 }
+//==================================================== MES FONCTIONS OUVERTURE/FERMETURE LIGHTBOX =========================================================
 //Mes fonctions , afin d'afficher la lightBox
 function displayLightBox() {
     const modal = document.getElementById("light_box");
     modal.style.display = "block";
+    console.log("je viens d'ouvrir la light box"); 
 }
-
 
 function closeLightBox() {
     const modal = document.getElementById("light_box");
     modal.style.display = "none";
+    console.log("je viens de fermer la lightbox")
 }
-
+//====================== ECOUTEUR D'EVENEMENT SUR LA LIGHTBOX ======================================
+const lighBox= document.getElementById("light_box");
+lighBox.addEventListener('click', () => {
+    console.log("je suis : "+ lighBox);
+    // Vous pouvez ajouter ici la logique pour afficher une fenêtre modale ou une action spécifique
+    closeLightBox();
+});
+//========================================================================================================================================================
 
 // Récupérer les paramètres de l'URL
 const urlParams = new URLSearchParams(window.location.search);
@@ -196,12 +205,28 @@ async function main() {
             // pictureMedia = `assets/images/Sample Photos/${media.image}`;
             const maBoxMedia = document.querySelector('.mesMedias');
             pictureMedia = `assets/images/Sample Photos/${photographer.name}/${media.image}`;
+            //=============================================================================================================
+            // pictureMedia.addEventListener('click', () => {
+            //     // // afficherModalMedia(item);
+            //     // console.log("je suis une image clickable , je suis : ")
+            //     // console.log(pictureMedia); 
+            // });
+            //=============================================================================================================
             const maSousBoxImgTitle= document.createElement(`div`);
             maSousBoxImgTitle.id='maSousBox';
             console.log(pictureMedia);
             const imgMedia = document.createElement('img');
             imgMedia.setAttribute("src", pictureMedia);
             imgMedia.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
+ //========================================= MON ECOUTEUR D'EVENEMENTS SUR IMAGES =================================================================
+               // Ajouter l'événement click à l'image
+            imgMedia.addEventListener('click', () => {
+            console.log("je suis : "+ pictureMedia);
+            // Vous pouvez ajouter ici la logique pour afficher une fenêtre modale ou une action spécifique
+            displayLightBox();
+        });
+ //================================================================================================================================================           
+      
             const titleMedia = document.createElement('div');
             titleMedia.textContent=`${media.title}`; 
             const likeMedia = document.createElement('div');

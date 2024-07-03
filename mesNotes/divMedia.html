@@ -5,6 +5,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
+<div id="contact_modal">
+<div class="lightBox" id="light_box"> 
+    <header>
+      <h2>Je suis la lightBox</h2>
+      <img src="/mesNotes/cours-eau-entoure-montagnes-fleurs-par-journee-ensoleillee.jpg" onclick="closeModal()" />
+      <div id="monImage">
+      </div>
+    </header>
+  </div>
+</div>
+
 <div class="Modal">
     <div>
         <div class="maDivImage">
@@ -75,6 +86,10 @@
         height: 300px;
         width: 300px;
     }
+    img {
+        height: 300px;
+        width: 300px;
+    }
 
     .text-content {
         display: flex;
@@ -87,5 +102,13 @@
     }
 </style>
 
+
+<script>
+
+function closeModal() {
+    const modal = document.getElementById("contact_modal");
+    modal.style.display = "none";
+}
+</script>
 
 </html>
