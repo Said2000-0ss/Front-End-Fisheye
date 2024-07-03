@@ -78,6 +78,23 @@ function displayLightBox() {
 function closeLightBox() {
     const modal = document.getElementById("light_box");
     modal.style.display = "none";
+    //================================================================
+    // const monImage = document.getElementById("monImage");
+    // // Vider le contenu de la lightbox
+    // while (monImage.firstChild) {
+    //     monImage.removeChild(monImage.firstChild);
+    // }
+    const maLightBox = document.querySelector('.lightBox');
+    while (maLightBox.firstChild) {
+        maLightBox.removeChild(maLightBox.firstChild);
+        }
+    //================================================================
+    // const imgMediaLightBox=document.createElement("img");
+    // imgMediaLightBox.setAttribute("src", pictureMedia);
+    // imgMediaLightBox.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
+    // imgMediaLightBox.setAttribute("id", "imagelightBox");
+    // const maLightBox = document.querySelector('.lightBox');
+    // maLightBox.appendChild(imgMediaLightBox);
     console.log("je viens de fermer la lightbox")
 }
 //====================== ECOUTEUR D'EVENEMENT SUR LA LIGHTBOX ======================================
@@ -221,9 +238,26 @@ async function main() {
  //========================================= MON ECOUTEUR D'EVENEMENTS SUR IMAGES =================================================================
                // Ajouter l'événement click à l'image
             imgMedia.addEventListener('click', () => {
+                //===========================================
+                const maLightBox = document.querySelector('.lightBox');
+                while (maLightBox.firstChild) {
+                    maLightBox.removeChild(maLightBox.firstChild);
+                    }
+                //===========================================
             console.log("je suis : "+ pictureMedia);
             // Vous pouvez ajouter ici la logique pour afficher une fenêtre modale ou une action spécifique
             displayLightBox();
+            // si je clique , j'appelle ma lightbox, et dedans je glisse une variable avec l'img, et un tableau qui permet de l'utiliser comme 
+            //un caroussel, previous and next, avec deux ecouteurs d'evenement sur chevron ouvrant et chevron fermant, qui permet de parcourir le tableau
+            //faire en sorte que la lightboxsoit affiché au-dessus de la page
+            // ici je vais passer 
+            const imgMediaLightBox=document.createElement("img");
+            imgMediaLightBox.setAttribute("src", pictureMedia);
+            imgMediaLightBox.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
+            imgMediaLightBox.setAttribute("id", "imagelightBox");
+            // const maLightBox = document.querySelector('.lightBox');
+            maLightBox.appendChild(imgMediaLightBox);
+            console.log("une photo a du etre mise dans la lightbox")
         });
  //================================================================================================================================================           
       
