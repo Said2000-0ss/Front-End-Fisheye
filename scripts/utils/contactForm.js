@@ -231,6 +231,9 @@ async function main() {
             //=============================================================================================================
             const maSousBoxImgTitle= document.createElement(`div`);
             maSousBoxImgTitle.id='maSousBox';
+            //je cree une div qui va englober mes 3 div
+            const basSousBox=document.createElement('div');
+            basSousBox.id='basSousBox';
             console.log(pictureMedia);
             const imgMedia = document.createElement('img');
             imgMedia.setAttribute("src", pictureMedia);
@@ -251,6 +254,21 @@ async function main() {
             //un caroussel, previous and next, avec deux ecouteurs d'evenement sur chevron ouvrant et chevron fermant, qui permet de parcourir le tableau
             //faire en sorte que la lightboxsoit affiché au-dessus de la page
             // ici je vais passer 
+            // malightBox est la div principale : je vais mettre dedans 3 div: une div panneaudeGauche, une div panneauCentral, une div panneau de droite.
+
+            const panneauDeGauche=document.createElement('div');
+            panneauDeGauche.setAttribute("id", "panneauDeGauche");
+
+            const panneauCentral=document.createElement('div');
+            panneauCentral.setAttribute("id", "panneauCentral");
+
+
+            
+            const panneauDeDroite=document.createElement('div');
+            panneauDeDroite.setAttribute("id", "panneauDeDroite");
+
+           
+
             const imgMediaLightBox=document.createElement("img");
             imgMediaLightBox.setAttribute("src", pictureMedia);
             imgMediaLightBox.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
@@ -270,9 +288,13 @@ async function main() {
             heartIcon.id = 'heartIcon';
             heartIcon.className = 'fas fa-heart';
             maSousBoxImgTitle.appendChild(imgMedia);
-            maSousBoxImgTitle.appendChild(titleMedia);
-            maSousBoxImgTitle.appendChild(likeMedia);
-            maSousBoxImgTitle.appendChild(heartIcon);
+            basSousBox.appendChild(titleMedia);
+            basSousBox.appendChild(likeMedia);
+            basSousBox.appendChild(heartIcon);
+            maSousBoxImgTitle.appendChild(basSousBox);
+            // maSousBoxImgTitle.appendChild(titleMedia);
+            // maSousBoxImgTitle.appendChild(likeMedia);
+            // maSousBoxImgTitle.appendChild(heartIcon);
             maBoxMedia.appendChild(maSousBoxImgTitle);
              // calculer le total de mes likes
            console.log(heartIcon);
@@ -292,7 +314,7 @@ heartIconEncart.id = 'heartIconEncart';
 heartIconEncart.className = 'fas fa-heart';
 totalLikesElement.appendChild(heartIconEncart);
 //dailyRateElement.textContent = "300€/jour"; 
-dailyRateElement.textContent = `${photographer.price}€/jour`;
+dailyRateElement.textContent = `${photographer.price}€ / jour`;
 //=====================================================================================================================================================
 
         }

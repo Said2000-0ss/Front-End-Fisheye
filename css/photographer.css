@@ -138,6 +138,13 @@ margin-top:10%;
 margin-left:50px; 
 margin-right:50px; 
 }
+#basSousBox{
+    display: grid;
+    grid-template-columns: 2.3fr 0.4fr 0.3fr;
+    font-size: 18px; /* Taille de la police */
+    /* font-weight: bold; Caractère gras */
+    color: #901C1C; 
+}
 
 #heartIcon{
     color: #901C1C; 
@@ -196,14 +203,14 @@ margin-right:50px;
 
 /* ======================================================================================================================================================= */
 /* MON FORMULAIRE DE CONTACT */
-/* #contactForm{
+/* #contactForm{ */
 
     /* z-index: 10000; */
  
     /*top: 50%;/* Centré verticalement*/
     /*left: 50%; /*Centré horizontalement */
    /* transform: translate(-50%, -50%); /* Ajustement pour un centrage parfait */
-/* } */ */
+/* } */
 
 /*======================================================================*/
 /* #fa-solid{
