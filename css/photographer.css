@@ -151,10 +151,12 @@ margin-right:50px;
 .lightBox{
 
     display: none;
-  margin-left: 200px;
+   
+  margin-left: 2%;
+  margin-right:10%;
     border: 5px solid black; /* Bordure noire de 5px */
-    height: 800px;           /* Hauteur de 500px */
-    width: 800px;            /* Largeur de 500px */
+    height: 550px;           /* Hauteur de 500px */
+    width: 80%;            /* Largeur de 500px */
     background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
     /* display: flex;
     justify-content: center;
@@ -164,6 +166,15 @@ margin-right:50px;
     /* top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); */
+/* je viens d'ajouter ce code et je le teste===================================================================================================== */
+    position: fixed; /* Position fixe pour rester en place lors du défilement*/
+    top: 50%;/* Centré verticalement*/
+    left: 50%; /*Centré horizontalement */
+    transform: translate(-50%, -50%); /* Ajustement pour un centrage parfait */
+    z-index: 1000; /* Superposition au-dessus des autres éléments */
+    /* margin-top:1%;  */
+    margin-bottom: 5%; 
+    /* =========================================================================================================================================== */
 }
 
 /* #monImage{
@@ -172,6 +183,47 @@ margin-right:50px;
 
 } */
 #imagelightBox{
-    height: 500px;
-    width: 500px;
+    /* height: 800px;
+    width: 700px;
+    margin-left:50px;
+    margin-right:50px;  */
+    width: 80%;
+    height: 100%;
+    margin-left:10%; 
+    margin-right:10%;
+    /* object-fit: cover; */
+}
+
+/* ======================================================================================================================================================= */
+/* MON FORMULAIRE DE CONTACT */
+/* #contactForm{
+
+    /* z-index: 10000; */
+ 
+    /*top: 50%;/* Centré verticalement*/
+    /*left: 50%; /*Centré horizontalement */
+   /* transform: translate(-50%, -50%); /* Ajustement pour un centrage parfait */
+/* } */ */
+
+/*======================================================================*/
+/* #fa-solid{
+    color:red;
+}  */
+
+#fixedFooter {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin-left:75%;
+    width: 20%;
+    background-color:#D3573C;
+    color: black;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 18px;
+    display: flex;
+    border-top-left-radius: 10px;
+    border-top-right-radius:10px;
+    justify-content: space-around;
+    z-index: 1000; /* S'assurer qu'il soit au-dessus des autres éléments */
 }

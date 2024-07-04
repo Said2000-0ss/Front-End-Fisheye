@@ -277,7 +277,23 @@ async function main() {
              // calculer le total de mes likes
            console.log(heartIcon);
             totalLikes +=media.likes;
-            
+            //=====================================================================================================================================================
+// Mise en place de l'encart en bas de page du code html, de maniére dynamique.
+
+// Exemple de script pour mettre à jour dynamiquement les valeurs
+const totalLikesElement = document.getElementById('totalLikes');
+const dailyRateElement = document.getElementById('dailyRate');
+
+// Exemple de mise à jour des valeurs
+totalLikesElement.textContent =totalLikes+" "; // Remplacez par la valeur dynamique
+//Rajouter un font asewhome coeur 
+let heartIconEncart = document.createElement('div');
+heartIconEncart.id = 'heartIconEncart';
+heartIconEncart.className = 'fas fa-heart';
+totalLikesElement.appendChild(heartIconEncart);
+//dailyRateElement.textContent = "300€/jour"; 
+dailyRateElement.textContent = `${photographer.price}€/jour`;
+//=====================================================================================================================================================
 
         }
         
@@ -317,5 +333,3 @@ selectedValue : Récupère la valeur de l'option sélectionnée et l'affiche dan
 
 // Exécuter la fonction principale
 main();
-
-
