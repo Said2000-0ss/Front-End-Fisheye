@@ -228,6 +228,10 @@ async function main() {
             //faire en sorte que la lightboxsoit affiché au-dessus de la page
             // ici je vais passer 
             // malightBox est la div principale : je vais mettre dedans 3 div: une div panneaudeGauche, une div panneauCentral, une div panneau de droite.
+            // je cree un div conteneur dans lequel je vais mettre les différentes div, div panneau de gauche, div central et div panneau de droite
+            //========================================================== DIV CONTAINER ========================================================================
+            const containerLightbox=document.createElement('div');
+            containerLightbox.setAttribute("id" ,"containerLightbox");
             //==========================================================PANNEAU DE GAUCHE =====================================================================
             const panneauDeGauche=document.createElement('div');
             panneauDeGauche.setAttribute("id", "panneauDeGauche");
@@ -238,34 +242,55 @@ async function main() {
             //========================================================= PANNEAU CENTRAL =======================================================================
             const panneauCentral=document.createElement('div');
             panneauCentral.setAttribute("id", "panneauCentral");
+            const containerImgLightbox=document.createElement('div');
+            containerImgLightbox.setAttribute("id","containerImgLightbox");
+
             const imgMediaLightBox=document.createElement("img");
             imgMediaLightBox.setAttribute("src", pictureMedia);
             imgMediaLightBox.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
             imgMediaLightBox.setAttribute("id", "imagelightBox");
             // const maLightBox = document.querySelector('.lightBox');
-            panneauCentral.appendChild(imgMediaLightBox);
+            containerImgLightbox.appendChild(imgMediaLightBox);
+            panneauCentral.appendChild(containerImgLightbox);
             console.log("une photo a du etre mise dans la lightbox")
+            const containerTitle=document.createElement('div');
+            containerTitle.setAttribute("id","containerTitle");
             const h2SousTitle = document.createElement( 'span' );
             h2SousTitle.textContent = `${media.title}`;
-            panneauCentral.appendChild(h2SousTitle);
+            containerTitle.appendChild(h2SousTitle);
+
+            panneauCentral.appendChild(containerTitle);
             //======================================================== PANNEAU DE DROITE ======================================================================        
             const panneauDeDroite=document.createElement('div');
             panneauDeDroite.setAttribute("id", "panneauDeDroite");
+            let containerCroixDeFermeture=document.createElement('div');
+            containerCroixDeFermeture.setAttribute("id", "containerCroixDeFermeture");
             let croixFermeture = document.createElement('div');
             croixFermeture.setAttribute("id", "croixfermeture");
             // croixFermeture.id = 'croixFermeture';
             croixFermeture.className = 'fa-solid fa-square-xmark';
-            panneauDeDroite.appendChild(croixFermeture)
+            containerCroixDeFermeture.appendChild(croixFermeture);
+            panneauDeDroite.appendChild(containerCroixDeFermeture);
+            let containerChevronFermant=document.createElement('div'); 
+            containerChevronFermant.setAttribute("id","containerChevronFermant");
             let chevronFermant = document.createElement('div');
             // chevronFermant.id = 'chevronFermant';
             chevronFermant.setAttribute("id", "chevronFermant");
             chevronFermant.className = 'fa-solid fa-chevron-right';
-            panneauDeDroite.appendChild(chevronFermant); 
+            containerChevronFermant.appendChild(chevronFermant);
+            panneauDeDroite.appendChild(containerChevronFermant); 
            //======================================================== MISE EN LIEN DES DIV A LA LIGHT BOX ====================================================
+           
            const maBox = document.querySelector('.lightBox');
-           maBox.appendChild(panneauDeGauche);
-           maBox.appendChild(panneauCentral);
-           maBox.appendChild(panneauDeDroite);
+        //    maBox.appendChild(panneauDeGauche);
+        //    maBox.appendChild(panneauCentral);
+        //    maBox.appendChild(panneauDeDroite);
+
+           containerLightbox.appendChild(panneauDeGauche);
+           containerLightbox.appendChild(panneauCentral);
+           containerLightbox.appendChild(panneauDeDroite);
+
+           maBox.appendChild(containerLightbox);
            
 
         });
