@@ -286,3 +286,4 @@ LES DIFFERENTES FONT ASEWOME :
     </div>
 
 =========================================================================================================================================================
+Mise en place d'un tableau média qui pourra en fonction d'un écouteur d'événement passer d'une image à l'autre , dans un sens , comme dans un autre.

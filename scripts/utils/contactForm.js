@@ -78,23 +78,10 @@ function displayLightBox() {
 function closeLightBox() {
     const modal = document.getElementById("light_box");
     modal.style.display = "none";
-    //================================================================
-    // const monImage = document.getElementById("monImage");
-    // // Vider le contenu de la lightbox
-    // while (monImage.firstChild) {
-    //     monImage.removeChild(monImage.firstChild);
-    // }
     const maLightBox = document.querySelector('.lightBox');
     while (maLightBox.firstChild) {
         maLightBox.removeChild(maLightBox.firstChild);
         }
-    //================================================================
-    // const imgMediaLightBox=document.createElement("img");
-    // imgMediaLightBox.setAttribute("src", pictureMedia);
-    // imgMediaLightBox.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
-    // imgMediaLightBox.setAttribute("id", "imagelightBox");
-    // const maLightBox = document.querySelector('.lightBox');
-    // maLightBox.appendChild(imgMediaLightBox);
     console.log("je viens de fermer la lightbox")
 }
 //====================== ECOUTEUR D'EVENEMENT SUR LA LIGHTBOX ======================================
@@ -105,7 +92,6 @@ lighBox.addEventListener('click', () => {
     closeLightBox();
 });
 //========================================================================================================================================================
-
 // Récupérer les paramètres de l'URL
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
@@ -129,12 +115,6 @@ async function main() {
     // Vérifier et afficher les informations du photographe correspondant à l'ID
     const photographer = data.photographers.find(photographer => photographer.id == id);
     if (photographer) {
-        // console.log(`Name: ${photographer.name}`);
-        // console.log(`City: ${photographer.city}`);
-        // console.log(`Country: ${photographer.country}`);
-        // console.log(`Tagline: ${photographer.tagline}`);
-        // console.log(`Price: ${photographer.price}`);
-        // console.log(`Portrait: ${photographer.portrait}`);
         console.log('================================== INFORMATIONS SUR LE PHOTOGRAPHE ===============================');
         console.log("je suis de passage ici , maintenant il faut que je mette la photo");
         console.log("mon id url "+id +" mon id dans mon tableau " +  `${photographer.id}`);
@@ -162,7 +142,6 @@ async function main() {
         newDivAA.appendChild(h2);
         newDivAA.classList.add('sousDivDeDivA');
         const villePays= document.createElement('p');
-        // villePays.textContent = city+", "+country;
         villePays.textContent = `${photographer.city}`+", "+`${photographer.country}`;
         villePays.style.color='#901c1c';
         villePays.setAttribute('aria-label', 'Paragraphe : Ceci est le paragraphe de la ville est du pays');
@@ -203,12 +182,6 @@ async function main() {
     const mediaItems = data.media.filter(media => media.photographerId == id);
     if (mediaItems.length > 0) {
         mediaItems.forEach(media => {
-            // console.log(`Title: ${media.title}`);
-            // console.log(`Image: ${media.image}`);
-            // console.log(`Video: ${media.video}`);
-            // console.log(`Likes: ${media.likes}`);
-            // console.log(`Date: ${media.date}`);
-            // console.log(`Price: ${media.price}`);
             console.log(`Title: ${media.title}`+` Image: ${media.image}`+` Video: ${media.video}`+` Likes: ${media.likes}`+` Date: ${media.date}`+` Price: ${media.price}`);
             
         //====================================== mon code crée pour afficher mes productions médiatiques================
@@ -219,7 +192,7 @@ async function main() {
           
             console.log("================================== MON IMAGE EST PAS DEFINIE =====================================");
         } else {
-            // pictureMedia = `assets/images/Sample Photos/${media.image}`;
+            
             const maBoxMedia = document.querySelector('.mesMedias');
             pictureMedia = `assets/images/Sample Photos/${photographer.name}/${media.image}`;
             //=============================================================================================================
@@ -255,27 +228,46 @@ async function main() {
             //faire en sorte que la lightboxsoit affiché au-dessus de la page
             // ici je vais passer 
             // malightBox est la div principale : je vais mettre dedans 3 div: une div panneaudeGauche, une div panneauCentral, une div panneau de droite.
-
+            //==========================================================PANNEAU DE GAUCHE =====================================================================
             const panneauDeGauche=document.createElement('div');
             panneauDeGauche.setAttribute("id", "panneauDeGauche");
-
+             let chevronOuvrant = document.createElement('div');
+             chevronOuvrant.id = 'chevronOuvrant';
+            chevronOuvrant.className = 'fa-solid fa-chevron-left';
+            panneauDeGauche.appendChild(chevronOuvrant)
+            //========================================================= PANNEAU CENTRAL =======================================================================
             const panneauCentral=document.createElement('div');
             panneauCentral.setAttribute("id", "panneauCentral");
-
-
-            
-            const panneauDeDroite=document.createElement('div');
-            panneauDeDroite.setAttribute("id", "panneauDeDroite");
-
-           
-
             const imgMediaLightBox=document.createElement("img");
             imgMediaLightBox.setAttribute("src", pictureMedia);
             imgMediaLightBox.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
             imgMediaLightBox.setAttribute("id", "imagelightBox");
             // const maLightBox = document.querySelector('.lightBox');
-            maLightBox.appendChild(imgMediaLightBox);
+            panneauCentral.appendChild(imgMediaLightBox);
             console.log("une photo a du etre mise dans la lightbox")
+            const h2SousTitle = document.createElement( 'span' );
+            h2SousTitle.textContent = `${media.title}`;
+            panneauCentral.appendChild(h2SousTitle);
+            //======================================================== PANNEAU DE DROITE ======================================================================        
+            const panneauDeDroite=document.createElement('div');
+            panneauDeDroite.setAttribute("id", "panneauDeDroite");
+            let croixFermeture = document.createElement('div');
+            croixFermeture.setAttribute("id", "croixfermeture");
+            // croixFermeture.id = 'croixFermeture';
+            croixFermeture.className = 'fa-solid fa-square-xmark';
+            panneauDeDroite.appendChild(croixFermeture)
+            let chevronFermant = document.createElement('div');
+            // chevronFermant.id = 'chevronFermant';
+            chevronFermant.setAttribute("id", "chevronFermant");
+            chevronFermant.className = 'fa-solid fa-chevron-right';
+            panneauDeDroite.appendChild(chevronFermant); 
+           //======================================================== MISE EN LIEN DES DIV A LA LIGHT BOX ====================================================
+           const maBox = document.querySelector('.lightBox');
+           maBox.appendChild(panneauDeGauche);
+           maBox.appendChild(panneauCentral);
+           maBox.appendChild(panneauDeDroite);
+           
+
         });
  //================================================================================================================================================           
       
@@ -292,22 +284,15 @@ async function main() {
             basSousBox.appendChild(likeMedia);
             basSousBox.appendChild(heartIcon);
             maSousBoxImgTitle.appendChild(basSousBox);
-            // maSousBoxImgTitle.appendChild(titleMedia);
-            // maSousBoxImgTitle.appendChild(likeMedia);
-            // maSousBoxImgTitle.appendChild(heartIcon);
             maBoxMedia.appendChild(maSousBoxImgTitle);
-             // calculer le total de mes likes
-           console.log(heartIcon);
+            console.log(heartIcon);
+           // calculer le total de mes likes
             totalLikes +=media.likes;
-            //=====================================================================================================================================================
+ //=====================================================================================================================================================
 // Mise en place de l'encart en bas de page du code html, de maniére dynamique.
-
-// Exemple de script pour mettre à jour dynamiquement les valeurs
 const totalLikesElement = document.getElementById('totalLikes');
 const dailyRateElement = document.getElementById('dailyRate');
-
-// Exemple de mise à jour des valeurs
-totalLikesElement.textContent =totalLikes+" "; // Remplacez par la valeur dynamique
+totalLikesElement.textContent =totalLikes+" "; 
 //Rajouter un font asewhome coeur 
 let heartIconEncart = document.createElement('div');
 heartIconEncart.id = 'heartIconEncart';
