@@ -84,13 +84,37 @@ function closeLightBox() {
         }
     console.log("je viens de fermer la lightbox")
 }
-//====================== ECOUTEUR D'EVENEMENT SUR LA LIGHTBOX ======================================
+// //====================== ECOUTEUR D'EVENEMENT SUR LA LIGHTBOX ======================================
 const lighBox= document.getElementById("light_box");
 lighBox.addEventListener('click', () => {
     console.log("je suis : "+ lighBox);
     // Vous pouvez ajouter ici la logique pour afficher une fenêtre modale ou une action spécifique
     closeLightBox();
 });
+
+
+//====================== ECOUTEUR D'EVENEMENT SUR LA DIV CROIX DE FERMETURE DE LA LIGHTBOX ============
+// const croixDeFermeture= document.getElementById("imagelightBox");
+// // const croixDeFermeture= document.getElementById("containerCroixDeFermeture");
+// croixDeFermeture.addEventListener('click', () => {
+//     console.log("je suis : "+ croixDeFermeture);
+//     // Vous pouvez ajouter ici la logique pour afficher une fenêtre modale ou une action spécifique
+//     closeLightBox();
+// });
+
+//=====================================================================================================
+// document.addEventListener("DOMContentLoaded", () => {
+//     const croixDeFermeture = document.getElementById("containerCroixDeFermeture");
+//     if (croixDeFermeture) {
+//         croixDeFermeture.addEventListener('click', () => {
+//             console.log("je suis : " + croixDeFermeture);
+//             closeLightBox();
+//         });
+//     } else {
+//         console.error("Element with ID 'containerCroixDeFermeture' not found");
+//     }
+// });
+
 //========================================================================================================================================================
 // Récupérer les paramètres de l'URL
 const urlParams = new URLSearchParams(window.location.search);
