@@ -86,11 +86,20 @@ function closeLightBox() {
 }
 // //====================== ECOUTEUR D'EVENEMENT SUR LA LIGHTBOX ======================================
 const lighBox= document.getElementById("light_box");
+//==================================================================
 lighBox.addEventListener('click', () => {
-    console.log("je suis : "+ lighBox);
+    console.log("je suis la lightbox: "+ lighBox);
     // Vous pouvez ajouter ici la logique pour afficher une fenêtre modale ou une action spécifique
-    closeLightBox();
+    // en appelant cette fonction je ferme la lightbox
+    //closeLightBox();
 });
+
+// const croixDeFermeture= document.getElementById("containerCroixDeFermeture");
+// croixDeFermeture.addEventListener('click', () => {
+//     console.log("je suis : "+ croixDeFermeture);
+//     // Vous pouvez ajouter ici la logique pour afficher une fenêtre modale ou une action spécifique
+//     closeLightBox();
+// });
 
 
 //====================== ECOUTEUR D'EVENEMENT SUR LA DIV CROIX DE FERMETURE DE LA LIGHTBOX ============
@@ -203,9 +212,14 @@ async function main() {
     }
 
     // Vérifier et afficher les médias correspondant à l'ID du photographe
+    let indexExterieur=0; 
     const mediaItems = data.media.filter(media => media.photographerId == id);
     if (mediaItems.length > 0) {
-        mediaItems.forEach(media => {
+        // mediaItems.forEach(media => {
+            mediaItems.forEach((media, index) => {
+                console.log(`Index: ${index}`); // Afficher l'index actuel
+                // indexExterieur=index;
+                // console.log(`IndexExterieur: ${indexExterieur}`); 
             console.log(`Title: ${media.title}`+` Image: ${media.image}`+` Video: ${media.video}`+` Likes: ${media.likes}`+` Date: ${media.date}`+` Price: ${media.price}`);
             
         //====================================== mon code crée pour afficher mes productions médiatiques================
@@ -262,6 +276,9 @@ async function main() {
              let chevronOuvrant = document.createElement('div');
              chevronOuvrant.id = 'chevronOuvrant';
             chevronOuvrant.className = 'fa-solid fa-chevron-left';
+            // chevronOuvrant.addEventListener('click', () => {
+            //     console.log("j'ai cliqué sur le chevron de gauche");
+            // });
             panneauDeGauche.appendChild(chevronOuvrant)
             //========================================================= PANNEAU CENTRAL =======================================================================
             const panneauCentral=document.createElement('div');
@@ -315,10 +332,82 @@ async function main() {
            containerLightbox.appendChild(panneauDeDroite);
 
            maBox.appendChild(containerLightbox);
+           //======================================================= Mise en place des ecouteurs d'evenements sur les chevrons ============================
            
+           function incrementer (indexExterieur){
+            indexExterieur = (indexExterieur + 1) % mediaItems.length;
+            console.log(`IndexExterieur apres incrementation: ${indexExterieur}`); 
+           }
+           function afficherMediaParIndex(indexExterieur) {
+            // Parcourt le tableau mediaItems
+            for (let index = 0; index < mediaItems.length; index++) {
+                // Vérifie si l'index actuel correspond à indexExterieur
+                if (index === indexExterieur) {
+                    const media = mediaItems[index];
+                    // Affiche les données du média correspondant en mode console
+                    // console.log(`Index: ${index + 1}`); // Ajouter 1 à l'index actuel et l'afficher
+                    // console.log(`Index: ${index +1}`); // Ajouter 1 à l'index actuel et l'afficher
+                    // console.log(`Title: ${media.title}`);
+                    // console.log(`Image: ${media.image}`);
+                    // console.log(`Video: ${media.video}`);
+                    // console.log(`Likes: ${media.likes}`);
+                    // console.log(`Date: ${media.date}`);
+                    // console.log(`Price: ${media.price}`);
+                    console.log(`Index + 1: ${index +1}`+`Title: ${media.title}`+` Image: ${media.image}`+` Video: ${media.video}`+` Likes: ${media.likes}`+` Date: ${media.date}`+` Price: ${media.price}`);
+                    console.log(`Index: ${index}`); // Afficher l'index actuel
+                    break; // Sort de la boucle une fois que le média correspondant est trouvé et affiché
+                }
+            }
+        }
+        
+       
+        
 
+
+//===================================================== CHEVRON FERMANT ==============================================================================
+                chevronFermant.addEventListener('click', () => {
+                    // console.log("j'ai cliqué sur la div chevron fermant");
+                    console.log(`Title: ${media.title}`+` Image: ${media.image}`+` Video: ${media.video}`+` Likes: ${media.likes}`+` Date: ${media.date}`+` Price: ${media.price}`);
+                    console.log(`Index: ${index}`); // Afficher l'index actuel
+                    // index=$(index)+1;
+                    console.log(`Nouvel Index: ${index}`); // Afficher l'index actuel
+                    indexExterieur=index;
+                    console.log(`IndexExterieur = index : ${indexExterieur}`); 
+                    incrementer(indexExterieur);
+                     // Exemple d'utilisation : afficher les données du média à l'indexExterieur donné
+      //  const indexExterieur = 2; // test en dur 
+        afficherMediaParIndex(indexExterieur);
+        // indexExterieur=0; 
+        // console.log(`IndexExterieur remis à Zéro : ${indexExterieur}`); 
+
+
+
+
+        
+
+                });
+//===================================================== FIN CHEVRON FERMANT ==============================================================================            
+                   
+
+//===================================================== CHEVRON OUVRANT ==================================================================================              
+                chevronOuvrant.addEventListener('click', () => {
+                    console.log("j'ai cliqué sur la div chevron ouvrant");
+                });
+
+                croixFermeture.addEventListener('click', () => {
+                    console.log("j'ai cliqué sur la div croix de fermeture et cela a fermé la lightbox");
+                    closeLightBox();
+                });
         });
- //================================================================================================================================================           
+//===================================================== FIN CHEVRON OUVRANT =============================================================================  
+
+ //================================================================================================================================================
+//   JE METS ICI LE CODE QUI VA ME PERMETTRE D'INCREMENTER ET DE DECREMENTER       
+ //================================================================================================================================================
+      
+ 
+ //================================================================================================================================================       
+ //================================================================================================================================================  
       
             const titleMedia = document.createElement('div');
             titleMedia.textContent=`${media.title}`; 
@@ -386,6 +475,7 @@ selectedValue : Récupère la valeur de l'option sélectionnée et l'affiche dan
  Vous pouvez remplacer la ligne de console.log par votre propre logique pour trier les éléments en fonction de la sélection de l'utilisateur.
         */
 //*****************************************************************************************************************************************************
+
 
 // Exécuter la fonction principale
 main();
