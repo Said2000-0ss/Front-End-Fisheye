@@ -1,5 +1,51 @@
 // // import { getPhotographers } from "../pages/index.js";
+let currentIndex=0;
+let mediaItems=[];
+function incrementer (currentIndex,modificator){
 
+    // modificator=-1 ou +1 (selon si on incrémente ou on décrémente)
+    indexSearch = currentIndex + modificator
+    
+    if( indexSearch >= mediaItems.length){
+    indexSearch= 0 
+    } else if(indexSearch<0){
+    indexSearch=mediaItems.length -1
+    }
+    
+    // const monImage = mediaItems.find((media,index) => index === indexSearch);
+    const monImage=mediaItems[indexSearch];
+    console.log(monImage);
+    const elementImg=document.getElementById("imagelightBox");
+     elementImg.src="assets/images/Sample Photos/Ellie-Rose Wilkens/"+monImage.image
+    console.log(elementImg);
+    // elementImg = `assets/images/Sample Photos/${photographer.name}/`+monImage.image;
+   
+    }
+// function incrementer (indexExterieur){
+//     indexExterieur = (indexExterieur + 1) % mediaItems.length;
+//     console.log(`IndexExterieur apres incrementation: ${indexExterieur}`); 
+//    }
+//    function afficherMediaParIndex(indexExterieur) {
+//     // Parcourt le tableau mediaItems
+//     for (let index = 0; index < mediaItems.length; index++) {
+//         // Vérifie si l'index actuel correspond à indexExterieur
+//         if (index === indexExterieur) {
+//             const media = mediaItems[index];
+//             // Affiche les données du média correspondant en mode console
+//             // console.log(`Index: ${index + 1}`); // Ajouter 1 à l'index actuel et l'afficher
+//             // console.log(`Index: ${index +1}`); // Ajouter 1 à l'index actuel et l'afficher
+//             // console.log(`Title: ${media.title}`);
+//             // console.log(`Image: ${media.image}`);
+//             // console.log(`Video: ${media.video}`);
+//             // console.log(`Likes: ${media.likes}`);
+//             // console.log(`Date: ${media.date}`);
+//             // console.log(`Price: ${media.price}`);
+//             console.log(`Index + 1: ${index +1}`+`Title: ${media.title}`+` Image: ${media.image}`+` Video: ${media.video}`+` Likes: ${media.likes}`+` Date: ${media.date}`+` Price: ${media.price}`);
+//             console.log(`Index: ${index}`); // Afficher l'index actuel
+//             break; // Sort de la boucle une fois que le média correspondant est trouvé et affiché
+//         }
+//     }
+// }
 //============================================== MON ECOUTEURS D'EVENEMENT SUR LE FORMULAIRE DE TRI ========================================================
 document.addEventListener("DOMContentLoaded", function() {
     // Accéder à l'élément select
@@ -213,7 +259,7 @@ async function main() {
 
     // Vérifier et afficher les médias correspondant à l'ID du photographe
     let indexExterieur=0; 
-    const mediaItems = data.media.filter(media => media.photographerId == id);
+     mediaItems = data.media.filter(media => media.photographerId == id);
     if (mediaItems.length > 0) {
         // mediaItems.forEach(media => {
             mediaItems.forEach((media, index) => {
@@ -334,31 +380,7 @@ async function main() {
            maBox.appendChild(containerLightbox);
            //======================================================= Mise en place des ecouteurs d'evenements sur les chevrons ============================
            
-           function incrementer (indexExterieur){
-            indexExterieur = (indexExterieur + 1) % mediaItems.length;
-            console.log(`IndexExterieur apres incrementation: ${indexExterieur}`); 
-           }
-           function afficherMediaParIndex(indexExterieur) {
-            // Parcourt le tableau mediaItems
-            for (let index = 0; index < mediaItems.length; index++) {
-                // Vérifie si l'index actuel correspond à indexExterieur
-                if (index === indexExterieur) {
-                    const media = mediaItems[index];
-                    // Affiche les données du média correspondant en mode console
-                    // console.log(`Index: ${index + 1}`); // Ajouter 1 à l'index actuel et l'afficher
-                    // console.log(`Index: ${index +1}`); // Ajouter 1 à l'index actuel et l'afficher
-                    // console.log(`Title: ${media.title}`);
-                    // console.log(`Image: ${media.image}`);
-                    // console.log(`Video: ${media.video}`);
-                    // console.log(`Likes: ${media.likes}`);
-                    // console.log(`Date: ${media.date}`);
-                    // console.log(`Price: ${media.price}`);
-                    console.log(`Index + 1: ${index +1}`+`Title: ${media.title}`+` Image: ${media.image}`+` Video: ${media.video}`+` Likes: ${media.likes}`+` Date: ${media.date}`+` Price: ${media.price}`);
-                    console.log(`Index: ${index}`); // Afficher l'index actuel
-                    break; // Sort de la boucle une fois que le média correspondant est trouvé et affiché
-                }
-            }
-        }
+         
         
        
         
@@ -367,23 +389,29 @@ async function main() {
 //===================================================== CHEVRON FERMANT ==============================================================================
                 chevronFermant.addEventListener('click', () => {
                     // console.log("j'ai cliqué sur la div chevron fermant");
-                    console.log(`Title: ${media.title}`+` Image: ${media.image}`+` Video: ${media.video}`+` Likes: ${media.likes}`+` Date: ${media.date}`+` Price: ${media.price}`);
-                    console.log(`Index: ${index}`); // Afficher l'index actuel
-                    // index=$(index)+1;
-                    console.log(`Nouvel Index: ${index}`); // Afficher l'index actuel
-                    indexExterieur=index;
-                    console.log(`IndexExterieur = index : ${indexExterieur}`); 
-                    incrementer(indexExterieur);
+                    // console.log(`Title: ${media.title}`+` Image: ${media.image}`+` Video: ${media.video}`+` Likes: ${media.likes}`+` Date: ${media.date}`+` Price: ${media.price}`);
+                    // console.log(`Index: ${index}`); // Afficher l'index actuel
+                    // // index=$(index)+1;
+                    // console.log(`Nouvel Index: ${index}`); // Afficher l'index actuel
+                    // indexExterieur=index;
+                    
+                    // console.log(`IndexExterieur = index : ${indexExterieur}`); 
+
+                    const srcImage=document.getElementById("imagelightBox").src;
+                    console.log(srcImage);
+                    const test = srcImage.split('/');
+const fileName= test[test.length-1]
+                    index=mediaItems.findIndex((media)=>{
+                        console.log(media.image, fileName, media)
+            return media.image==fileName});
+                    console.log(index);
+                    incrementer(index, 1);
+                    
                      // Exemple d'utilisation : afficher les données du média à l'indexExterieur donné
       //  const indexExterieur = 2; // test en dur 
-        afficherMediaParIndex(indexExterieur);
+        // afficherMediaParIndex(indexExterieur);
         // indexExterieur=0; 
         // console.log(`IndexExterieur remis à Zéro : ${indexExterieur}`); 
-
-
-
-
-        
 
                 });
 //===================================================== FIN CHEVRON FERMANT ==============================================================================            
@@ -391,7 +419,17 @@ async function main() {
 
 //===================================================== CHEVRON OUVRANT ==================================================================================              
                 chevronOuvrant.addEventListener('click', () => {
-                    console.log("j'ai cliqué sur la div chevron ouvrant");
+                    // console.log("j'ai cliqué sur la div chevron ouvrant");
+                    const srcImage=document.getElementById("imagelightBox").src;
+                    console.log(srcImage);
+                    const test = srcImage.split('/');
+const fileName= test[test.length-1]
+                    index=mediaItems.findIndex((media)=>{
+                        console.log(media.image, fileName, media)
+            return media.image==fileName});
+                    console.log(index);
+                    incrementer(index, -1);
+
                 });
 
                 croixFermeture.addEventListener('click', () => {
