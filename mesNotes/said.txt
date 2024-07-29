@@ -287,3 +287,62 @@ LES DIFFERENTES FONT ASEWOME :
 
 =========================================================================================================================================================
 Mise en place d'un tableau média qui pourra en fonction d'un écouteur d'événement passer d'une image à l'autre , dans un sens , comme dans un autre.
+
+================================================================================================
+
+// function incrementer (indexExterieur){
+//     indexExterieur = (indexExterieur + 1) % mediaItems.length;
+//     console.log(`IndexExterieur apres incrementation: ${indexExterieur}`); 
+//    }
+//    function afficherMediaParIndex(indexExterieur) {
+//     // Parcourt le tableau mediaItems
+//     for (let index = 0; index < mediaItems.length; index++) {
+//         // Vérifie si l'index actuel correspond à indexExterieur
+//         if (index === indexExterieur) {
+//             const media = mediaItems[index];
+//             // Affiche les données du média correspondant en mode console
+//             // console.log(`Index: ${index + 1}`); // Ajouter 1 à l'index actuel et l'afficher
+//             // console.log(`Index: ${index +1}`); // Ajouter 1 à l'index actuel et l'afficher
+//             // console.log(`Title: ${media.title}`);
+//             // console.log(`Image: ${media.image}`);
+//             // console.log(`Video: ${media.video}`);
+//             // console.log(`Likes: ${media.likes}`);
+//             // console.log(`Date: ${media.date}`);
+//             // console.log(`Price: ${media.price}`);
+//             console.log(`Index + 1: ${index +1}`+`Title: ${media.title}`+` Image: ${media.image}`+` Video: ${media.video}`+` Likes: ${media.likes}`+` Date: ${media.date}`+` Price: ${media.price}`);
+//             console.log(`Index: ${index}`); // Afficher l'index actuel
+//             break; // Sort de la boucle une fois que le média correspondant est trouvé et affiché
+//         }
+//     }
+// }
+
+//===============================================================================================
+// const croixDeFermeture= document.getElementById("containerCroixDeFermeture");
+// croixDeFermeture.addEventListener('click', () => {
+//     console.log("je suis : "+ croixDeFermeture);
+//     // Vous pouvez ajouter ici la logique pour afficher une fenêtre modale ou une action spécifique
+//     closeLightBox();
+// });
+
+
+//====================== ECOUTEUR D'EVENEMENT SUR LA DIV CROIX DE FERMETURE DE LA LIGHTBOX ============
+// const croixDeFermeture= document.getElementById("imagelightBox");
+// // const croixDeFermeture= document.getElementById("containerCroixDeFermeture");
+// croixDeFermeture.addEventListener('click', () => {
+//     console.log("je suis : "+ croixDeFermeture);
+//     // Vous pouvez ajouter ici la logique pour afficher une fenêtre modale ou une action spécifique
+//     closeLightBox();
+// });
+
+//=====================================================================================================
+// document.addEventListener("DOMContentLoaded", () => {
+//     const croixDeFermeture = document.getElementById("containerCroixDeFermeture");
+//     if (croixDeFermeture) {
+//         croixDeFermeture.addEventListener('click', () => {
+//             console.log("je suis : " + croixDeFermeture);
+//             closeLightBox();
+//         });
+//     } else {
+//         console.error("Element with ID 'containerCroixDeFermeture' not found");
+//     }
+// });
