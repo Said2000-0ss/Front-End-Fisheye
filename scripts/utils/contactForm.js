@@ -32,6 +32,45 @@ function incrementer(currentIndex, modificator, photographer) {
 
 }
 //=================================================== Fonction displayMedia
+function displayMedia(mediaTri) {
+    for (let i = 0; i < mediaTri.length; i++) {
+        console.log("je suis mediatri", mediaTri[i]);
+        console.log("Classification par date :" + `${mediaTri[i].date}` + " Classification par popularité :" + `${mediaTri[i].likes}` + " Classification par titre :" + `${mediaTri[i].title}`);
+        
+        const maBoxMedia = document.querySelector('.mesMedias');
+        const pictureMedia = `assets/images/Sample Photos/${photographer.name}/${mediaTri[i].image}`;
+        
+        const maSousBoxImgTitle = document.createElement('div');
+        maSousBoxImgTitle.id = 'maSousBox';
+        
+        // Je crée une div qui va englober mes 3 div
+        const basSousBox = document.createElement('div');
+        basSousBox.id = 'basSousBox';
+        
+        console.log(pictureMedia);
+        const imgMedia = document.createElement('img');
+        imgMedia.setAttribute("src", pictureMedia);
+        imgMedia.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
+        
+        const titleMedia = document.createElement('div');
+        titleMedia.textContent = `${mediaTri[i].title}`;
+        
+        const likeMedia = document.createElement('div');
+        likeMedia.textContent = `${mediaTri[i].likes}`;
+        
+        // Je mets ici mon coeur
+        let heartIcon = document.createElement('div');
+        heartIcon.id = 'heartIcon';
+        heartIcon.className = 'fas fa-heart';
+        
+        maSousBoxImgTitle.appendChild(imgMedia);
+        basSousBox.appendChild(titleMedia);
+        basSousBox.appendChild(likeMedia);
+        basSousBox.appendChild(heartIcon);
+        maSousBoxImgTitle.appendChild(basSousBox);
+        maBoxMedia.appendChild(maSousBoxImgTitle);
+    }
+}
 
 //========================================================== Ma media Factory ======================
 function mediaFactory(media) {
