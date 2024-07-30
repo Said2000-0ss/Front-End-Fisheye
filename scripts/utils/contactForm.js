@@ -557,41 +557,41 @@ document.addEventListener('DOMContentLoaded', () => {
             //  console.log("je suis date")
             mediaTri.sort((a, b) => new Date(b.date) - new Date(a.date));
             console.log("Trier par date:", mediaTri);
-
+            displayMedia(mediaTri);
             // console.log(`${mediaTri[i].title}`);
             // Utilisation d'une boucle for pour parcourir le tableau
-            for (let i = 0; i < mediaTri.length; i++) {
-                // Afficher les détails de chaque élément
-                console.log("je suis mediatri", mediaTri[i]);
-                // console.log(`mediaTri[i].title`);
-                // console.log(`${mediaTri[i].date}`);
-                console.log("Classification par date :" + `${mediaTri[i].date}` + " Classification par popularité :" + `${mediaTri[i].likes}` + " Classification par titre :" + `${mediaTri[i].title}`)
-                const maBoxMedia = document.querySelector('.mesMedias');
-                pictureMedia = `assets/images/Sample Photos/${photographer.name}/${mediaTri[i].image}`;
-                const maSousBoxImgTitle = document.createElement(`div`);
-                maSousBoxImgTitle.id = 'maSousBox';
-                //je cree une div qui va englober mes 3 div
-                const basSousBox = document.createElement('div');
-                basSousBox.id = 'basSousBox';
-                console.log(pictureMedia);
-                const imgMedia = document.createElement('img');
-                imgMedia.setAttribute("src", pictureMedia);
-                imgMedia.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
-                const titleMedia = document.createElement('div');
-                titleMedia.textContent = `${mediaTri[i].title}`;
-                const likeMedia = document.createElement('div');
-                likeMedia.textContent = `${mediaTri[i].likes}`;
-                // je mets ici mon coeur
-                let heartIcon = document.createElement('div');
-                heartIcon.id = 'heartIcon';
-                heartIcon.className = 'fas fa-heart';
-                maSousBoxImgTitle.appendChild(imgMedia);
-                basSousBox.appendChild(titleMedia);
-                basSousBox.appendChild(likeMedia);
-                basSousBox.appendChild(heartIcon);
-                maSousBoxImgTitle.appendChild(basSousBox);
-                maBoxMedia.appendChild(maSousBoxImgTitle);
-            }
+            // for (let i = 0; i < mediaTri.length; i++) {
+            //     // Afficher les détails de chaque élément
+            //     console.log("je suis mediatri", mediaTri[i]);
+            //     // console.log(`mediaTri[i].title`);
+            //     // console.log(`${mediaTri[i].date}`);
+            //     console.log("Classification par date :" + `${mediaTri[i].date}` + " Classification par popularité :" + `${mediaTri[i].likes}` + " Classification par titre :" + `${mediaTri[i].title}`)
+            //     const maBoxMedia = document.querySelector('.mesMedias');
+            //     pictureMedia = `assets/images/Sample Photos/${photographer.name}/${mediaTri[i].image}`;
+            //     const maSousBoxImgTitle = document.createElement(`div`);
+            //     maSousBoxImgTitle.id = 'maSousBox';
+            //     //je cree une div qui va englober mes 3 div
+            //     const basSousBox = document.createElement('div');
+            //     basSousBox.id = 'basSousBox';
+            //     console.log(pictureMedia);
+            //     const imgMedia = document.createElement('img');
+            //     imgMedia.setAttribute("src", pictureMedia);
+            //     imgMedia.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
+            //     const titleMedia = document.createElement('div');
+            //     titleMedia.textContent = `${mediaTri[i].title}`;
+            //     const likeMedia = document.createElement('div');
+            //     likeMedia.textContent = `${mediaTri[i].likes}`;
+            //     // je mets ici mon coeur
+            //     let heartIcon = document.createElement('div');
+            //     heartIcon.id = 'heartIcon';
+            //     heartIcon.className = 'fas fa-heart';
+            //     maSousBoxImgTitle.appendChild(imgMedia);
+            //     basSousBox.appendChild(titleMedia);
+            //     basSousBox.appendChild(likeMedia);
+            //     basSousBox.appendChild(heartIcon);
+            //     maSousBoxImgTitle.appendChild(basSousBox);
+            //     maBoxMedia.appendChild(maSousBoxImgTitle);
+            // }
         }
         if (selectedValue === "popularity") {
              //ici je vide l'ensemble de maBoxMedia
@@ -602,41 +602,42 @@ document.addEventListener('DOMContentLoaded', () => {
             // Trier par popularité
             mediaTri.sort((a, b) => b.likes - a.likes);
             // console.log("Trier par popularité:", mediaTri);
-            for (let i = 0; i < mediaTri.length; i++) {
-                // Afficher les détails de chaque élément
-                // console.log(mediaTri[i]);
-                // console.log(`mediaTri[i].title`);
-                // console.log("Classification par popularité :" + `${mediaTri[i].likes}`);
-                console.log("je suis mediatri", mediaTri[i]);
-                // console.log(`mediaTri[i].title`);
-                // console.log(`${mediaTri[i].date}`);
-                console.log("Classification par date :" + `${mediaTri[i].date}` + " Classification par popularité :" + `${mediaTri[i].likes}` + " Classification par titre :" + `${mediaTri[i].title}`)
-                const maBoxMedia = document.querySelector('.mesMedias');
-                pictureMedia = `assets/images/Sample Photos/${photographer.name}/${mediaTri[i].image}`;
-                const maSousBoxImgTitle = document.createElement(`div`);
-                maSousBoxImgTitle.id = 'maSousBox';
-                //je cree une div qui va englober mes 3 div
-                const basSousBox = document.createElement('div');
-                basSousBox.id = 'basSousBox';
-                console.log(pictureMedia);
-                const imgMedia = document.createElement('img');
-                imgMedia.setAttribute("src", pictureMedia);
-                imgMedia.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
-                const titleMedia = document.createElement('div');
-                titleMedia.textContent = `${mediaTri[i].title}`;
-                const likeMedia = document.createElement('div');
-                likeMedia.textContent = `${mediaTri[i].likes}`;
-                // je mets ici mon coeur
-                let heartIcon = document.createElement('div');
-                heartIcon.id = 'heartIcon';
-                heartIcon.className = 'fas fa-heart';
-                maSousBoxImgTitle.appendChild(imgMedia);
-                basSousBox.appendChild(titleMedia);
-                basSousBox.appendChild(likeMedia);
-                basSousBox.appendChild(heartIcon);
-                maSousBoxImgTitle.appendChild(basSousBox);
-                maBoxMedia.appendChild(maSousBoxImgTitle);
-            }
+            displayMedia(mediaTri);
+            // for (let i = 0; i < mediaTri.length; i++) {
+            //     // Afficher les détails de chaque élément
+            //     // console.log(mediaTri[i]);
+            //     // console.log(`mediaTri[i].title`);
+            //     // console.log("Classification par popularité :" + `${mediaTri[i].likes}`);
+            //     console.log("je suis mediatri", mediaTri[i]);
+            //     // console.log(`mediaTri[i].title`);
+            //     // console.log(`${mediaTri[i].date}`);
+            //     console.log("Classification par date :" + `${mediaTri[i].date}` + " Classification par popularité :" + `${mediaTri[i].likes}` + " Classification par titre :" + `${mediaTri[i].title}`)
+            //     const maBoxMedia = document.querySelector('.mesMedias');
+            //     pictureMedia = `assets/images/Sample Photos/${photographer.name}/${mediaTri[i].image}`;
+            //     const maSousBoxImgTitle = document.createElement(`div`);
+            //     maSousBoxImgTitle.id = 'maSousBox';
+            //     //je cree une div qui va englober mes 3 div
+            //     const basSousBox = document.createElement('div');
+            //     basSousBox.id = 'basSousBox';
+            //     console.log(pictureMedia);
+            //     const imgMedia = document.createElement('img');
+            //     imgMedia.setAttribute("src", pictureMedia);
+            //     imgMedia.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
+            //     const titleMedia = document.createElement('div');
+            //     titleMedia.textContent = `${mediaTri[i].title}`;
+            //     const likeMedia = document.createElement('div');
+            //     likeMedia.textContent = `${mediaTri[i].likes}`;
+            //     // je mets ici mon coeur
+            //     let heartIcon = document.createElement('div');
+            //     heartIcon.id = 'heartIcon';
+            //     heartIcon.className = 'fas fa-heart';
+            //     maSousBoxImgTitle.appendChild(imgMedia);
+            //     basSousBox.appendChild(titleMedia);
+            //     basSousBox.appendChild(likeMedia);
+            //     basSousBox.appendChild(heartIcon);
+            //     maSousBoxImgTitle.appendChild(basSousBox);
+            //     maBoxMedia.appendChild(maSousBoxImgTitle);
+            // }
         }
         if (selectedValue === "title") {
             //ici je vide l'ensemble de maBoxMedia
@@ -647,41 +648,42 @@ document.addEventListener('DOMContentLoaded', () => {
             // Trier par titre
             mediaTri.sort((a, b) => a.title.localeCompare(b.title));
             // console.log("Trier par titre:", mediaTri);
-            for (let i = 0; i < mediaTri.length; i++) {
-                // Afficher les détails de chaque élément
-                // console.log(mediaTri[i]);
-                // console.log(`mediaTri[i].title`);
-                // console.log("Classification par titre :" + `${mediaTri[i].title}`);
-                console.log("je suis mediatri", mediaTri[i]);
-                // console.log(`mediaTri[i].title`);
-                // console.log(`${mediaTri[i].date}`);
-                console.log("Classification par date :" + `${mediaTri[i].date}` + " Classification par popularité :" + `${mediaTri[i].likes}` + " Classification par titre :" + `${mediaTri[i].title}`)
-                const maBoxMedia = document.querySelector('.mesMedias');
-                pictureMedia = `assets/images/Sample Photos/${photographer.name}/${mediaTri[i].image}`;
-                const maSousBoxImgTitle = document.createElement(`div`);
-                maSousBoxImgTitle.id = 'maSousBox';
-                //je cree une div qui va englober mes 3 div
-                const basSousBox = document.createElement('div');
-                basSousBox.id = 'basSousBox';
-                console.log(pictureMedia);
-                const imgMedia = document.createElement('img');
-                imgMedia.setAttribute("src", pictureMedia);
-                imgMedia.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
-                const titleMedia = document.createElement('div');
-                titleMedia.textContent = `${mediaTri[i].title}`;
-                const likeMedia = document.createElement('div');
-                likeMedia.textContent = `${mediaTri[i].likes}`;
-                // je mets ici mon coeur
-                let heartIcon = document.createElement('div');
-                heartIcon.id = 'heartIcon';
-                heartIcon.className = 'fas fa-heart';
-                maSousBoxImgTitle.appendChild(imgMedia);
-                basSousBox.appendChild(titleMedia);
-                basSousBox.appendChild(likeMedia);
-                basSousBox.appendChild(heartIcon);
-                maSousBoxImgTitle.appendChild(basSousBox);
-                maBoxMedia.appendChild(maSousBoxImgTitle);
-            }
+            displayMedia(mediaTri);
+            // for (let i = 0; i < mediaTri.length; i++) {
+            //     // Afficher les détails de chaque élément
+            //     // console.log(mediaTri[i]);
+            //     // console.log(`mediaTri[i].title`);
+            //     // console.log("Classification par titre :" + `${mediaTri[i].title}`);
+            //     console.log("je suis mediatri", mediaTri[i]);
+            //     // console.log(`mediaTri[i].title`);
+            //     // console.log(`${mediaTri[i].date}`);
+            //     console.log("Classification par date :" + `${mediaTri[i].date}` + " Classification par popularité :" + `${mediaTri[i].likes}` + " Classification par titre :" + `${mediaTri[i].title}`)
+            //     const maBoxMedia = document.querySelector('.mesMedias');
+            //     pictureMedia = `assets/images/Sample Photos/${photographer.name}/${mediaTri[i].image}`;
+            //     const maSousBoxImgTitle = document.createElement(`div`);
+            //     maSousBoxImgTitle.id = 'maSousBox';
+            //     //je cree une div qui va englober mes 3 div
+            //     const basSousBox = document.createElement('div');
+            //     basSousBox.id = 'basSousBox';
+            //     console.log(pictureMedia);
+            //     const imgMedia = document.createElement('img');
+            //     imgMedia.setAttribute("src", pictureMedia);
+            //     imgMedia.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
+            //     const titleMedia = document.createElement('div');
+            //     titleMedia.textContent = `${mediaTri[i].title}`;
+            //     const likeMedia = document.createElement('div');
+            //     likeMedia.textContent = `${mediaTri[i].likes}`;
+            //     // je mets ici mon coeur
+            //     let heartIcon = document.createElement('div');
+            //     heartIcon.id = 'heartIcon';
+            //     heartIcon.className = 'fas fa-heart';
+            //     maSousBoxImgTitle.appendChild(imgMedia);
+            //     basSousBox.appendChild(titleMedia);
+            //     basSousBox.appendChild(likeMedia);
+            //     basSousBox.appendChild(heartIcon);
+            //     maSousBoxImgTitle.appendChild(basSousBox);
+            //     maBoxMedia.appendChild(maSousBoxImgTitle);
+            // }
         }
 
     });
