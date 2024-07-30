@@ -245,7 +245,7 @@ margin-right:50px;
 
 #containerCroixDeFermeture {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 0;
+    /* right: 10px; */
 }
 

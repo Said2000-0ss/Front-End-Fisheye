@@ -13,13 +13,13 @@ function incrementer(currentIndex, modificator, photographer) {
     }
     // const monImage = mediaItems.find((media,index) => index === indexSearch);
     const monImage = mediaItems[indexSearch];
-    console.log("test1")
-    console.log(monImage);
+    // console.log("test1")
+    // console.log(monImage);
     const elementImg = document.getElementById("imagelightBox");
     elementImg.src = `assets/images/Sample Photos/${photographer.name}/` + monImage.image
-    console.log(`assets/images/Sample Photos/${photographer.name}/` + monImage.image);
-    console.log("je suis le titre : " + monImage.title);
-    console.log(photographer);
+    // console.log(`assets/images/Sample Photos/${photographer.name}/` + monImage.image);
+    // console.log("je suis le titre : " + monImage.title);
+    // console.log(photographer);
     const containerTitle = document.getElementById("containerTitle");
     containerTitle.setAttribute("id", "containerTitle");
     containerTitle.textContent = "";
@@ -27,10 +27,11 @@ function incrementer(currentIndex, modificator, photographer) {
     h2SousTitle.textContent = monImage.title;
     containerTitle.appendChild(h2SousTitle);
     panneauCentral.appendChild(containerTitle);
-    console.log(monImage);
-    console.log("test2");
+    // console.log(monImage);
+    // console.log("test2");
 
 }
+//=================================================== Fonction displayMedia
 
 //========================================================== Ma media Factory ======================
 function mediaFactory(media) {
@@ -272,6 +273,7 @@ async function main() {
 
                 const maBoxMedia = document.querySelector('.mesMedias');
                 pictureMedia = `assets/images/Sample Photos/${photographer.name}/${media.image}`;
+                // pictureMedia = `assets/images/Sample Photos/${photographer.name}/${media.video}`;
                 //=============================================================================================================
                 // pictureMedia.addEventListener('click', () => {
                 //     // // afficherModalMedia(item);
@@ -507,7 +509,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const selectedValue = event.target.value;
         // console.log(`Selected order: ${selectedValue}`);
         // Vous pouvez ajouter ici votre logique de tri en fonction de selectedValue
-        if (selectedValue === "date") { // Trier par date
+        if (selectedValue === "date") { 
+             //ici je vide l'ensemble de maBoxMedia
+            const maBoxMedia = document.querySelector('.mesMedias');
+            maBoxMedia.textContent="";
+            //=========================================================
+            // Trier par date
             //  console.log("je suis date")
             mediaTri.sort((a, b) => new Date(b.date) - new Date(a.date));
             console.log("Trier par date:", mediaTri);
@@ -548,6 +555,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         if (selectedValue === "popularity") {
+             //ici je vide l'ensemble de maBoxMedia
+            const maBoxMedia = document.querySelector('.mesMedias');
+            maBoxMedia.textContent="";
+            //=========================================================
             // console.log("je suis popularity")
             // Trier par popularité
             mediaTri.sort((a, b) => b.likes - a.likes);
@@ -556,10 +567,43 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Afficher les détails de chaque élément
                 // console.log(mediaTri[i]);
                 // console.log(`mediaTri[i].title`);
-                console.log("Classification par popularité :" + `${mediaTri[i].likes}`);
+                // console.log("Classification par popularité :" + `${mediaTri[i].likes}`);
+                console.log("je suis mediatri", mediaTri[i]);
+                // console.log(`mediaTri[i].title`);
+                // console.log(`${mediaTri[i].date}`);
+                console.log("Classification par date :" + `${mediaTri[i].date}` + " Classification par popularité :" + `${mediaTri[i].likes}` + " Classification par titre :" + `${mediaTri[i].title}`)
+                const maBoxMedia = document.querySelector('.mesMedias');
+                pictureMedia = `assets/images/Sample Photos/${photographer.name}/${mediaTri[i].image}`;
+                const maSousBoxImgTitle = document.createElement(`div`);
+                maSousBoxImgTitle.id = 'maSousBox';
+                //je cree une div qui va englober mes 3 div
+                const basSousBox = document.createElement('div');
+                basSousBox.id = 'basSousBox';
+                console.log(pictureMedia);
+                const imgMedia = document.createElement('img');
+                imgMedia.setAttribute("src", pictureMedia);
+                imgMedia.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
+                const titleMedia = document.createElement('div');
+                titleMedia.textContent = `${mediaTri[i].title}`;
+                const likeMedia = document.createElement('div');
+                likeMedia.textContent = `${mediaTri[i].likes}`;
+                // je mets ici mon coeur
+                let heartIcon = document.createElement('div');
+                heartIcon.id = 'heartIcon';
+                heartIcon.className = 'fas fa-heart';
+                maSousBoxImgTitle.appendChild(imgMedia);
+                basSousBox.appendChild(titleMedia);
+                basSousBox.appendChild(likeMedia);
+                basSousBox.appendChild(heartIcon);
+                maSousBoxImgTitle.appendChild(basSousBox);
+                maBoxMedia.appendChild(maSousBoxImgTitle);
             }
         }
         if (selectedValue === "title") {
+            //ici je vide l'ensemble de maBoxMedia
+            const maBoxMedia = document.querySelector('.mesMedias');
+            maBoxMedia.textContent="";
+            //=========================================================
             console.log("je suis title")
             // Trier par titre
             mediaTri.sort((a, b) => a.title.localeCompare(b.title));
@@ -568,7 +612,36 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Afficher les détails de chaque élément
                 // console.log(mediaTri[i]);
                 // console.log(`mediaTri[i].title`);
-                console.log("Classification par titre :" + `${mediaTri[i].title}`);
+                // console.log("Classification par titre :" + `${mediaTri[i].title}`);
+                console.log("je suis mediatri", mediaTri[i]);
+                // console.log(`mediaTri[i].title`);
+                // console.log(`${mediaTri[i].date}`);
+                console.log("Classification par date :" + `${mediaTri[i].date}` + " Classification par popularité :" + `${mediaTri[i].likes}` + " Classification par titre :" + `${mediaTri[i].title}`)
+                const maBoxMedia = document.querySelector('.mesMedias');
+                pictureMedia = `assets/images/Sample Photos/${photographer.name}/${mediaTri[i].image}`;
+                const maSousBoxImgTitle = document.createElement(`div`);
+                maSousBoxImgTitle.id = 'maSousBox';
+                //je cree une div qui va englober mes 3 div
+                const basSousBox = document.createElement('div');
+                basSousBox.id = 'basSousBox';
+                console.log(pictureMedia);
+                const imgMedia = document.createElement('img');
+                imgMedia.setAttribute("src", pictureMedia);
+                imgMedia.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
+                const titleMedia = document.createElement('div');
+                titleMedia.textContent = `${mediaTri[i].title}`;
+                const likeMedia = document.createElement('div');
+                likeMedia.textContent = `${mediaTri[i].likes}`;
+                // je mets ici mon coeur
+                let heartIcon = document.createElement('div');
+                heartIcon.id = 'heartIcon';
+                heartIcon.className = 'fas fa-heart';
+                maSousBoxImgTitle.appendChild(imgMedia);
+                basSousBox.appendChild(titleMedia);
+                basSousBox.appendChild(likeMedia);
+                basSousBox.appendChild(heartIcon);
+                maSousBoxImgTitle.appendChild(basSousBox);
+                maBoxMedia.appendChild(maSousBoxImgTitle);
             }
         }
 
