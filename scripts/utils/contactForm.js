@@ -1,4 +1,4 @@
-// // import { getPhotographers } from "../pages/index.js";
+// import { getPhotographers } from "../pages/index.js";
 let photographer = {};
 let currentIndex = 0;
 let mediaItems = [];
@@ -31,40 +31,32 @@ function incrementer(currentIndex, modificator, photographer) {
     // console.log("test2");
 
 }
-//=================================================== Fonction displayMedia
+//=================================================== Fonction displayMedia ===================================================================
 function displayMedia(mediaTri) {
     const maBoxMedia = document.querySelector('.mesMedias');
     maBoxMedia.textContent="";
     for (let i = 0; i < mediaTri.length; i++) {
         console.log("je suis mediatri", mediaTri[i]);
         console.log("Classification par date :" + `${mediaTri[i].date}` + " Classification par popularité :" + `${mediaTri[i].likes}` + " Classification par titre :" + `${mediaTri[i].title}`);
-        
         const maBoxMedia = document.querySelector('.mesMedias');
-        const pictureMedia = `assets/images/Sample Photos/${photographer.name}/${mediaTri[i].image}`;
-        
+        const pictureMedia = `assets/images/Sample Photos/${photographer.name}/${mediaTri[i].image}`; 
         const maSousBoxImgTitle = document.createElement('div');
         maSousBoxImgTitle.id = 'maSousBox';
-        
         // Je crée une div qui va englober mes 3 div
         const basSousBox = document.createElement('div');
         basSousBox.id = 'basSousBox';
-        
         console.log(pictureMedia);
         const imgMedia = document.createElement('img');
         imgMedia.setAttribute("src", pictureMedia);
         imgMedia.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
-        
         const titleMedia = document.createElement('div');
         titleMedia.textContent = `${mediaTri[i].title}`;
-        
         const likeMedia = document.createElement('div');
         likeMedia.textContent = `${mediaTri[i].likes}`;
-        
         // Je mets ici mon coeur
         let heartIcon = document.createElement('div');
         heartIcon.id = 'heartIcon';
         heartIcon.className = 'fas fa-heart';
-        
         maSousBoxImgTitle.appendChild(imgMedia);
         basSousBox.appendChild(titleMedia);
         basSousBox.appendChild(likeMedia);
@@ -75,37 +67,89 @@ function displayMedia(mediaTri) {
 }
 
 //========================================================== Ma media Factory ======================
-function mediaFactory(media) {
-    const fileExtension = media.split('.').pop(); // Récupérer l'extension de fichier
-
-    if (fileExtension === 'mp4') {
-        // Code à exécuter si le fichier est une vidéo (.mp4)
-        console.log("Ceci est un fichier vidéo.");
-        // Ajoutez votre code ici pour manipuler le fichier vidéo
-        // Par exemple : créer un élément vidéo, ajouter des contrôles de lecture, etc.
-        const videoElement = document.createElement('video');
-        videoElement.src = `path/to/your/videos/${media}`;
-        videoElement.controls = true;
-        document.body.appendChild(videoElement);
-    } else if (fileExtension === 'jpg') {
-        // Code à exécuter si le fichier est une image (.jpg)
-        console.log("Ceci est un fichier image.");
-        // Ajoutez votre code ici pour manipuler le fichier image
-        // Par exemple : créer un élément image, définir la source, etc.
-        const imageElement = document.createElement('img');
-        imageElement.src = `path/to/your/images/${media}`;
-        document.body.appendChild(imageElement);
-    } else {
-        console.log("Format de fichier non pris en charge.");
-        // Gérer d'autres types de fichiers ou afficher un message d'erreur
-    }
-}
-
+// function mediaFactory(media) {
+//     const fileExtension = media.split('.').pop(); // Récupérer l'extension de fichier
+//     if (fileExtension === 'mp4') {
+//         // Code à exécuter si le fichier est une vidéo (.mp4)
+//         console.log("Ceci est un fichier vidéo.");
+//         // Ajoutez votre code ici pour manipuler le fichier vidéo
+//         // Par exemple : créer un élément vidéo, ajouter des contrôles de lecture, etc.
+//         const videoElement = document.createElement('video');
+//         videoElement.src = `path/to/your/videos/${media}`;
+//         videoElement.controls = true;
+//         document.body.appendChild(videoElement);
+//     } else if (fileExtension === 'jpg') {
+//         // Code à exécuter si le fichier est une image (.jpg)
+//         console.log("Ceci est un fichier image.");
+//         // Ajoutez votre code ici pour manipuler le fichier image
+//         // Par exemple : créer un élément image, définir la source, etc.
+//         const imageElement = document.createElement('img');
+//         imageElement.src = `path/to/your/images/${media}`;
+//         document.body.appendChild(imageElement);
+//     } else {
+//         console.log("Format de fichier non pris en charge.");
+//         // Gérer d'autres types de fichiers ou afficher un message d'erreur
+//     }
+// }
 // Batterie de tests:
 // mediaFactory('exemple.mp4');
 // mediaFactory('exemple.jpg');
 // mediaFactory('exemple.png');
 //=============================================== FIN DE  Ma media Factory ======================
+
+//============================================== 2nd mediaFactory===================================
+// Fonction pour créer les éléments HTML en fonction du type de média
+// function mediaFactory(media) {
+//     // Vérifie si l'objet media contient une propriété 'video'
+//     if (media.video) {
+//         console.log("Ceci est un fichier vidéo.");
+//         const videoElement = document.createElement('video');
+//         videoElement.src =  `assets/images/Sample Photos/${photographer.name}/${media.video}`;
+//         videoElement.controls = true;
+//         return videoElement; // Retourne l'élément vidéo
+//     } else if (media.image) {
+//         console.log("Ceci est un fichier image.");
+//         const imageElement = document.createElement('img');
+//         imageElement.src =  `assets/images/Sample Photos/${photographer.name}/${media.image}`;
+//         imageElement.alt = media.title; // Ajouter un attribut alt pour l'accessibilité
+//         return imageElement; // Retourne l'élément image
+//     } else {
+//         console.log("Format de fichier non pris en charge.");
+//         const errorElement = document.createElement('div');
+//         errorElement.textContent = "Format de fichier non pris en charge.";
+//         return errorElement; // Retourne un élément div pour les formats non pris en charge
+//     }
+// }
+//============================================fin de la 2nd mediafactory ==============================
+
+//==================================== 3eme mediaFactory ==============================================
+function mediaFactory(media, mediaType) {
+    if (mediaType === 'videoMedia' && media.video) {
+        console.log("Ceci est un fichier vidéo.");
+        const videoElement = document.createElement('video');
+        // videoElement.src = `assets/images/Sample Photos/${photographer.name}/${media.video}`;
+        videoElement.src =mediaType;
+        videoElement.controls = true;
+        // return videoElement; // Retourne l'élément vidéo
+    } else if (mediaType === 'pictureMedia' && media.image) {
+        console.log("Ceci est un fichier image.");
+        const imageElement = document.createElement('img');
+        // imageElement.src = `assets/images/Sample Photos/${photographer.name}/${media.image}`;
+        imageElement.src = mediaType;
+        imageElement.alt = media.title; // Ajouter un attribut alt pour l'accessibilité
+        // return imageElement; // Retourne l'élément image
+        
+        
+    
+           
+    } else {
+        console.log("Format de fichier non pris en charge ou mediaType incorrect.");
+        const errorElement = document.createElement('div');
+        errorElement.textContent = "Format de fichier non pris en charge ou mediaType incorrect.";
+        return errorElement; // Retourne un élément div pour les formats non pris en charge
+    }
+}
+//=====================================================================================================
 
 
 
@@ -306,14 +350,28 @@ async function main() {
             //====================================== mon code crée pour afficher mes productions médiatiques================
             let pictureMedia = "";
             const test = media.image;
+            let videoMedia= "";
+            const test1 = media.video;
 
             if (test === undefined || test === "") {
-
                 console.log("================================== MON IMAGE EST PAS DEFINIE =====================================");
-            } else {
+                // ici ecrire le code qui va devoir se faire sur la vidéo
+                    if (test1 === undefined || test1 === "") {
+                        console.log("================================== MA VIDEO EST PAS DEFINIE =====================================");
+                    } else { 
 
-                const maBoxMedia = document.querySelector('.mesMedias');
+                        videoMedia = `assets/images/Sample Photos/${photographer.name}/${media.video}`; 
+                        const maBoxMedia = document.querySelector('.mesMedias');
+                        mediaFactory(media,videoMedia);
+                        //ecrire ici le code qui sera utilisé pour la vidéo
+                        
+                        
+                    }
+
+            } else {
                 pictureMedia = `assets/images/Sample Photos/${photographer.name}/${media.image}`;
+                const maBoxMedia = document.querySelector('.mesMedias');
+                
                 // pictureMedia = `assets/images/Sample Photos/${photographer.name}/${media.video}`;
                 //=============================================================================================================
                 // pictureMedia.addEventListener('click', () => {
@@ -327,6 +385,8 @@ async function main() {
                 //je cree une div qui va englober mes 3 div
                 const basSousBox = document.createElement('div');
                 basSousBox.id = 'basSousBox';
+                //============================================================================
+                //============================================================================
                 console.log(pictureMedia);
                 const imgMedia = document.createElement('img');
                 imgMedia.setAttribute("src", pictureMedia);
@@ -341,6 +401,9 @@ async function main() {
                     }
                     //===========================================
                     console.log("je suis : " + pictureMedia);
+                //============================================================================
+                //============================================================================
+
                     // Vous pouvez ajouter ici la logique pour afficher une fenêtre modale ou une action spécifique
                     displayLightBox();
                     // si je clique , j'appelle ma lightbox, et dedans je glisse une variable avec l'img, et un tableau qui permet de l'utiliser comme 
@@ -403,25 +466,12 @@ async function main() {
                     containerChevronFermant.appendChild(chevronFermant);
                     panneauDeDroite.appendChild(containerChevronFermant);
                     //======================================================== MISE EN LIEN DES DIV A LA LIGHT BOX ====================================================
-
                     const maBox = document.querySelector('.lightBox');
-                    //    maBox.appendChild(panneauDeGauche);
-                    //    maBox.appendChild(panneauCentral);
-                    //    maBox.appendChild(panneauDeDroite);
-
                     containerLightbox.appendChild(panneauDeGauche);
                     containerLightbox.appendChild(panneauCentral);
                     containerLightbox.appendChild(panneauDeDroite);
-
                     maBox.appendChild(containerLightbox);
-                    //======================================================= Mise en place des ecouteurs d'evenements sur les chevrons ============================
-
-
-
-
-
-
-
+                    //======================================================= Mise en place des ecouteurs d'evenements sur les chevrons ==================================
                     //===================================================== CHEVRON FERMANT ==============================================================================
                     chevronFermant.addEventListener('click', () => {
                         // console.log("j'ai cliqué sur la div chevron fermant");
