@@ -238,14 +238,14 @@ function closeLightBox() {
     console.log("je viens de fermer la lightbox")
 }
 // //====================== ECOUTEUR D'EVENEMENT SUR LA LIGHTBOX ======================================
-const lighBox = document.getElementById("light_box");
-//==================================================================
-lighBox.addEventListener('click', () => {
-    console.log("je suis la lightbox: " + lighBox);
-    // Vous pouvez ajouter ici la logique pour afficher une fenêtre modale ou une action spécifique
-    // en appelant cette fonction je ferme la lightbox
-    //closeLightBox();
-});
+// const lighBox = document.getElementById("light_box");
+// //==================================================================
+// lighBox.addEventListener('click', () => {
+//     console.log("je suis la lightbox: " + lighBox);
+//     // Vous pouvez ajouter ici la logique pour afficher une fenêtre modale ou une action spécifique
+//     // en appelant cette fonction je ferme la lightbox
+//     //closeLightBox();
+// });
 
 
 
@@ -359,7 +359,7 @@ async function main() {
                     if (test1 === undefined || test1 === "") {
                         console.log("================================== MA VIDEO EST PAS DEFINIE =====================================");
                     } else { 
-
+                     //ici, j'ecris le code pour la vidéo
                         videoMedia = `assets/images/Sample Photos/${photographer.name}/${media.video}`; 
                         const maBoxMedia = document.querySelector('.mesMedias');
                         mediaFactory(media,videoMedia);
