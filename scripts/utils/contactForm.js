@@ -63,6 +63,144 @@ function displayMedia(mediaTri) {
         basSousBox.appendChild(heartIcon);
         maSousBoxImgTitle.appendChild(basSousBox);
         maBoxMedia.appendChild(maSousBoxImgTitle);
+        //=========================== mon code ecouteurs d'evenement =========================================
+        imgMedia.addEventListener('click', () => {
+            //===========================================
+            const maLightBox = document.querySelector('.lightBox');
+            while (maLightBox.firstChild) {
+                maLightBox.removeChild(maLightBox.firstChild);
+            }
+            //===========================================
+            console.log("je suis : " + pictureMedia);
+        //============================================================================
+        //============================================================================
+
+            // Vous pouvez ajouter ici la logique pour afficher une fenêtre modale ou une action spécifique
+            displayLightBox();
+            // si je clique , j'appelle ma lightbox, et dedans je glisse une variable avec l'img, et un tableau qui permet de l'utiliser comme 
+            //un caroussel, previous and next, avec deux ecouteurs d'evenement sur chevron ouvrant et chevron fermant, qui permet de parcourir le tableau
+            //faire en sorte que la lightboxsoit affiché au-dessus de la page
+            // ici je vais passer 
+            // malightBox est la div principale : je vais mettre dedans 3 div: une div panneaudeGauche, une div panneauCentral, une div panneau de droite.
+            // je cree un div conteneur dans lequel je vais mettre les différentes div, div panneau de gauche, div central et div panneau de droite
+            //========================================================== DIV CONTAINER ========================================================================
+            const containerLightbox = document.createElement('div');
+            containerLightbox.setAttribute("id", "containerLightbox");
+            //==========================================================PANNEAU DE GAUCHE =====================================================================
+            const panneauDeGauche = document.createElement('div');
+            panneauDeGauche.setAttribute("id", "panneauDeGauche");
+            let chevronOuvrant = document.createElement('div');
+            chevronOuvrant.id = 'chevronOuvrant';
+            chevronOuvrant.className = 'fa-solid fa-chevron-left';
+            // chevronOuvrant.addEventListener('click', () => {
+            //     console.log("j'ai cliqué sur le chevron de gauche");
+            // });
+            panneauDeGauche.appendChild(chevronOuvrant)
+            //========================================================= PANNEAU CENTRAL =======================================================================
+            const panneauCentral = document.createElement('div');
+            panneauCentral.setAttribute("id", "panneauCentral");
+            const containerImgLightbox = document.createElement('div');
+            containerImgLightbox.setAttribute("id", "containerImgLightbox");
+
+            const imgMediaLightBox = document.createElement("img");
+            imgMediaLightBox.setAttribute("src", pictureMedia);
+            imgMediaLightBox.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
+            imgMediaLightBox.setAttribute("id", "imagelightBox");
+            // const maLightBox = document.querySelector('.lightBox');
+            containerImgLightbox.appendChild(imgMediaLightBox);
+            panneauCentral.appendChild(containerImgLightbox);
+            console.log("une photo a du etre mise dans la lightbox")
+            const containerTitle = document.createElement('div');
+            containerTitle.setAttribute("id", "containerTitle");
+            const h2SousTitle = document.createElement('span');
+            h2SousTitle.textContent = `${mediaTri[i].title}`;
+            containerTitle.appendChild(h2SousTitle);
+
+            panneauCentral.appendChild(containerTitle);
+            //======================================================== PANNEAU DE DROITE ======================================================================        
+            const panneauDeDroite = document.createElement('div');
+            panneauDeDroite.setAttribute("id", "panneauDeDroite");
+            let containerCroixDeFermeture = document.createElement('div');
+            containerCroixDeFermeture.setAttribute("id", "containerCroixDeFermeture");
+            let croixFermeture = document.createElement('div');
+            croixFermeture.setAttribute("id", "croixfermeture");
+            // croixFermeture.id = 'croixFermeture';
+            croixFermeture.className = 'fa-solid fa-square-xmark';
+            containerCroixDeFermeture.appendChild(croixFermeture);
+            panneauDeDroite.appendChild(containerCroixDeFermeture);
+            let containerChevronFermant = document.createElement('div');
+            containerChevronFermant.setAttribute("id", "containerChevronFermant");
+            let chevronFermant = document.createElement('div');
+            // chevronFermant.id = 'chevronFermant';
+            chevronFermant.setAttribute("id", "chevronFermant");
+            chevronFermant.className = 'fa-solid fa-chevron-right';
+            containerChevronFermant.appendChild(chevronFermant);
+            panneauDeDroite.appendChild(containerChevronFermant);
+            //======================================================== MISE EN LIEN DES DIV A LA LIGHT BOX ====================================================
+            const maBox = document.querySelector('.lightBox');
+            containerLightbox.appendChild(panneauDeGauche);
+            containerLightbox.appendChild(panneauCentral);
+            containerLightbox.appendChild(panneauDeDroite);
+            maBox.appendChild(containerLightbox);
+            //======================================================= Mise en place des ecouteurs d'evenements sur les chevrons ==================================
+            //===================================================== CHEVRON FERMANT ==============================================================================
+            chevronFermant.addEventListener('click', () => {
+                // console.log("j'ai cliqué sur la div chevron fermant");
+                // console.log(`Title: ${media.title}`+` Image: ${media.image}`+` Video: ${media.video}`+` Likes: ${media.likes}`+` Date: ${media.date}`+` Price: ${media.price}`);
+                // console.log(`Index: ${index}`); // Afficher l'index actuel
+                // // index=$(index)+1;
+                // console.log(`Nouvel Index: ${index}`); // Afficher l'index actuel
+                // indexExterieur=index;
+
+                // console.log(`IndexExterieur = index : ${indexExterieur}`); 
+
+                const srcImage = document.getElementById("imagelightBox").src;
+                console.log(srcImage);
+                const test = srcImage.split('/');
+                const fileName = test[test.length - 1]
+                index = mediaItems.findIndex((media) => {
+                    console.log(media.image, fileName, media)
+                    return media.image == fileName
+                });
+                console.log(index);
+
+
+                incrementer(index, 1, photographer);
+
+                // Exemple d'utilisation : afficher les données du média à l'indexExterieur donné
+                //  const indexExterieur = 2; // test en dur 
+                // afficherMediaParIndex(indexExterieur);
+                // indexExterieur=0; 
+                // console.log(`IndexExterieur remis à Zéro : ${indexExterieur}`); 
+                console.log("je suis la phase de test , je suis bien passé par là");
+                console.log(media.image, fileName, media)
+                console.log("ici je vais mettre le titre de la photo et voir si ça passe");
+            });
+            //===================================================== FIN CHEVRON FERMANT ==============================================================================            
+
+
+            //===================================================== CHEVRON OUVRANT ==================================================================================              
+            chevronOuvrant.addEventListener('click', () => {
+                // console.log("j'ai cliqué sur la div chevron ouvrant");
+                const srcImage = document.getElementById("imagelightBox").src;
+                console.log(srcImage);
+                const test = srcImage.split('/');
+                const fileName = test[test.length - 1]
+                index = mediaItems.findIndex((media) => {
+                    console.log(media.image, fileName, media)
+                    return media.image == fileName
+                });
+                console.log(index);
+                incrementer(index, -1, photographer);
+
+            });
+
+            croixFermeture.addEventListener('click', () => {
+                console.log("j'ai cliqué sur la div croix de fermeture et cela a fermé la lightbox");
+                closeLightBox();
+            });
+        });
+        //=========================== fin ecouteurs d'evenements =============================================
     }
 }
 
@@ -388,6 +526,7 @@ async function main() {
                 //============================================================================
                 //============================================================================
                 console.log(pictureMedia);
+
                 const imgMedia = document.createElement('img');
                 imgMedia.setAttribute("src", pictureMedia);
                 imgMedia.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
@@ -530,7 +669,7 @@ async function main() {
                     });
                 });
                 //===================================================== FIN CHEVRON OUVRANT =============================================================================  
-
+                //===================================================== FIN ECOUTEUR EVENEMENT SUR IMAGE OUVRANT LIGHTBOX =======================================
                 //================================================================================================================================================
                 //   JE METS ICI LE CODE QUI VA ME PERMETTRE D'INCREMENTER ET DE DECREMENTER       
                 //================================================================================================================================================

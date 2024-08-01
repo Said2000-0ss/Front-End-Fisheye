@@ -80,7 +80,7 @@ form {
     width: 88%;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 97px;
+    margin-left: 21px;
 }
 
 form label {
@@ -139,6 +139,7 @@ object-fit: cover;
     display: flex;
     flex-direction: row; /* Disposer les éléments en ligne */
     align-items: baseline; /* Aligner les éléments à la ligne de base du texte */
+    margin-left: 94px;
 }
 
 #monFormulaireCarroussel label {
