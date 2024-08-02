@@ -237,56 +237,59 @@ function displayMedia(mediaTri) {
 
 //============================================== 2nd mediaFactory===================================
 // Fonction pour créer les éléments HTML en fonction du type de média
-// function mediaFactory(media) {
-//     // Vérifie si l'objet media contient une propriété 'video'
-//     if (media.video) {
-//         console.log("Ceci est un fichier vidéo.");
-//         const videoElement = document.createElement('video');
-//         videoElement.src =  `assets/images/Sample Photos/${photographer.name}/${media.video}`;
-//         videoElement.controls = true;
-//         return videoElement; // Retourne l'élément vidéo
-//     } else if (media.image) {
-//         console.log("Ceci est un fichier image.");
-//         const imageElement = document.createElement('img');
-//         imageElement.src =  `assets/images/Sample Photos/${photographer.name}/${media.image}`;
-//         imageElement.alt = media.title; // Ajouter un attribut alt pour l'accessibilité
-//         return imageElement; // Retourne l'élément image
-//     } else {
-//         console.log("Format de fichier non pris en charge.");
-//         const errorElement = document.createElement('div');
-//         errorElement.textContent = "Format de fichier non pris en charge.";
-//         return errorElement; // Retourne un élément div pour les formats non pris en charge
-//     }
-// }
+function mediaFactory(media) {
+    // Vérifie si l'objet media contient une propriété 'video'
+    console.log("AAAAAAAAAAA")
+    console.log (media)
+    if (media.video) {
+        console.log("Ceci est un fichier vidéo.");
+        console.log(media.video)
+        const videoElement = document.createElement('video');
+        videoElement.src =  `assets/images/Sample Photos/${photographer.name}/${media.video}`;
+        videoElement.controls = true;
+        return videoElement; // Retourne l'élément vidéo
+    } else if (media.image) {
+        console.log("Ceci est un fichier image.");
+        const imageElement = document.createElement('img');
+        imageElement.src =  `assets/images/Sample Photos/${photographer.name}/${media.image}`;
+        imageElement.alt = media.title; // Ajouter un attribut alt pour l'accessibilité
+        return imageElement; // Retourne l'élément image
+    } else {
+        console.log("Format de fichier non pris en charge.");
+        const errorElement = document.createElement('div');
+        errorElement.textContent = "Format de fichier non pris en charge.";
+        return errorElement; // Retourne un élément div pour les formats non pris en charge
+    }
+}
 //============================================fin de la 2nd mediafactory ==============================
 
 //==================================== 3eme mediaFactory ==============================================
-function mediaFactory(media, mediaType) {
-    if (mediaType === 'videoMedia' && media.video) {
-        console.log("Ceci est un fichier vidéo.");
-        const videoElement = document.createElement('video');
-        // videoElement.src = `assets/images/Sample Photos/${photographer.name}/${media.video}`;
-        videoElement.src =mediaType;
-        videoElement.controls = true;
-        // return videoElement; // Retourne l'élément vidéo
-    } else if (mediaType === 'pictureMedia' && media.image) {
-        console.log("Ceci est un fichier image.");
-        const imageElement = document.createElement('img');
-        // imageElement.src = `assets/images/Sample Photos/${photographer.name}/${media.image}`;
-        imageElement.src = mediaType;
-        imageElement.alt = media.title; // Ajouter un attribut alt pour l'accessibilité
-        // return imageElement; // Retourne l'élément image
+// function mediaFactory(media, mediaType) {
+//     if (mediaType === 'videoMedia' && media.video) {
+//         console.log("Ceci est un fichier vidéo.");
+//         const videoElement = document.createElement('video');
+//         // videoElement.src = `assets/images/Sample Photos/${photographer.name}/${media.video}`;
+//         videoElement.src =mediaType;
+//         videoElement.controls = true;
+//         // return videoElement; // Retourne l'élément vidéo
+//     } else if (mediaType === 'pictureMedia' && media.image) {
+//         console.log("Ceci est un fichier image.");
+//         const imageElement = document.createElement('img');
+//         // imageElement.src = `assets/images/Sample Photos/${photographer.name}/${media.image}`;
+//         imageElement.src = mediaType;
+//         imageElement.alt = media.title; // Ajouter un attribut alt pour l'accessibilité
+//         // return imageElement; // Retourne l'élément image
         
         
     
            
-    } else {
-        console.log("Format de fichier non pris en charge ou mediaType incorrect.");
-        const errorElement = document.createElement('div');
-        errorElement.textContent = "Format de fichier non pris en charge ou mediaType incorrect.";
-        return errorElement; // Retourne un élément div pour les formats non pris en charge
-    }
-}
+//     } else {
+//         console.log("Format de fichier non pris en charge ou mediaType incorrect.");
+//         const errorElement = document.createElement('div');
+//         errorElement.textContent = "Format de fichier non pris en charge ou mediaType incorrect.";
+//         return errorElement; // Retourne un élément div pour les formats non pris en charge
+//     }
+// }
 //=====================================================================================================
 
 
@@ -481,16 +484,23 @@ async function main() {
         // mediaItems.forEach(media => {
         mediaItems.forEach((media, index) => {
             console.log(`Index: ${index}`); // Afficher l'index actuel
-            // indexExterieur=index;
+           const eltMedia= mediaFactory(media);
+/*            // indexExterieur=index;
             // console.log(`IndexExterieur: ${indexExterieur}`); 
-            console.log(`Title: ${media.title}` + ` Image: ${media.image}` + ` Video: ${media.video}` + ` Likes: ${media.likes}` + ` Date: ${media.date}` + ` Price: ${media.price}`);
+            // console.log(`Title: ${media.title}` + ` Image: ${media.image}` + ` Video: ${media.video}` + ` Likes: ${media.likes}` + ` Date: ${media.date}` + ` Price: ${media.price}`);
 
-            //====================================== mon code crée pour afficher mes productions médiatiques================
+            // //====================================== mon code crée pour afficher mes productions médiatiques================
             let pictureMedia = "";
-            const test = media.image;
+           
             let videoMedia= "";
-            const test1 = media.video;
-
+            
+if (media.image){
+    //code dans le cas d'une image
+    const test = media.image;
+}else{
+    const test1 = media.video;
+    videoMedia = `assets/images/Sample Photos/${photographer.name}/${media.video}`; 
+}
             if (test === undefined || test === "") {
                 console.log("================================== MON IMAGE EST PAS DEFINIE =====================================");
                 // ici ecrire le code qui va devoir se faire sur la vidéo
@@ -498,9 +508,9 @@ async function main() {
                         console.log("================================== MA VIDEO EST PAS DEFINIE =====================================");
                     } else { 
                      //ici, j'ecris le code pour la vidéo
-                        videoMedia = `assets/images/Sample Photos/${photographer.name}/${media.video}`; 
+                       
                         const maBoxMedia = document.querySelector('.mesMedias');
-                        mediaFactory(media,videoMedia);
+                        // mediaFactory(media,videoMedia);
                         //ecrire ici le code qui sera utilisé pour la vidéo
                         
                         
@@ -511,7 +521,7 @@ async function main() {
                 const maBoxMedia = document.querySelector('.mesMedias');
                 
                 // pictureMedia = `assets/images/Sample Photos/${photographer.name}/${media.video}`;
-                //=============================================================================================================
+ */               //=============================================================================================================
                 // pictureMedia.addEventListener('click', () => {
                 //     // // afficherModalMedia(item);
                 //     // console.log("je suis une image clickable , je suis : ")
@@ -525,14 +535,14 @@ async function main() {
                 basSousBox.id = 'basSousBox';
                 //============================================================================
                 //============================================================================
-                console.log(pictureMedia);
+                // console.log(pictureMedia);
 
-                const imgMedia = document.createElement('img');
-                imgMedia.setAttribute("src", pictureMedia);
-                imgMedia.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
-                //========================================= MON ECOUTEUR D'EVENEMENTS SUR IMAGES =================================================================
+                // const imgMedia = document.createElement('img');
+                // imgMedia.setAttribute("src", pictureMedia);
+                // imgMedia.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
+                // //========================================= MON ECOUTEUR D'EVENEMENTS SUR IMAGES =================================================================
                 // Ajouter l'événement click à l'image
-                imgMedia.addEventListener('click', () => {
+                eltMedia.addEventListener('click', () => {
                     //===========================================
                     const maLightBox = document.querySelector('.lightBox');
                     while (maLightBox.firstChild) {
@@ -699,11 +709,12 @@ async function main() {
                 let heartIcon = document.createElement('div');
                 heartIcon.id = 'heartIcon';
                 heartIcon.className = 'fas fa-heart';
-                maSousBoxImgTitle.appendChild(imgMedia);
+                maSousBoxImgTitle.appendChild(eltMedia);
                 basSousBox.appendChild(titleMedia);
                 basSousBox.appendChild(likeMedia);
                 basSousBox.appendChild(heartIcon);
                 maSousBoxImgTitle.appendChild(basSousBox);
+                const maBoxMedia = document.querySelector('.mesMedias');
                 maBoxMedia.appendChild(maSousBoxImgTitle);
                 console.log(heartIcon);
                 // calculer le total de mes likes
@@ -722,7 +733,7 @@ async function main() {
                 dailyRateElement.textContent = `${photographer.price}€ / jour`;
                 //=====================================================================================================================================================
 
-            }
+            // }
 
             // const imgMedia = document.createElement('img');
             // imgMedia.setAttribute("src", pictureMedia);
