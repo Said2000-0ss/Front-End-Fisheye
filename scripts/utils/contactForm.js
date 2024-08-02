@@ -667,6 +667,19 @@ async function main() {
                         console.log("j'ai cliqué sur la div croix de fermeture et cela a fermé la lightbox");
                         closeLightBox();
                     });
+                          // Gérer le focus pour la navigation au clavier
+        containerLightbox.focus();
+
+        // Gérer la fermeture de la lightbox avec la touche Échap
+        // croixFermeture.addEventListener('keydown', (e) => {
+        //     console.log("je viens d'appuyer sur la touche echap etape 1");
+        //     if (e.key === 'Escape') {
+        //         console.log("je viens d'appuyer sur la touche echap etape 2");
+        //         closeLightBox();
+        //         console.log("je viens d'appuyer sur la touche echap etape 3");
+        //     }
+        //     console.log("je viens d'appuyer sur la touche echap etape 4");
+        // });
                 });
                 //===================================================== FIN CHEVRON OUVRANT =============================================================================  
                 //===================================================== FIN ECOUTEUR EVENEMENT SUR IMAGE OUVRANT LIGHTBOX =======================================

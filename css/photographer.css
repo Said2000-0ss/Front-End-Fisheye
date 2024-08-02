@@ -205,8 +205,8 @@ margin-right:50px;
     margin-right:10%;
     border: 5px solid black; /* Bordure noire de 5px */
     /* height: 550px;           Hauteur de 500px */
-    width: 13vw;
-    height: 43vh;
+    width: 43vw;
+    height: 40vh;
     /* width: 80%;            Largeur de 500px */
     background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
 /* je viens d'ajouter ce code et je le teste===================================================================================================== */
@@ -232,7 +232,7 @@ margin-right:50px;
     background-color: green;
     }
     #panneauCentral img{
-        width: 100%;
+        width: 323%;
         height: 100%;
         object-fit: cover;
     }
