@@ -346,3 +346,13 @@ Mise en place d'un tableau média qui pourra en fonction d'un écouteur d'évén
 //         console.error("Element with ID 'containerCroixDeFermeture' not found");
 //     }
 // });
+
+// //====================== ECOUTEUR D'EVENEMENT SUR LA LIGHTBOX ======================================
+// const lighBox = document.getElementById("light_box");
+// //==================================================================
+// lighBox.addEventListener('click', () => {
+//     console.log("je suis la lightbox: " + lighBox);
+//     // Vous pouvez ajouter ici la logique pour afficher une fenêtre modale ou une action spécifique
+//     // en appelant cette fonction je ferme la lightbox
+//     //closeLightBox();
+// });

@@ -1,0 +1,59 @@
+//========================================================== Ma media Factory ======================
+// function mediaFactory(media) {
+//     const fileExtension = media.split('.').pop(); // Récupérer l'extension de fichier
+//     if (fileExtension === 'mp4') {
+//         // Code à exécuter si le fichier est une vidéo (.mp4)
+//         console.log("Ceci est un fichier vidéo.");
+//         // Ajoutez votre code ici pour manipuler le fichier vidéo
+//         // Par exemple : créer un élément vidéo, ajouter des contrôles de lecture, etc.
+//         const videoElement = document.createElement('video');
+//         videoElement.src = `path/to/your/videos/${media}`;
+//         videoElement.controls = true;
+//         document.body.appendChild(videoElement);
+//     } else if (fileExtension === 'jpg') {
+//         // Code à exécuter si le fichier est une image (.jpg)
+//         console.log("Ceci est un fichier image.");
+//         // Ajoutez votre code ici pour manipuler le fichier image
+//         // Par exemple : créer un élément image, définir la source, etc.
+//         const imageElement = document.createElement('img');
+//         imageElement.src = `path/to/your/images/${media}`;
+//         document.body.appendChild(imageElement);
+//     } else {
+//         console.log("Format de fichier non pris en charge.");
+//         // Gérer d'autres types de fichiers ou afficher un message d'erreur
+//     }
+// }
+// Batterie de tests:
+// mediaFactory('exemple.mp4');
+// mediaFactory('exemple.jpg');
+// mediaFactory('exemple.png');
+//=============================================== FIN DE  Ma media Factory ======================
+
+//==================================== 3eme mediaFactory ==============================================
+// function mediaFactory(media, mediaType) {
+//     if (mediaType === 'videoMedia' && media.video) {
+//         console.log("Ceci est un fichier vidéo.");
+//         const videoElement = document.createElement('video');
+//         // videoElement.src = `assets/images/Sample Photos/${photographer.name}/${media.video}`;
+//         videoElement.src =mediaType;
+//         videoElement.controls = true;
+//         // return videoElement; // Retourne l'élément vidéo
+//     } else if (mediaType === 'pictureMedia' && media.image) {
+//         console.log("Ceci est un fichier image.");
+//         const imageElement = document.createElement('img');
+//         // imageElement.src = `assets/images/Sample Photos/${photographer.name}/${media.image}`;
+//         imageElement.src = mediaType;
+//         imageElement.alt = media.title; // Ajouter un attribut alt pour l'accessibilité
+//         // return imageElement; // Retourne l'élément image
+        
+        
+    
+           
+//     } else {
+//         console.log("Format de fichier non pris en charge ou mediaType incorrect.");
+//         const errorElement = document.createElement('div');
+//         errorElement.textContent = "Format de fichier non pris en charge ou mediaType incorrect.";
+//         return errorElement; // Retourne un élément div pour les formats non pris en charge
+//     }
+// }
+//=====================================================================================================

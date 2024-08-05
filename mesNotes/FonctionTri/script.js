@@ -63,3 +63,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial sort by popularity
     sortMedia('popularity');
 });
+
+//============================================== MON ECOUTEURS D'EVENEMENT SUR LE FORMULAIRE DE TRI ========================================================
+// document.addEventListener("DOMContentLoaded", function() {
+//     // Accéder à l'élément select
+//     const orderBySelect = document.getElementById('order-by');
+
+//     // Écouter l'événement de changement
+//     orderBySelect.addEventListener('change', function(event) {
+//         // Obtenir la valeur sélectionnée
+//         const selectedValue = event.target.value;
+
+//         // Afficher la valeur sélectionnée dans la console
+//         console.log('Vous avez sélectionné :', selectedValue);
+
+//         // Effectuer une action en fonction de la valeur sélectionnée
+//         if (selectedValue === 'popularity') {
+//             // Code pour trier par popularité
+//             console.log('Tri par popularité');
+//         } else if (selectedValue === 'date') {
+//             // Code pour trier par date
+//             console.log('Tri par date');
+//         } else if (selectedValue === 'title') {
+//             // Code pour trier par titre
+//             console.log('Tri par titre');
+//         }
+//     });
+// });
+
+//=========================================================== CODE DE MA MODAL CONTACT ===================================================================

@@ -2,35 +2,26 @@
 let photographer = {};
 let currentIndex = 0;
 let mediaItems = [];
-function incrementer(currentIndex, modificator, photographer) {
-
-    // modificator=-1 ou +1 (selon si on incrémente ou on décrémente)
-    indexSearch = currentIndex + modificator
+//================================================= function incrementer() =====================================================================
+function incrementer(currentIndex, modificator, photographer) {// modificator=-1 ou +1 (selon si on incrémente ou on décrémente)
+ indexSearch = currentIndex + modificator
     if (indexSearch >= mediaItems.length) {
         indexSearch = 0
     } else if (indexSearch < 0) {
         indexSearch = mediaItems.length - 1
-    }
-    // const monImage = mediaItems.find((media,index) => index === indexSearch);
-    const monImage = mediaItems[indexSearch];
-    // console.log("test1")
-    // console.log(monImage);
-    const elementImg = document.getElementById("imagelightBox");
-    elementImg.src = `assets/images/Sample Photos/${photographer.name}/` + monImage.image
-    // console.log(`assets/images/Sample Photos/${photographer.name}/` + monImage.image);
-    // console.log("je suis le titre : " + monImage.title);
-    // console.log(photographer);
-    const containerTitle = document.getElementById("containerTitle");
+    }// const monImage = mediaItems.find((media,index) => index === indexSearch);
+    const monImage = mediaItems[indexSearch]; // console.log("test1")  // console.log(monImage);
+    const elementImg = document.getElementById("imagelightBox");// console.log(`assets/images/Sample Photos/${photographer.name}/` + monImage.image);
+    elementImg.src = `assets/images/Sample Photos/${photographer.name}/` + monImage.image// console.log("je suis le titre : " + monImage.title);
+    const containerTitle = document.getElementById("containerTitle");// console.log(photographer);
     containerTitle.setAttribute("id", "containerTitle");
     containerTitle.textContent = "";
     const h2SousTitle = document.createElement('span');
     h2SousTitle.textContent = monImage.title;
-    containerTitle.appendChild(h2SousTitle);
-    panneauCentral.appendChild(containerTitle);
-    // console.log(monImage);
-    // console.log("test2");
+    containerTitle.appendChild(h2SousTitle);// console.log(monImage);
+    panneauCentral.appendChild(containerTitle);   // console.log("test2");
+}//================================================= Fin de la function incrementer() =========================================================
 
-}
 //=================================================== Fonction displayMedia ===================================================================
 function displayMedia(mediaTri) {
     const maBoxMedia = document.querySelector('.mesMedias');
@@ -42,8 +33,7 @@ function displayMedia(mediaTri) {
         const pictureMedia = `assets/images/Sample Photos/${photographer.name}/${mediaTri[i].image}`; 
         const maSousBoxImgTitle = document.createElement('div');
         maSousBoxImgTitle.id = 'maSousBox';
-        // Je crée une div qui va englober mes 3 div
-        const basSousBox = document.createElement('div');
+        const basSousBox = document.createElement('div');// Je crée une div qui va englober mes 3 div
         basSousBox.id = 'basSousBox';
         console.log(pictureMedia);
         const imgMedia = document.createElement('img');
@@ -53,8 +43,7 @@ function displayMedia(mediaTri) {
         titleMedia.textContent = `${mediaTri[i].title}`;
         const likeMedia = document.createElement('div');
         likeMedia.textContent = `${mediaTri[i].likes}`;
-        // Je mets ici mon coeur
-        let heartIcon = document.createElement('div');
+        let heartIcon = document.createElement('div'); // Je mets ici mon coeur
         heartIcon.id = 'heartIcon';
         heartIcon.className = 'fas fa-heart';
         maSousBoxImgTitle.appendChild(imgMedia);
@@ -70,7 +59,7 @@ function displayMedia(mediaTri) {
             while (maLightBox.firstChild) {
                 maLightBox.removeChild(maLightBox.firstChild);
             }
-            //===========================================
+            
             console.log("je suis : " + pictureMedia);
         //============================================================================
         //============================================================================
@@ -101,12 +90,10 @@ function displayMedia(mediaTri) {
             panneauCentral.setAttribute("id", "panneauCentral");
             const containerImgLightbox = document.createElement('div');
             containerImgLightbox.setAttribute("id", "containerImgLightbox");
-
             const imgMediaLightBox = document.createElement("img");
             imgMediaLightBox.setAttribute("src", pictureMedia);
             imgMediaLightBox.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
-            imgMediaLightBox.setAttribute("id", "imagelightBox");
-            // const maLightBox = document.querySelector('.lightBox');
+            imgMediaLightBox.setAttribute("id", "imagelightBox"); // const maLightBox = document.querySelector('.lightBox');
             containerImgLightbox.appendChild(imgMediaLightBox);
             panneauCentral.appendChild(containerImgLightbox);
             console.log("une photo a du etre mise dans la lightbox")
@@ -115,7 +102,6 @@ function displayMedia(mediaTri) {
             const h2SousTitle = document.createElement('span');
             h2SousTitle.textContent = `${mediaTri[i].title}`;
             containerTitle.appendChild(h2SousTitle);
-
             panneauCentral.appendChild(containerTitle);
             //======================================================== PANNEAU DE DROITE ======================================================================        
             const panneauDeDroite = document.createElement('div');
@@ -123,21 +109,18 @@ function displayMedia(mediaTri) {
             let containerCroixDeFermeture = document.createElement('div');
             containerCroixDeFermeture.setAttribute("id", "containerCroixDeFermeture");
             let croixFermeture = document.createElement('div');
-            croixFermeture.setAttribute("id", "croixfermeture");
-            // croixFermeture.id = 'croixFermeture';
+            croixFermeture.setAttribute("id", "croixfermeture");// croixFermeture.id = 'croixFermeture';
             croixFermeture.className = 'fa-solid fa-square-xmark';
             containerCroixDeFermeture.appendChild(croixFermeture);
             panneauDeDroite.appendChild(containerCroixDeFermeture);
             let containerChevronFermant = document.createElement('div');
             containerChevronFermant.setAttribute("id", "containerChevronFermant");
             let chevronFermant = document.createElement('div');
-            // chevronFermant.id = 'chevronFermant';
-            chevronFermant.setAttribute("id", "chevronFermant");
+            chevronFermant.setAttribute("id", "chevronFermant");   // chevronFermant.id = 'chevronFermant';
             chevronFermant.className = 'fa-solid fa-chevron-right';
             containerChevronFermant.appendChild(chevronFermant);
             panneauDeDroite.appendChild(containerChevronFermant);
-            //======================================================== MISE EN LIEN DES DIV A LA LIGHT BOX ====================================================
-            const maBox = document.querySelector('.lightBox');
+            const maBox = document.querySelector('.lightBox');   //==== MISE EN LIEN DES DIV A LA LIGHT BOX ====
             containerLightbox.appendChild(panneauDeGauche);
             containerLightbox.appendChild(panneauCentral);
             containerLightbox.appendChild(panneauDeDroite);
@@ -151,9 +134,7 @@ function displayMedia(mediaTri) {
                 // // index=$(index)+1;
                 // console.log(`Nouvel Index: ${index}`); // Afficher l'index actuel
                 // indexExterieur=index;
-
                 // console.log(`IndexExterieur = index : ${indexExterieur}`); 
-
                 const srcImage = document.getElementById("imagelightBox").src;
                 console.log(srcImage);
                 const test = srcImage.split('/');
@@ -163,25 +144,20 @@ function displayMedia(mediaTri) {
                     return media.image == fileName
                 });
                 console.log(index);
-
-
                 incrementer(index, 1, photographer);
-
                 // Exemple d'utilisation : afficher les données du média à l'indexExterieur donné
                 //  const indexExterieur = 2; // test en dur 
                 // afficherMediaParIndex(indexExterieur);
                 // indexExterieur=0; 
                 // console.log(`IndexExterieur remis à Zéro : ${indexExterieur}`); 
                 console.log("je suis la phase de test , je suis bien passé par là");
-                console.log(media.image, fileName, media)
+                console.log(media.image, fileName, media);
                 console.log("ici je vais mettre le titre de la photo et voir si ça passe");
             });
             //===================================================== FIN CHEVRON FERMANT ==============================================================================            
 
-
             //===================================================== CHEVRON OUVRANT ==================================================================================              
-            chevronOuvrant.addEventListener('click', () => {
-                // console.log("j'ai cliqué sur la div chevron ouvrant");
+            chevronOuvrant.addEventListener('click', () => { // console.log("j'ai cliqué sur la div chevron ouvrant");
                 const srcImage = document.getElementById("imagelightBox").src;
                 console.log(srcImage);
                 const test = srcImage.split('/');
@@ -192,50 +168,17 @@ function displayMedia(mediaTri) {
                 });
                 console.log(index);
                 incrementer(index, -1, photographer);
-
-            });
-
-            croixFermeture.addEventListener('click', () => {
+            });//====================================================== Fin chevron ouvrant ==========================================================================
+                croixFermeture.addEventListener('click', () => {
                 console.log("j'ai cliqué sur la div croix de fermeture et cela a fermé la lightbox");
                 closeLightBox();
             });
         });
         //=========================== fin ecouteurs d'evenements =============================================
     }
-}
+}//=================================================== Fin de la Fonction displayMedia ==========================================================
 
-//========================================================== Ma media Factory ======================
-// function mediaFactory(media) {
-//     const fileExtension = media.split('.').pop(); // Récupérer l'extension de fichier
-//     if (fileExtension === 'mp4') {
-//         // Code à exécuter si le fichier est une vidéo (.mp4)
-//         console.log("Ceci est un fichier vidéo.");
-//         // Ajoutez votre code ici pour manipuler le fichier vidéo
-//         // Par exemple : créer un élément vidéo, ajouter des contrôles de lecture, etc.
-//         const videoElement = document.createElement('video');
-//         videoElement.src = `path/to/your/videos/${media}`;
-//         videoElement.controls = true;
-//         document.body.appendChild(videoElement);
-//     } else if (fileExtension === 'jpg') {
-//         // Code à exécuter si le fichier est une image (.jpg)
-//         console.log("Ceci est un fichier image.");
-//         // Ajoutez votre code ici pour manipuler le fichier image
-//         // Par exemple : créer un élément image, définir la source, etc.
-//         const imageElement = document.createElement('img');
-//         imageElement.src = `path/to/your/images/${media}`;
-//         document.body.appendChild(imageElement);
-//     } else {
-//         console.log("Format de fichier non pris en charge.");
-//         // Gérer d'autres types de fichiers ou afficher un message d'erreur
-//     }
-// }
-// Batterie de tests:
-// mediaFactory('exemple.mp4');
-// mediaFactory('exemple.jpg');
-// mediaFactory('exemple.png');
-//=============================================== FIN DE  Ma media Factory ======================
-
-//============================================== 2nd mediaFactory===================================
+//============================================== MediaFactory ===================================
 // Fonction pour créer les éléments HTML en fonction du type de média
 function mediaFactory(media) {
     // Vérifie si l'objet media contient une propriété 'video'
@@ -260,84 +203,17 @@ function mediaFactory(media) {
         errorElement.textContent = "Format de fichier non pris en charge.";
         return errorElement; // Retourne un élément div pour les formats non pris en charge
     }
-}
-//============================================fin de la 2nd mediafactory ==============================
+}//============================================fin de la mediafactory =============================
 
-//==================================== 3eme mediaFactory ==============================================
-// function mediaFactory(media, mediaType) {
-//     if (mediaType === 'videoMedia' && media.video) {
-//         console.log("Ceci est un fichier vidéo.");
-//         const videoElement = document.createElement('video');
-//         // videoElement.src = `assets/images/Sample Photos/${photographer.name}/${media.video}`;
-//         videoElement.src =mediaType;
-//         videoElement.controls = true;
-//         // return videoElement; // Retourne l'élément vidéo
-//     } else if (mediaType === 'pictureMedia' && media.image) {
-//         console.log("Ceci est un fichier image.");
-//         const imageElement = document.createElement('img');
-//         // imageElement.src = `assets/images/Sample Photos/${photographer.name}/${media.image}`;
-//         imageElement.src = mediaType;
-//         imageElement.alt = media.title; // Ajouter un attribut alt pour l'accessibilité
-//         // return imageElement; // Retourne l'élément image
-        
-        
-    
-           
-//     } else {
-//         console.log("Format de fichier non pris en charge ou mediaType incorrect.");
-//         const errorElement = document.createElement('div');
-//         errorElement.textContent = "Format de fichier non pris en charge ou mediaType incorrect.";
-//         return errorElement; // Retourne un élément div pour les formats non pris en charge
-//     }
-// }
-//=====================================================================================================
-
-
-
-//============================================== MON ECOUTEURS D'EVENEMENT SUR LE FORMULAIRE DE TRI ========================================================
-// document.addEventListener("DOMContentLoaded", function() {
-//     // Accéder à l'élément select
-//     const orderBySelect = document.getElementById('order-by');
-
-//     // Écouter l'événement de changement
-//     orderBySelect.addEventListener('change', function(event) {
-//         // Obtenir la valeur sélectionnée
-//         const selectedValue = event.target.value;
-
-//         // Afficher la valeur sélectionnée dans la console
-//         console.log('Vous avez sélectionné :', selectedValue);
-
-//         // Effectuer une action en fonction de la valeur sélectionnée
-//         if (selectedValue === 'popularity') {
-//             // Code pour trier par popularité
-//             console.log('Tri par popularité');
-//         } else if (selectedValue === 'date') {
-//             // Code pour trier par date
-//             console.log('Tri par date');
-//         } else if (selectedValue === 'title') {
-//             // Code pour trier par titre
-//             console.log('Tri par titre');
-//         }
-//     });
-// });
-
-//=========================================================== CODE DE MA MODAL CONTACT ===================================================================
-// Attendre que le DOM soit chargé
-document.addEventListener('DOMContentLoaded', () => {
-    // Sélectionner le formulaire
-    const form = document.getElementById('contactForm');
-
-    // Ajouter un écouteur d'événement pour la soumission du formulaire
-    form.addEventListener('submit', (event) => {
-        // Empêcher le comportement par défaut de la soumission du formulaire
-        event.preventDefault();
-
-        // Récupérer les valeurs des champs
-        const firstName = document.getElementById('firstName').value;
+//=============================================== FORMULAIRE DE CONTACT ====================================================================================
+document.addEventListener('DOMContentLoaded', () => {// Attendre que le DOM soit chargé
+   const form = document.getElementById('contactForm'); // Sélectionner le formulaire
+form.addEventListener('submit', (event) => {// Ajouter un écouteur d'événement pour la soumission du formulaire
+       event.preventDefault(); // Empêcher le comportement par défaut de la soumission du formulaire
+       const firstName = document.getElementById('firstName').value; // Récupérer les valeurs des champs
         const lastName = document.getElementById('lastName').value;
         const email = document.getElementById('email').value;
         const message = document.getElementById('message').value;
-
         // Afficher les valeurs dans la console
         console.log('================================== INFORMATIONS DE MA CONSOLE LOG ================================')
         console.log('Prénom:', firstName);
@@ -347,50 +223,33 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('============================= FIN DES INFORMATIONS DE MA CONSOLE LOG =============================')
         closeModal();
     });
-});
-//==================================================== MES FONCTIONS OUVERTURE/FERMETURE MODAL=============================================================
+});//============================================================ FIN DE FORMULAIRE DE CONTACT ===========================================================
 
-// Afficher le modal
-function displayModal() {
+//==================================================== MES FONCTIONS OUVERTURE/FERMETURE MODAL=============================================================
+function displayModal() {// Afficher le modal
     const modal = document.getElementById("contact_modal");
     modal.style.display = "block";
 }
-// Fermer le modal
-function closeModal() {
+function closeModal() {// Fermer le modal
     const modal = document.getElementById("contact_modal");
-    modal.style.display = "none";
-    console.log("je viens de fermer la close modal");
+    modal.style.display = "none";//  console.log("je viens de fermer la close modal");
 }
 //==================================================== MES FONCTIONS OUVERTURE/FERMETURE LIGHTBOX =========================================================
-//Mes fonctions , afin d'afficher la lightBox
-function displayLightBox() {
+function displayLightBox() {//Mes fonctions , afin d'afficher la lightBox
     const modal = document.getElementById("light_box");
-    modal.style.display = "block";
-    console.log("je viens d'ouvrir la light box");
+    modal.style.display = "block";// console.log("je viens d'ouvrir la light box"); 
 }
-
-function closeLightBox() {
+function closeLightBox() {//Mes fonctions , afin de fermer la lightBox
     const modal = document.getElementById("light_box");
     modal.style.display = "none";
     const maLightBox = document.querySelector('.lightBox');
     while (maLightBox.firstChild) {
         maLightBox.removeChild(maLightBox.firstChild);
-    }
-    console.log("je viens de fermer la lightbox")
+    }//console.log("je viens de fermer la lightbox")
 }
-// //====================== ECOUTEUR D'EVENEMENT SUR LA LIGHTBOX ======================================
-// const lighBox = document.getElementById("light_box");
-// //==================================================================
-// lighBox.addEventListener('click', () => {
-//     console.log("je suis la lightbox: " + lighBox);
-//     // Vous pouvez ajouter ici la logique pour afficher une fenêtre modale ou une action spécifique
-//     // en appelant cette fonction je ferme la lightbox
-//     //closeLightBox();
-// });
 
 
-
-//========================================================================================================================================================
+//=====================================================================================================================================================
 // Récupérer les paramètres de l'URL
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
@@ -403,12 +262,10 @@ async function getPhotographers() {
     const data = await response.json();
     return data;
 }
-//====A effacer , une fois utilisé========================
-// const { name,id, city, country, tagline, price ,  portrait } = data;
-// const picture = `assets/photographers/${portrait}`;
-//========================================================
-// Fonction principale pour traiter les données
-async function main() {
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//=====================================================================================================================================================
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+async function main() {// Fonction principale pour traiter les données
     const data = await getPhotographers();
     let totalLikes = 0;
     // Vérifier et afficher les informations du photographe correspondant à l'ID
@@ -434,8 +291,7 @@ async function main() {
         //=============================================================================================================================================
 
         //********************************************* MES TEXTES ***********************************************************************************
-        const newDivAA = document.createElement('div');
-        // newDivAA.classList.add('gridItem');
+        const newDivAA = document.createElement('div'); // newDivAA.classList.add('gridItem');
         const h2 = document.createElement('h2');
         h2.textContent = `${photographer.name}`;
         newDivAA.appendChild(h2);
@@ -536,7 +392,6 @@ if (media.image){
                 //============================================================================
                 //============================================================================
                 // console.log(pictureMedia);
-
                 // const imgMedia = document.createElement('img');
                 // imgMedia.setAttribute("src", pictureMedia);
                 // imgMedia.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
@@ -579,12 +434,10 @@ if (media.image){
                     panneauCentral.setAttribute("id", "panneauCentral");
                     const containerImgLightbox = document.createElement('div');
                     containerImgLightbox.setAttribute("id", "containerImgLightbox");
-
                     const imgMediaLightBox = document.createElement("img");
                     imgMediaLightBox.setAttribute("src", pictureMedia);
                     imgMediaLightBox.setAttribute("alt", "Photos prises par le photographe"); // Ajoutez un alt pour l'accessibilité
-                    imgMediaLightBox.setAttribute("id", "imagelightBox");
-                    // const maLightBox = document.querySelector('.lightBox');
+                    imgMediaLightBox.setAttribute("id", "imagelightBox");// const maLightBox = document.querySelector('.lightBox');
                     containerImgLightbox.appendChild(imgMediaLightBox);
                     panneauCentral.appendChild(containerImgLightbox);
                     console.log("une photo a du etre mise dans la lightbox")
@@ -593,7 +446,6 @@ if (media.image){
                     const h2SousTitle = document.createElement('span');
                     h2SousTitle.textContent = `${media.title}`;
                     containerTitle.appendChild(h2SousTitle);
-
                     panneauCentral.appendChild(containerTitle);
                     //======================================================== PANNEAU DE DROITE ======================================================================        
                     const panneauDeDroite = document.createElement('div');
@@ -601,15 +453,13 @@ if (media.image){
                     let containerCroixDeFermeture = document.createElement('div');
                     containerCroixDeFermeture.setAttribute("id", "containerCroixDeFermeture");
                     let croixFermeture = document.createElement('div');
-                    croixFermeture.setAttribute("id", "croixfermeture");
-                    // croixFermeture.id = 'croixFermeture';
+                    croixFermeture.setAttribute("id", "croixfermeture");// croixFermeture.id = 'croixFermeture';
                     croixFermeture.className = 'fa-solid fa-square-xmark';
                     containerCroixDeFermeture.appendChild(croixFermeture);
                     panneauDeDroite.appendChild(containerCroixDeFermeture);
                     let containerChevronFermant = document.createElement('div');
                     containerChevronFermant.setAttribute("id", "containerChevronFermant");
-                    let chevronFermant = document.createElement('div');
-                    // chevronFermant.id = 'chevronFermant';
+                    let chevronFermant = document.createElement('div');// chevronFermant.id = 'chevronFermant';
                     chevronFermant.setAttribute("id", "chevronFermant");
                     chevronFermant.className = 'fa-solid fa-chevron-right';
                     containerChevronFermant.appendChild(chevronFermant);
@@ -680,16 +530,7 @@ if (media.image){
                           // Gérer le focus pour la navigation au clavier
         containerLightbox.focus();
 
-        // Gérer la fermeture de la lightbox avec la touche Échap
-        // croixFermeture.addEventListener('keydown', (e) => {
-        //     console.log("je viens d'appuyer sur la touche echap etape 1");
-        //     if (e.key === 'Escape') {
-        //         console.log("je viens d'appuyer sur la touche echap etape 2");
-        //         closeLightBox();
-        //         console.log("je viens d'appuyer sur la touche echap etape 3");
-        //     }
-        //     console.log("je viens d'appuyer sur la touche echap etape 4");
-        // });
+
                 });
                 //===================================================== FIN CHEVRON OUVRANT =============================================================================  
                 //===================================================== FIN ECOUTEUR EVENEMENT SUR IMAGE OUVRANT LIGHTBOX =======================================
@@ -780,7 +621,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-/* 
+main();// Exécuter la fonction principale
+
+//============================================================== ACCESIBILITE/VISUALISATION ===============================================================
+        // Gérer la fermeture de la lightbox avec la touche Échap
+        // croixFermeture.addEventListener('keydown', (e) => {
+        //     console.log("je viens d'appuyer sur la touche echap etape 1");
+        //     if (e.key === 'Escape') {
+        //         console.log("je viens d'appuyer sur la touche echap etape 2");
+        //         closeLightBox();
+        //         console.log("je viens d'appuyer sur la touche echap etape 3");
+        //     }
+        //     console.log("je viens d'appuyer sur la touche echap etape 4");
+        // });
+
+ //=======================================================================================================================================================
+ /* 
 DOMContentLoaded : Attendre que le DOM soit complètement chargé avant d'exécuter le script.
 selectElement : Sélectionne l'élément <select> par son identifiant.
 change : Ajoute un écouteur d'événement pour l'événement change, qui est déclenché lorsque 
@@ -788,8 +644,4 @@ l'utilisateur sélectionne une nouvelle option.
 selectedValue : Récupère la valeur de l'option sélectionnée et l'affiche dans la console.
 Vous pouvez remplacer la ligne de console.log par votre propre logique pour trier les éléments en fonction de la sélection de l'utilisateur.
 */
-//*****************************************************************************************************************************************************
-
-
-// Exécuter la fonction principale
-main();
+ //=======================================================================================================================================================
