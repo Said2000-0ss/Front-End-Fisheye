@@ -26,7 +26,7 @@ function photographerTemplate(data) {
         const description = document.createElement('p');
         description.textContent=tagline; 
         description.style.color="#000000";
-        description.style.fontSize='25px';
+        description.style.fontSize='21px';
         // description.style.fontWeight="bold"; 
         description.setAttribute('aria-label', 'Paragraphe : Ceci est la description de mes passions');
         const prix=document.createElement('p');
