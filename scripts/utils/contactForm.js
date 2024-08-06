@@ -189,6 +189,9 @@ function mediaFactory(media) {
         console.log(media.video)
         const videoElement = document.createElement('video');
         videoElement.src =  `assets/images/Sample Photos/${photographer.name}/${media.video}`;
+         // Appliquer les styles CSS pour la taille
+         videoElement.style.width = '100%';
+         videoElement.style.height = '250px';
         videoElement.controls = true;
         return videoElement; // Retourne l'élément vidéo
     } else if (media.image) {

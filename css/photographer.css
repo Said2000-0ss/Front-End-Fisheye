@@ -272,3 +272,7 @@ margin-right:50px;
     /* right: 10px; */
 }
 
+#myVideoElement{
+    width: 100%;
+    height: 250px;
+}
