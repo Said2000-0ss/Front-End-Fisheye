@@ -61,17 +61,13 @@ function displayMedia(mediaTri) {
     const maBoxMedia = document.querySelector('.mesMedias');
     maBoxMedia.textContent="";
 for (let i = 0; i < mediaTri.length; i++) {
-    console.log("je suis mediatri", mediaTri[i]);
-    
+    // console.log("je suis mediatri", mediaTri[i]);
     const maBoxMedia = document.querySelector('.mesMedias');
-    
     const mediaElement = mediaFactory(mediaTri[i]);
     const maSousBoxImgTitle = document.createElement('div');
     maSousBoxImgTitle.id = 'maSousBox';
-
     const basSousBox = document.createElement('div');
     basSousBox.id = 'basSousBox';
-    
     const titleMedia = document.createElement('div');
     titleMedia.textContent = `${mediaTri[i].title}`;
     const likeMedia = document.createElement('div');
@@ -163,6 +159,20 @@ for (let i = 0; i < mediaTri.length; i++) {
             handleChevronClick(-1);
         });
 
+//======================================= ceux sont mes ecouteurs d'evenement pour l'accessibilité =================================================      
+chevronOuvrant.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        // handleChevronClick();
+        handleChevronClick(-1);
+      }
+});
+chevronFermant.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        handleChevronClick(1);
+        // handleChevronClick();
+    }
+});
+//==================================================================================================================================================
         croixFermeture.addEventListener('click', () => {
             console.log("j'ai cliqué sur la div croix de fermeture et cela a fermé la lightbox");
             closeLightBox();

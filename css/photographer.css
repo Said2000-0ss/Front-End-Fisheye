@@ -222,14 +222,14 @@ margin-right:50px;
 }
 
 #panneauDeGauche{
-    background-color: red;
+    background-color:white;
     }
     #panneauCentral{
-    background-color: yellow;
+    background-color: white;
     /* max-height: 100%; Ne pas dépasser la hauteur de la lightbox */
     }
     #panneauDeDroite{
-    background-color: green;
+    background-color: white;
     }
     #panneauCentral img{
         width: 323%;
@@ -275,14 +275,25 @@ margin-right:50px;
 #myVideoElement{
     width: 100%;
     height: 250px;
+    background: black;
 }
 
-#videoMedia{
+/* #videoMedia{
     width:200%;
     height:200%; margin-top:0; padding-top: 0;
 
+} */
+
+#videoMedia {
+    width: 322%;
+    height: 100%;
+    margin-top: 0;
+    padding-top: 0;
 }
 
-#containerTitle{
-    margin-top:10%;
+#containerTitle, #chevronOuvrant,#chevronFermant, #croixfermeture{
+    /* margin-top:10%; */
+    font-weight: bold;
+color :#901C1C;
 }
+
