@@ -296,4 +296,8 @@ margin-right:50px;
     font-weight: bold;
 color :#901C1C;
 }
+button:focus, a:focus, input:focus {
+    outline: 3px solid red; /* Une bordure bleue claire pour indiquer le focus */
+    outline-offset: 2px; /* Un léger décalage pour éviter de toucher le texte */
+}
 

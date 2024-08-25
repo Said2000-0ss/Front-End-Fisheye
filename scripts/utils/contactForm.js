@@ -523,6 +523,20 @@ async function main() {
 
                 document.getElementById('chevronOuvrant').addEventListener('click', () => handleChevronClick(-1));
                 document.getElementById('chevronFermant').addEventListener('click', () => handleChevronClick(1));
+              
+chevronOuvrant.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        handleChevronClick(-1);
+    }
+});
+
+
+chevronFermant.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        handleChevronClick(1);
+    }
+});
+
 
                 const croixFermetureElement = document.getElementById('croixfermeture');
                 croixFermetureElement.addEventListener('click', () => {
