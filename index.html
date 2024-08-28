@@ -8,17 +8,15 @@
     <title>Fisheye</title>
   </head>
   <body>
-    <header>
-    <!-- j'ai rajouté un href -->
-      <a target="_blank" href="index.html">
+    <header role="banner">
+      <!-- j'ai rajouté un href -->
+      <a target="_blank" href="index.html" aria-label="Retour à la page d'accueil">
         <img src="assets/images/logo.png" class="logo" alt="fisheye logo"/>
-        <!-- j'ai rajouté,  le alt pour l'accessibilité pour les images -->
-    </a>
-       
-        <h1>Nos photographes</h1>
+      </a>
+      <h1>Nos photographes</h1>
     </header>
-    <main id="main">
-        <div class="photographer_section"></div>
+    <main id="main" role="main" tabindex="-1">
+      <div class="photographer_section" aria-label="Section des photographes"></div>
     </main>
     <!-- j'ai ajouté le type modules -->
     <!-- <script type="module" src="scripts/templates/photographer.js"></script>

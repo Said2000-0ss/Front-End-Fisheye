@@ -2,25 +2,7 @@
 let photographer = {};
 let currentIndex = 0;
 let mediaItems = [];
-// //================================================= function incrementer() =====================================================================
-// function incrementer(currentIndex, modificator, photographer) {// modificator=-1 ou +1 (selon si on incrémente ou on décrémente)
-//  indexSearch = currentIndex + modificator
-//     if (indexSearch >= mediaItems.length) {
-//         indexSearch = 0
-//     } else if (indexSearch < 0) {
-//         indexSearch = mediaItems.length - 1
-//     }// const monImage = mediaItems.find((media,index) => index === indexSearch);
-//     const monImage = mediaItems[indexSearch]; // console.log("test1")  // console.log(monImage);
-//     const elementImg = document.getElementById("imagelightBox");// console.log(`assets/images/Sample Photos/${photographer.name}/` + monImage.image);
-//     elementImg.src = `assets/images/Sample Photos/${photographer.name}/` + monImage.image// console.log("je suis le titre : " + monImage.title);
-//     const containerTitle = document.getElementById("containerTitle");// console.log(photographer);
-//     containerTitle.setAttribute("id", "containerTitle");
-//     containerTitle.textContent = "";
-//     const h2SousTitle = document.createElement('span');
-//     h2SousTitle.textContent = monImage.title;
-//     containerTitle.appendChild(h2SousTitle);// console.log(monImage);
-//     panneauCentral.appendChild(containerTitle);   // console.log("test2");
-// }//================================================= Fin de la function incrementer() =========================================================
+
 function incrementer(currentIndex, modificator, photographer) {
     indexSearch = currentIndex + modificator;
     if (indexSearch >= mediaItems.length) {
@@ -32,18 +14,21 @@ function incrementer(currentIndex, modificator, photographer) {
     const monImage = mediaItems[indexSearch];
     const elementMedia = document.getElementById("imagelightBox");
 
-    if (monImage.image) {
-        // Si c'est une image
+    if (monImage.image) { // Si c'est une image
+
         const newImage = document.createElement('img');
         newImage.setAttribute("src", `assets/images/Sample Photos/${photographer.name}/${monImage.image}`);
         newImage.setAttribute("alt", monImage.title);
         newImage.setAttribute("id", "imagelightBox");
+        newImage.setAttribute("tabindex", "0"); // Rendre l'image focusable
         elementMedia.replaceWith(newImage);
-    } else if (monImage.video) {
-        // Si c'est une vidéo
+    } else if (monImage.video) {// Si c'est une vidéo
+
         const newVideo = document.createElement('video');
         newVideo.setAttribute("src", `assets/images/Sample Photos/${photographer.name}/${monImage.video}`);
+        newVideo.setAttribute("alt", monImage.title);
         newVideo.setAttribute("controls", true);
+        newVideo.setAttribute("tabindex", "0"); // Rendre l'image focusable
         newVideo.setAttribute("id", "imagelightBox");
         elementMedia.replaceWith(newVideo);
     }
@@ -59,176 +44,188 @@ function incrementer(currentIndex, modificator, photographer) {
 //=================================================== Fonction displayMedia ===================================================================
 function displayMedia(mediaTri) {
     const maBoxMedia = document.querySelector('.mesMedias');
-    maBoxMedia.textContent="";
-for (let i = 0; i < mediaTri.length; i++) {
-    // console.log("je suis mediatri", mediaTri[i]);
-    const maBoxMedia = document.querySelector('.mesMedias');
-    const mediaElement = mediaFactory(mediaTri[i]);
-    const maSousBoxImgTitle = document.createElement('div');
-    maSousBoxImgTitle.id = 'maSousBox';
-    const basSousBox = document.createElement('div');
-    basSousBox.id = 'basSousBox';
-    const titleMedia = document.createElement('div');
-    titleMedia.textContent = `${mediaTri[i].title}`;
-    const likeMedia = document.createElement('div');
-    likeMedia.textContent = `${mediaTri[i].likes}`;
-    let heartIcon = document.createElement('div');
-    heartIcon.id = 'heartIcon';
-    heartIcon.className = 'fas fa-heart';
+    maBoxMedia.textContent = "";
+    for (let i = 0; i < mediaTri.length; i++) {
+        // console.log("je suis mediatri", mediaTri[i]);
+        const maBoxMedia = document.querySelector('.mesMedias');
+        const mediaElement = mediaFactory(mediaTri[i]);
+        const maSousBoxImgTitle = document.createElement('div');
+        maSousBoxImgTitle.id = 'maSousBox';
+        const basSousBox = document.createElement('div');
+        basSousBox.id = 'basSousBox';
+        const titleMedia = document.createElement('div');
+        titleMedia.textContent = `${mediaTri[i].title}`;
+        const likeMedia = document.createElement('div');
+        likeMedia.textContent = `${mediaTri[i].likes}`;
+        let heartIcon = document.createElement('div');
+        heartIcon.id = 'heartIcon';
+        heartIcon.className = 'fas fa-heart';
 
-    maSousBoxImgTitle.appendChild(mediaElement);
-    basSousBox.appendChild(titleMedia);
-    basSousBox.appendChild(likeMedia);
-    basSousBox.appendChild(heartIcon);
-    maSousBoxImgTitle.appendChild(basSousBox);
-    maBoxMedia.appendChild(maSousBoxImgTitle);
+        maSousBoxImgTitle.appendChild(mediaElement);
+        basSousBox.appendChild(titleMedia);
+        basSousBox.appendChild(likeMedia);
+        basSousBox.appendChild(heartIcon);
+        maSousBoxImgTitle.appendChild(basSousBox);
+        maBoxMedia.appendChild(maSousBoxImgTitle);
 
-    mediaElement.addEventListener('click', () => {
-        const maLightBox = document.querySelector('.lightBox');
-        while (maLightBox.firstChild) {
-            maLightBox.removeChild(maLightBox.firstChild);
+        mediaElement.addEventListener('click', () => {
+            const maLightBox = document.querySelector('.lightBox');
+            while (maLightBox.firstChild) {
+                maLightBox.removeChild(maLightBox.firstChild);
+            }
+
+            displayLightBox();
+
+            const containerLightbox = document.createElement('div');
+            containerLightbox.setAttribute("id", "containerLightbox");
+            const panneauDeGauche = document.createElement('div');
+            panneauDeGauche.setAttribute("id", "panneauDeGauche");
+            let chevronOuvrant = document.createElement('button'); // Utiliser un bouton pour l'accessibilité
+            chevronOuvrant.id = 'chevronOuvrant';
+            chevronOuvrant.className = 'fa-solid fa-chevron-left';
+            chevronOuvrant.setAttribute("aria-label", "Média précédent"); // ARIA label pour l'accessibilité
+            chevronOuvrant.setAttribute("tabindex", "0"); // Rendre le bouton focusable
+           
+            panneauDeGauche.appendChild(chevronOuvrant);
+
+            const panneauCentral = document.createElement('div');
+            panneauCentral.setAttribute("id", "panneauCentral");
+            const containerImgLightbox = document.createElement('div');
+            containerImgLightbox.setAttribute("id", "containerImgLightbox");
+
+            let mediaElementLightbox;
+
+            if (mediaTri[i].image) {
+                mediaElementLightbox = document.createElement('img');
+                mediaElementLightbox.setAttribute("src", `assets/images/Sample Photos/${photographer.name}/${mediaTri[i].image}`);
+                mediaElementLightbox.setAttribute("alt", mediaTri[i].title);
+                mediaElementLightbox.setAttribute("id", "imagelightBox");
+            } else if (mediaTri[i].video) {
+                mediaElementLightbox = document.createElement('video');
+                mediaElementLightbox.setAttribute("src", `assets/images/Sample Photos/${photographer.name}/${mediaTri[i].video}`);
+                mediaElementLightbox.setAttribute("alt", mediaTri[i].title);
+                // mediaElementLightbox.setAttribute("autoplay", true);  // cet attribut démarre automatiquement la vidéo
+                // mediaElementLightbox.setAttribute("muted", true);     // cet attribut  coupe le son (recommandé pour autoplay)
+                mediaElementLightbox.setAttribute("id", "videoMedia");
+            }
+
+            containerImgLightbox.appendChild(mediaElementLightbox);
+            panneauCentral.appendChild(containerImgLightbox);
+
+            const containerTitle = document.createElement('div');
+            containerTitle.setAttribute("id", "containerTitle");
+            const h2SousTitle = document.createElement('span');
+            h2SousTitle.textContent = `${mediaTri[i].title}`;
+            containerTitle.appendChild(h2SousTitle);
+            panneauCentral.appendChild(containerTitle);
+
+            const panneauDeDroite = document.createElement('div');
+            panneauDeDroite.setAttribute("id", "panneauDeDroite");
+            let containerCroixDeFermeture = document.createElement('div');
+            containerCroixDeFermeture.setAttribute("id", "containerCroixDeFermeture");
+          let croixFermeture = document.createElement('button'); // Utiliser un bouton pour l'accessibilité
+            croixFermeture.setAttribute("id", "croixfermeture");
+            croixFermeture.textContent = "X";
+            croixFermeture.setAttribute("aria-label", "Fermer la lightbox"); // ARIA label pour l'accessibilité
+            croixFermeture.setAttribute("tabindex", "0"); // Rendre le bouton focusable
+            croixFermeture.addEventListener('click', () => {
+                closeLightbox(); // Fonction pour fermer la lightbox
+            });
+            containerCroixDeFermeture.appendChild(croixFermeture);
+            panneauDeDroite.appendChild(containerCroixDeFermeture);
+            let containerChevronFermant = document.createElement('div');
+            containerChevronFermant.setAttribute("id", "containerChevronFermant");
+         
+            //         Création du chevron pour naviguer vers la droite
+            let chevronFermant = document.createElement('button'); // Utiliser un bouton pour l'accessibilité
+            chevronFermant.setAttribute("id", "chevronFermant");
+            chevronFermant.className = 'fa-solid fa-chevron-right';
+            chevronFermant.setAttribute("aria-label", "Média suivant"); // ARIA label pour l'accessibilité
+            chevronFermant.setAttribute("tabindex", "0"); // Rendre le bouton focusable
+            // chevronFermant.addEventListener('click', () => {
+            //     navigateToNextMedia(); // Fonction pour passer au média suivant
+            // });
+            containerChevronFermant.appendChild(chevronFermant);
+            panneauDeDroite.appendChild(containerChevronFermant);
+            const maBox = document.querySelector('.lightBox');
+            containerLightbox.appendChild(panneauDeGauche);
+            containerLightbox.appendChild(panneauCentral);
+            containerLightbox.appendChild(panneauDeDroite);
+            maBox.appendChild(containerLightbox);
+
+            chevronFermant.addEventListener('click', () => {
+                handleChevronClick(1);
+            });
+
+            chevronOuvrant.addEventListener('click', () => {
+                handleChevronClick(-1);
+            });
+
+            //======================================= ceux sont mes ecouteurs d'evenement pour l'accessibilité =================================================      
+            chevronOuvrant.addEventListener('keypress', function (event) {
+                if (event.key === 'Enter') {
+                    // handleChevronClick();
+                    handleChevronClick(-1);
+                }
+            });
+            chevronFermant.addEventListener('keypress', function (event) {
+                if (event.key === 'Enter') {
+                    handleChevronClick(1);
+                    // handleChevronClick();
+                }
+            });
+            //==================================================================================================================================================
+            croixFermeture.addEventListener('click', () => {
+                console.log("j'ai cliqué sur la div croix de fermeture et cela a fermé la lightbox");
+                closeLightBox();
+            });
+        });
+    }
+
+    function handleChevronClick(modificator) {
+        const srcMedia = document.getElementById("imagelightBox")?.src || document.getElementById("videoMedia")?.src;
+        const test = srcMedia.split('/');
+        const fileName = test[test.length - 1];
+
+        let currentIndex = mediaTri.findIndex((media) => {
+            return media.image == fileName || media.video == fileName;
+        });
+
+        currentIndex += modificator;
+        if (currentIndex >= mediaTri.length) {
+            currentIndex = 0;
+        } else if (currentIndex < 0) {
+            currentIndex = mediaTri.length - 1;
         }
 
-        displayLightBox();
+        const newMedia = mediaTri[currentIndex];
+        const mediaContainer = document.getElementById("containerImgLightbox");
+        mediaContainer.innerHTML = ''; // Efface l'ancien contenu
 
-        const containerLightbox = document.createElement('div');
-        containerLightbox.setAttribute("id", "containerLightbox");
-        const panneauDeGauche = document.createElement('div');
-        panneauDeGauche.setAttribute("id", "panneauDeGauche");
-        let chevronOuvrant = document.createElement('div');
-        chevronOuvrant.id = 'chevronOuvrant';
-        chevronOuvrant.className = 'fa-solid fa-chevron-left';
-        panneauDeGauche.appendChild(chevronOuvrant);
-
-        const panneauCentral = document.createElement('div');
-        panneauCentral.setAttribute("id", "panneauCentral");
-        const containerImgLightbox = document.createElement('div');
-        containerImgLightbox.setAttribute("id", "containerImgLightbox");
-
-        let mediaElementLightbox;
-
-        if (mediaTri[i].image) {
-            mediaElementLightbox = document.createElement('img');
-            mediaElementLightbox.setAttribute("src", `assets/images/Sample Photos/${photographer.name}/${mediaTri[i].image}`);
-            mediaElementLightbox.setAttribute("alt", mediaTri[i].title);
-            mediaElementLightbox.setAttribute("id", "imagelightBox");
-        } else if (mediaTri[i].video) {
-            mediaElementLightbox = document.createElement('video');
-            mediaElementLightbox.setAttribute("src", `assets/images/Sample Photos/${photographer.name}/${mediaTri[i].video}`);
-            mediaElementLightbox.setAttribute("controls", true);
-            mediaElementLightbox.setAttribute("id", "videoMedia"); 
+        let mediaElement;
+        if (newMedia.image) {
+            mediaElement = document.createElement('img');
+            mediaElement.src = `assets/images/Sample Photos/${photographer.name}/${newMedia.image}`;
+            mediaElement.alt = "image de mon carroussel"
+            mediaElement.id = "imagelightBox";
+        } else if (newMedia.video) {
+            mediaElement = document.createElement('video');
+            mediaElement.src = `assets/images/Sample Photos/${photographer.name}/${newMedia.video}`;
+            mediaElement.alt = "video de mon carroussel"
+            mediaElement.controls = true;
+            mediaElement.autoplay = true;
+            mediaElement.muted = true;
+            mediaElement.id = "videoMedia";
         }
 
-        containerImgLightbox.appendChild(mediaElementLightbox);
-        panneauCentral.appendChild(containerImgLightbox);
+        mediaContainer.appendChild(mediaElement);
 
-        const containerTitle = document.createElement('div');
-        containerTitle.setAttribute("id", "containerTitle");
+        const containerTitle = document.getElementById("containerTitle");
+        containerTitle.textContent = "";
         const h2SousTitle = document.createElement('span');
-        h2SousTitle.textContent = `${mediaTri[i].title}`;
+        h2SousTitle.textContent = newMedia.title;
         containerTitle.appendChild(h2SousTitle);
-        panneauCentral.appendChild(containerTitle);
-
-        const panneauDeDroite = document.createElement('div');
-        panneauDeDroite.setAttribute("id", "panneauDeDroite");
-        let containerCroixDeFermeture = document.createElement('div');
-        containerCroixDeFermeture.setAttribute("id", "containerCroixDeFermeture");
-        let croixFermeture = document.createElement('div');
-        croixFermeture.setAttribute("id", "croixfermeture");
-        croixFermeture.className = 'fa-solid fa-square-xmark';
-        containerCroixDeFermeture.appendChild(croixFermeture);
-        panneauDeDroite.appendChild(containerCroixDeFermeture);
-        let containerChevronFermant = document.createElement('div');
-        containerChevronFermant.setAttribute("id", "containerChevronFermant");
-        let chevronFermant = document.createElement('div');
-        chevronFermant.setAttribute("id", "chevronFermant");
-        chevronFermant.className = 'fa-solid fa-chevron-right';
-        containerChevronFermant.appendChild(chevronFermant);
-        panneauDeDroite.appendChild(containerChevronFermant);
-        const maBox = document.querySelector('.lightBox');
-        containerLightbox.appendChild(panneauDeGauche);
-        containerLightbox.appendChild(panneauCentral);
-        containerLightbox.appendChild(panneauDeDroite);
-        maBox.appendChild(containerLightbox);
-
-        chevronFermant.addEventListener('click', () => {
-            handleChevronClick(1);
-        });
-
-        chevronOuvrant.addEventListener('click', () => {
-            handleChevronClick(-1);
-        });
-
-//======================================= ceux sont mes ecouteurs d'evenement pour l'accessibilité =================================================      
-chevronOuvrant.addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
-        // handleChevronClick();
-        handleChevronClick(-1);
-      }
-});
-chevronFermant.addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
-        handleChevronClick(1);
-        // handleChevronClick();
     }
-});
-//==================================================================================================================================================
-        croixFermeture.addEventListener('click', () => {
-            console.log("j'ai cliqué sur la div croix de fermeture et cela a fermé la lightbox");
-            closeLightBox();
-        });
-    });
-}
-
-function handleChevronClick(modificator) {
-    const srcMedia = document.getElementById("imagelightBox")?.src || document.getElementById("videoMedia")?.src;
-    const test = srcMedia.split('/');
-    const fileName = test[test.length - 1];
-    
-    let currentIndex = mediaTri.findIndex((media) => {
-        return media.image == fileName || media.video == fileName;
-    });
-
-    currentIndex += modificator;
-    if (currentIndex >= mediaTri.length) {
-        currentIndex = 0;
-    } else if (currentIndex < 0) {
-        currentIndex = mediaTri.length - 1;
-    }
-
-    const newMedia = mediaTri[currentIndex];
-    const mediaContainer = document.getElementById("containerImgLightbox");
-    mediaContainer.innerHTML = ''; // Efface l'ancien contenu
-
-    let mediaElement;
-    if (newMedia.image) {
-        mediaElement = document.createElement('img');
-        mediaElement.src = `assets/images/Sample Photos/${photographer.name}/${newMedia.image}`;
-        mediaElement.id = "imagelightBox";
-    } else if (newMedia.video) {
-        mediaElement = document.createElement('video');
-        mediaElement.src = `assets/images/Sample Photos/${photographer.name}/${newMedia.video}`;
-        mediaElement.controls = true;
-        mediaElement.id = "videoMedia";
-    }
-
-    mediaContainer.appendChild(mediaElement);
-
-    const containerTitle = document.getElementById("containerTitle");
-    containerTitle.textContent = "";
-    const h2SousTitle = document.createElement('span');
-    h2SousTitle.textContent = newMedia.title;
-    containerTitle.appendChild(h2SousTitle);
-}
-
-    
-    
-    
-    
-    
-    
-    
-    
 }//=================================================== Fin de la Fonction displayMedia ==========================================================
 
 //============================================== MediaFactory ===================================
@@ -241,9 +238,10 @@ function mediaFactory(media) {
         // console.log("Ceci est un fichier vidéo.");
         // console.log(media.video)
         const videoElement = document.createElement('video');
-        videoElement.src =  `assets/images/Sample Photos/${photographer.name}/${media.video}`;
+        videoElement.src = `assets/images/Sample Photos/${photographer.name}/${media.video}`;
         videoElement.id = 'myVideoElement';
-         // Appliquer les styles CSS pour la taille
+        videoElement.alt = media.title;
+        // Appliquer les styles CSS pour la taille
         //  videoElement.style.width = '100%';
         //  videoElement.style.height = '250px';
         videoElement.controls = true;
@@ -251,7 +249,7 @@ function mediaFactory(media) {
     } else if (media.image) {
         // console.log("Ceci est un fichier image.");
         const imageElement = document.createElement('img');
-        imageElement.src =  `assets/images/Sample Photos/${photographer.name}/${media.image}`;
+        imageElement.src = `assets/images/Sample Photos/${photographer.name}/${media.image}`;
         imageElement.alt = media.title; // Ajouter un attribut alt pour l'accessibilité
         return imageElement; // Retourne l'élément image
     } else {
@@ -264,28 +262,44 @@ function mediaFactory(media) {
 
 //=============================================== FORMULAIRE DE CONTACT ====================================================================================
 document.addEventListener('DOMContentLoaded', () => {// Attendre que le DOM soit chargé
-   const form = document.getElementById('contactForm'); // Sélectionner le formulaire
-form.addEventListener('submit', (event) => {// Ajouter un écouteur d'événement pour la soumission du formulaire
-       event.preventDefault(); // Empêcher le comportement par défaut de la soumission du formulaire
-       const firstName = document.getElementById('firstName').value; // Récupérer les valeurs des champs
+    const form = document.getElementById('contactForm'); // Sélectionner le formulaire
+    form.addEventListener('submit', (event) => {// Ajouter un écouteur d'événement pour la soumission du formulaire
+        event.preventDefault(); // Empêcher le comportement par défaut de la soumission du formulaire
+        const firstName = document.getElementById('firstName').value; // Récupérer les valeurs des champs
         const lastName = document.getElementById('lastName').value;
         const email = document.getElementById('email').value;
         const message = document.getElementById('message').value;
         // Afficher les valeurs dans la console
-        console.log('================================== INFORMATIONS DE MA CONSOLE LOG ================================')
+        console.log('====== INFORMATIONS DE MA CONSOLE LOG =====')
         console.log('Prénom:', firstName);
         console.log('Nom:', lastName);
         console.log('Email:', email);
         console.log('Message:', message);
-        console.log('============================= FIN DES INFORMATIONS DE MA CONSOLE LOG =============================')
+        console.log('======= FIN DES INFORMATIONS DE MA CONSOLE LOG ======')
         closeModal();
     });
+});
+// Ajouter un écouteur d'événement pour l'image
+document.getElementById('croixFermetureContact').addEventListener('click', closeModal);
+
+// Ajouter un écouteur d'événement pour la touche 'Enter'
+document.getElementById('croixFermetureContact').addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+        closeModal();
+    }
 });//============================================================ FIN DE FORMULAIRE DE CONTACT ===========================================================
 
 //==================================================== MES FONCTIONS OUVERTURE/FERMETURE MODAL=============================================================
 function displayModal() {// Afficher le modal
     const modal = document.getElementById("contact_modal");
     modal.style.display = "block";
+
+
+    const prenomInput = document.getElementById('firstName');
+    // Mettre le focus sur le champ Prénom
+    prenomInput.focus();
+    //   const croixDeFermeture =document.getElementById('croixDeFermeture');
+    //   croixDeFermeture.focus();
 }
 function closeModal() {// Fermer le modal
     const modal = document.getElementById("contact_modal");
@@ -330,11 +344,11 @@ async function main() {
     // Vérifier et afficher les informations du photographe correspondant à l'ID
     photographer = data.photographers.find(photographer => photographer.id == id);
     if (photographer) {
-        console.log('================================== INFORMATIONS SUR LE PHOTOGRAPHE ===============================');
-        console.log("je suis de passage ici , maintenant il faut que je mette la photo");
-        console.log("mon id url " + id + " mon id dans mon tableau " + `${photographer.id}`);
-        console.log(`Name: ${photographer.name}` + ` City: ${photographer.city}` + ` Country: ${photographer.country}` + ` Tagline: ${photographer.tagline}` + ` Price: ${photographer.price}` + ` Portrait: ${photographer.portrait}`);
-        console.log('=========================== FIN DES INFORMATIONS SUR LE PHOTOGRAPHE ==============================');
+        // console.log('================================== INFORMATIONS SUR LE PHOTOGRAPHE ===============================');
+        // console.log("je suis de passage ici , maintenant il faut que je mette la photo");
+        // console.log("mon id url " + id + " mon id dans mon tableau " + `${photographer.id}`);
+        // console.log(`Name: ${photographer.name}` + ` City: ${photographer.city}` + ` Country: ${photographer.country}` + ` Tagline: ${photographer.tagline}` + ` Price: ${photographer.price}` + ` Portrait: ${photographer.portrait}`);
+        // console.log('=========================== FIN DES INFORMATIONS SUR LE PHOTOGRAPHE ==============================');
 
         // Création des éléments du photographe
         const maBalise = document.querySelector('.photograph-header');
@@ -373,7 +387,7 @@ async function main() {
         const picture = `assets/photographers/${photographer.portrait}`;
         const img = document.createElement('img');
         img.setAttribute("src", picture);
-        img.setAttribute("alt", "Photographer's portrait");
+        img.setAttribute("alt", "Portrait du photographe");
         newDivC.appendChild(img);
         maBalise.appendChild(newDivC);
 
@@ -469,7 +483,8 @@ async function main() {
                 containerCroixDeFermeture.setAttribute("id", "containerCroixDeFermeture");
                 let croixFermeture = document.createElement('div');
                 croixFermeture.setAttribute("id", "croixfermeture");
-                croixFermeture.className = 'fa-solid fa-square-xmark';
+                croixFermeture.textContent = "X";
+                // croixFermeture.className = 'fa-solid fa-square-xmark';
                 containerCroixDeFermeture.appendChild(croixFermeture);
                 panneauDeDroite.appendChild(containerCroixDeFermeture);
                 let containerChevronFermant = document.createElement('div');
@@ -509,11 +524,17 @@ async function main() {
                         newMediaElement.setAttribute("src", `assets/images/Sample Photos/${photographer.name}/${newMedia.image}`);
                         newMediaElement.setAttribute("alt", newMedia.title);
                         newMediaElement.setAttribute("id", "imagelightBox");
+                        newMediaElement.setAttribute("tabindex", "0"); // Rendre l'image focusable
                     } else if (newMedia.video) {
                         newMediaElement = document.createElement('video');
                         newMediaElement.setAttribute("src", `assets/images/Sample Photos/${photographer.name}/${newMedia.video}`);
+                        newMediaElement.setAttribute("alt", newMedia.title);
+                        newMediaElement.setAttribute("data-type", "video");
                         newMediaElement.setAttribute("controls", true);
+                        newMediaElement.setAttribute("autoplay", true);  // Ajoute cet attribut pour démarrer automatiquement la vidéo
+                        newMediaElement.setAttribute("muted", true);
                         newMediaElement.setAttribute("id", "videoMedia");
+                        newMediaElement.setAttribute("tabindex", "0"); // Rendre l'image focusable
                     }
 
                     const containerImgLightbox = document.getElementById('containerImgLightbox');
@@ -523,19 +544,19 @@ async function main() {
 
                 document.getElementById('chevronOuvrant').addEventListener('click', () => handleChevronClick(-1));
                 document.getElementById('chevronFermant').addEventListener('click', () => handleChevronClick(1));
-              
-chevronOuvrant.addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
-        handleChevronClick(-1);
-    }
-});
+
+                chevronOuvrant.addEventListener('keydown ', function (event) {
+                    if (event.key === 'Enter') {
+                        handleChevronClick(-1);
+                    }
+                });
 
 
-chevronFermant.addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
-        handleChevronClick(1);
-    }
-});
+                chevronFermant.addEventListener('keydown ', function (event) {
+                    if (event.key === 'Enter') {
+                        handleChevronClick(1);
+                    }
+                });
 
 
                 const croixFermetureElement = document.getElementById('croixfermeture');
@@ -564,12 +585,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     selectElement.addEventListener('change', (event) => {
         let mediaTri = mediaItems;
-        console.log("mediaitems" + mediaItems);
-        console.log("mediaTri" + mediaTri);
+        // console.log("mediaitems" + mediaItems);
+        // console.log("mediaTri" + mediaTri);
         const selectedValue = event.target.value;
         // console.log(`Selected order: ${selectedValue}`);
         // Vous pouvez ajouter ici votre logique de tri en fonction de selectedValue
-        if (selectedValue === "date") { 
+        if (selectedValue === "date") {
             mediaTri.sort((a, b) => new Date(b.date) - new Date(a.date));
             displayMedia(mediaTri);
         }
@@ -580,7 +601,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (selectedValue === "title") {
             mediaTri.sort((a, b) => a.title.localeCompare(b.title));
             displayMedia(mediaTri);
-      
+
         }
 
     });
@@ -588,25 +609,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 main();// Exécuter la fonction principale
 
-//============================================================== ACCESIBILITE/VISUALISATION ===============================================================
-        // Gérer la fermeture de la lightbox avec la touche Échap
-        // croixFermeture.addEventListener('keydown', (e) => {
-        //     console.log("je viens d'appuyer sur la touche echap etape 1");
-        //     if (e.key === 'Escape') {
-        //         console.log("je viens d'appuyer sur la touche echap etape 2");
-        //         closeLightBox();
-        //         console.log("je viens d'appuyer sur la touche echap etape 3");
-        //     }
-        //     console.log("je viens d'appuyer sur la touche echap etape 4");
-        // });
 
- //=======================================================================================================================================================
- /* 
-DOMContentLoaded : Attendre que le DOM soit complètement chargé avant d'exécuter le script.
-selectElement : Sélectionne l'élément <select> par son identifiant.
-change : Ajoute un écouteur d'événement pour l'événement change, qui est déclenché lorsque 
-l'utilisateur sélectionne une nouvelle option.
-selectedValue : Récupère la valeur de l'option sélectionnée et l'affiche dans la console.
-Vous pouvez remplacer la ligne de console.log par votre propre logique pour trier les éléments en fonction de la sélection de l'utilisateur.
-*/
- //=======================================================================================================================================================

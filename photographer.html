@@ -1,126 +1,118 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- je mets le lien font asewhome en dessous -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <a href="index.html">
+
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>Fisheye - photographe </title>
+</head>
+
+<body>
+  <header>
+    <a href="index.html">
       <img src="assets/images/logo.png" class="logo" />
-      </a>
-    </header>
-    <main id="main">
+    </a>
+  </header>
+  <main id="main">
 
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
-
-      <!--***** le nouveau code d'aujourd'hui  **************************************************************************************************************-->
-      <!-- <label for="inputLabel">Trier par </label> -->
-
-      <form id="monFormulaireCarroussel">
-        <label for="order-by">Trier par :</label>
-        <select id="order-by" class="custom-select">
-            <option value="popularity">Popularité</option>
-            <option value="date">Date</option>
-            <option value="title">Titre</option>
-        </select>
-    </form>
-
-
-    <div class="mesMedias">
-
+    
+    <div class="photograph-header">
+      <button class="contact_button" onclick="displayModal()" 
+              aria-label="Ouvrir le formulaire de contact" 
+              aria-haspopup="dialog"
+              aria-controls="contact-form-modal">
+        Contactez-moi
+      </button>
     </div>
-      <!--************************************************************************************************************************************************** -->
-
-    </main>
-
-  <!------------------------------------------------------------ CONTACT MODAL ------------------------------------------------------------------------------->
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-        <!-- averifier avec marie -->
-				<!-- <form> 
-        <label class="said"></label> 
-					<div>
-						<label>Prénom</label>
-						<input />
-            <label>Nom</label>
-						<input />
-            <label>Email</label>
-						<input />
-            <label>Votre message</label>
-						<input />
-           
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form> -->
-        <!-- <form id="contactForm"> 
-          <label class="said"></label> 
-          <div>
-              <label for="firstName">Prénom</label>
-              <input type="text" id="firstName" />
-              <label for="lastName">Nom</label>
-              <input type="text" id="lastName" />
-              <label for="email">Email</label>
-              <input type="email" id="email" />
-              <label for="message">Votre message</label>
-              <input type="text" id="message" />
-          </div>
-          <button type="submit" class="contact_button">Envoyer</button>
-      </form> -->
-      <form id="contactForm"> 
-        <label class="labelNomPhotographe"></label> 
-        <div>
-            <label for="firstName">Prénom</label>
-            <input type="text" id="firstName" />
-            <label for="lastName">Nom</label>
-            <input type="text" id="lastName" />
-            <label for="email">Email</label>
-            <input type="email" id="email" />
-            <label for="message">Votre message</label>
-            <input type="text" id="message" class="custom-input" />
-        </div>
-        <button type="submit" class="contact_button">Envoyer</button>
-    </form>
-			</div>
-		</div>
-    <!------------------------------------------------------- FIN DE LA CONTACT MODAL--------------------------------------------------------------------->
     
 
-    <!--------------------------------------- CREATION DE MA LIGHTBOX ------------------------------------------------------------------------------------>
-    <div class="lightBox" id="light_box"> 
-    <!-- <header> -->
-     <!-- <i class="fa-solid fa-chevron-right"></i>-->
-      <!-- <h2>Je suis la lightBox</h2> -->
-      <!-- <img src="assets/icons/close.svg" onclick="closeModal()" /> -->
-      <!-- <div id="monImage">  -->
-     
-        <!-- <h2>je suis la lightbox</h2> -->
-      <!-- </div> -->
-    <!-- </header> -->
+
+    <form id="monFormulaireCarroussel" role="form" aria-labelledby="formLabel">
+      <h2 id="formLabel" class="sr-only">Formulaire de tri pour le carrousel</h2>
+      
+      <label for="order-by">Trier par :</label>
+      <select id="order-by" class="custom-select" aria-describedby="sortDescription">
+        <option value="popularity">Popularité</option>
+        <option value="date">Date</option>
+        <option value="title">Titre</option>
+      </select>
+      
+      <span id="sortDescription" class="sr-only">
+        Sélectionnez un critère pour trier les éléments du carrousel.
+      </span>
+    </form>
+    
+
+   
+    <div class="mesMedias" role="region" aria-label="Galerie de médias">
+      <!-- Contenu de la galerie ici -->
   </div>
- <!------------------------------------------------------- FIN DE LA LIGHTBOX ---------------------------------------------------------------------------->
- <!-- Encart fixe en bas de la page -->
- <div id="fixedFooter">
-  <span id="totalLikes"></span> 
-  <span id="dailyRate"></span> 
-</div>
-    <!---------------------------------------------------------MES SCRIPTS ------------------------------------------------------------------------------->
-    <!-- j'ai ajouté le type module -->
-    <script type="module" src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-      <!------------------------------------------------------FIN DE MES SCRIPTS ----------------------------------------------------------------------------->
-  </body>
+
+  </main>
+
+
+  <div id="contact_modal" role="dialog" aria-labelledby="contactModalTitle" aria-modal="true">
+    <div class="modal">
+      <header>
+        <h2 id="contactModalTitle">Contactez-moi</h2>
+        <!-- <img src="assets/icons/close.svg" alt="Fermer la fenêtre" role="button" tabindex="0" aria-label="Fermer le formulaire de contact" onclick="closeModal()" /> -->
+        <img 
+        src="assets/icons/close.svg" 
+        alt="Fermer la fenêtre" 
+        role="button" 
+        tabindex="0" 
+        id="croixFermetureContact"
+        aria-label="Fermer le formulaire de contact" 
+        onclick="closeModal()" 
+    />
+      </header>
+  
+      <form id="contactForm" aria-labelledby="contactModalTitle">
+        <label class="labelNomPhotographe"></label>
+        <div>
+          <label for="firstName">Prénom</label>
+          <input type="text" id="firstName" aria-required="true" />
+          
+          <label for="lastName">Nom</label>
+          <input type="text" id="lastName" aria-required="true" />
+          
+          <label for="email">Email</label>
+          <input type="email" id="email" aria-required="true" />
+          
+          <label for="message">Votre message</label>
+          <input type="text" id="message" class="custom-input" aria-required="true" />
+        </div>
+        
+        <button type="submit" class="contact_button" aria-label="Envoyer le formulaire de contact">Envoyer</button>
+      </form>
+    </div>
+  </div>
+  
+  <!------------------------------------------------------- FIN DE LA CONTACT MODAL--------------------------------------------------------------------->
+
+
+  <!--------------------------------------- CREATION DE MA LIGHTBOX ------------------------------------------------------------------------------------>
+  <!-- <div class="lightBox" id="light_box">
+  </div> -->
+  <div class="lightBox" id="light_box" role="dialog" aria-modal="true" aria-labelledby="lightBoxTitle" aria-describedby="lightBoxDescription">
+    <!-- Le contenu de la lightbox viendra ici -->
+  </div>
+  <!------------------------------------------------------- FIN DE LA LIGHTBOX ---------------------------------------------------------------------------->
+  <!-- Encart fixe en bas de la page -->
+  <div id="fixedFooter" aria-live="polite">
+    <span id="totalLikes" aria-label="Total des mentions J'aime"></span>
+    <span id="dailyRate" aria-label="Tarif journalier du photographe"></span>
+  </div>
+  <!---------------------------------------------------------MES SCRIPTS ------------------------------------------------------------------------------->
+  <!-- j'ai ajouté le type module -->
+  <script type="module" src="/scripts/pages/photographer.js"></script>
+  <script src="/scripts/utils/contactForm.js"></script>
+
+  <!------------------------------------------------------FIN DE MES SCRIPTS ----------------------------------------------------------------------------->
+</body>
+
 </html>

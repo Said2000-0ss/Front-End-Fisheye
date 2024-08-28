@@ -203,10 +203,10 @@ margin-right:50px;
 .lightBox{
     margin-left: 2%;
     margin-right:10%;
-    border: 5px solid black; /* Bordure noire de 5px */
+    /* border: 2px solid #D3573C;  */
     /* height: 550px;           Hauteur de 500px */
-    width: 43vw;
-    height: 40vh;
+    width: 29vw;
+    /* height: 40vh; */
     /* width: 80%;            Largeur de 500px */
     background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
 /* je viens d'ajouter ce code et je le teste===================================================================================================== */
@@ -225,6 +225,8 @@ margin-right:50px;
     background-color:white;
     }
     #panneauCentral{
+        display: grid;
+        grid-template-rows: 95% 5%;
     background-color: white;
     /* max-height: 100%; Ne pas dépasser la hauteur de la lightbox */
     }
@@ -232,9 +234,9 @@ margin-right:50px;
     background-color: white;
     }
     #panneauCentral img{
-        width: 323%;
+        width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
     }
 
     /* =============================================================================================================================================== */
@@ -245,13 +247,17 @@ margin-right:50px;
 /* } */ 
 
 #containerLightbox{
-    display:flex; 
+    /* display:flex;  */
     display:grid; 
     grid-template-columns: 5% 90% 5%;
 }
 #containerImgLightbox{
-    width: 12vw;
-    height: 37vh;
+    
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* width: 12vw;
+    height: 36vh; */
     /* max-width: 100%; /* Ne pas dépasser la largeur de la lightbox */
     /* max-height: 100%; Ne pas dépasser la hauteur de la lightbox */
     /* object-fit: contain; Ajuste l'image pour qu'elle soit contenue dans son conteneur sans déformation */ 
@@ -278,15 +284,10 @@ margin-right:50px;
     background: black;
 }
 
-/* #videoMedia{
-    width:200%;
-    height:200%; margin-top:0; padding-top: 0;
-
-} */
 
 #videoMedia {
-    width: 322%;
-    height: 100%;
+    width: 100%;
+    height: 80%;
     margin-top: 0;
     padding-top: 0;
 }
@@ -295,9 +296,30 @@ margin-right:50px;
     /* margin-top:10%; */
     font-weight: bold;
 color :#901C1C;
+background: transparent;
+border:none; 
 }
-button:focus, a:focus, input:focus {
-    outline: 3px solid red; /* Une bordure bleue claire pour indiquer le focus */
+#chevronOuvrant:focus{
+    outline: 3px solid #901C1C; /* Une bordure bleue claire pour indiquer le focus */
     outline-offset: 2px; /* Un léger décalage pour éviter de toucher le texte */
 }
+#croixFermetureContact:focus{
+    outline: 3px solid #901C1C; /* Une bordure bleue claire pour indiquer le focus */
+    outline-offset: 2px; /* Un léger décalage pour éviter de toucher le texte */
 
+}
+button:focus, a:focus, input:focus {
+    outline: 3px solid #901C1C; /* Une bordure bleue claire pour indiquer le focus */
+    outline-offset: 2px; /* Un léger décalage pour éviter de toucher le texte */
+}
+/*permet au lecteur ecran de lire les infos dans le formulaire*/
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
