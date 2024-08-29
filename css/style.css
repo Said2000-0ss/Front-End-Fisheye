@@ -52,13 +52,7 @@ h1 {
     border-radius: 50%;
     object-fit: cover;
 }
-/* je viens de rajouter ce code sur photographer.html */
-/* .photograph-header img {
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-} */
-/* j'aligne les element de ma fenetre modale ================================*/
+
 .photograph-header{
     display:grid; 
     grid-template-columns: 1fr 1fr 1fr; 
@@ -81,9 +75,7 @@ h1 {
 .sousDivDeDivA{
    text-align: center;
 }
-/* img{
-    object-fit: cover;
-} */
+
 
 #descriptionParagraphe{
     color:#000000;

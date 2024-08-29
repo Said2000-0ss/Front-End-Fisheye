@@ -104,178 +104,145 @@ form input {
     border-radius: 5px;
 }
 
-       /* Style pour le bouton select */
-       .custom-select {
-        background-color: #901C1C; /* Couleur de fond */
-        color: white; /* Couleur du texte */
-        padding: 10px; /* Espacement interne */
-        border: none; /* Suppression de la bordure */
-        border-radius: 5px; /* Coins arrondis */
-        font-size: 16px; /* Taille de la police */
+/* Style pour le bouton select */
+.custom-select {
+background-color: #901C1C; /* Couleur de fond */
+color: white; /* Couleur du texte */
+padding: 10px; /* Espacement interne */
+border: none; /* Suppression de la bordure */
+border-radius: 5px; /* Coins arrondis */
+font-size: 16px; /* Taille de la police */
     }
-/* ********************************************************** Mon code d'aujourd(hui*********************************************************************** */
-    /* Style pour les options du select */
-    /* .custom-select option {
-        background-color: #901C1C; /* Couleur de fond des options */
-        /* color: white; /* Couleur du texte des options */
-    /* } */ 
-/* ******************************************************************************************************************************************************* */
+
 .mesMedias img {
 width: 100%;
 height: 250px;
 object-fit: cover;
-/* margin-right: 100px; */
+
 }
-/* ici, sont affichés les travaux du photographe */
+
 .mesMedias{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin-left:50px; 
-    margin-right:50px; 
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+margin-left:50px; 
+margin-right:50px; 
 
 }
 
 #monFormulaireCarroussel {
-    display: flex;
-    flex-direction: row; /* Disposer les éléments en ligne */
-    align-items: baseline; /* Aligner les éléments à la ligne de base du texte */
-    margin-left: 94px;
+display: flex;
+flex-direction: row; /* Disposer les éléments en ligne */
+align-items: baseline; /* Aligner les éléments à la ligne de base du texte */
+margin-left: 94px;
 }
 
 #monFormulaireCarroussel label {
-    margin-right: 10px; /* Espacement entre le label et le select */
+margin-right: 10px; /* Espacement entre le label et le select */
 }
+
 #maSousBox{
-/* display:flex;
-justify-content: space-between; */
 margin-top:10%;
 margin-left:50px; 
 margin-right:50px; 
 }
+
 #basSousBox{
-    display: grid;
-    grid-template-columns: 2.3fr 0.4fr 0.3fr;
-    font-size: 18px; /* Taille de la police */
-    /* font-weight: bold; Caractère gras */
-    color: #901C1C; 
+display: grid;
+grid-template-columns: 2.3fr 0.4fr 0.3fr;
+font-size: 18px; /* Taille de la police */
+color: #901C1C; 
 }
 
 #heartIcon{
-    color: #901C1C; 
-    font-size: 2em; /* Vous pouvez ajuster la taille si nécessaire */
+color: #901C1C; 
+font-size: 2em; /* Vous pouvez ajuster la taille si nécessaire */
 }
 
 #heartIcon:hover {
-    color:#D3573C; /* Change la couleur au survol */
+color:#D3573C; /* Change la couleur au survol */
 }
-
-
-
-
 
 /* =============================================================== ENCART BAS DE PAGE ============================================================ */
 #fixedFooter {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    margin-left:75%;
-    width: 20%;
-    background-color:#D3573C;
-    color: black;
-    text-align: center;
-    padding: 10px 0;
-    font-size: 18px;
-    display: flex;
-    border-top-left-radius: 10px;
-    border-top-right-radius:10px;
-    justify-content: space-around;
-    z-index: 1000; /* S'assurer qu'il soit au-dessus des autres éléments */
+position: fixed;
+bottom: 0;
+left: 0;
+margin-left:75%;
+width: 20%;
+background-color:#D3573C;
+color: black;
+text-align: center;
+padding: 10px 0;
+font-size: 18px;
+display: flex;
+border-top-left-radius: 10px;
+border-top-right-radius:10px;
+justify-content: space-around;
+z-index: 1000; /* S'assurer qu'il soit au-dessus des autres éléments */
 }
 /* ========================================================== CSS LIGHTBOX======================================================================== */
-#imagelightBox{
-}
+
 
 #light_box{
-    display:none; 
-    /* display:grid; 
-    grid-template-columns: 1fr 10fr 1fr ; */
+display:none; 
+   
 }
 .lightBox{
-    margin-left: 2%;
-    margin-right:10%;
-    /* border: 2px solid #D3573C;  */
-    /* height: 550px;           Hauteur de 500px */
-    width: 29vw;
-    /* height: 40vh; */
-    /* width: 80%;            Largeur de 500px */
-    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
-/* je viens d'ajouter ce code et je le teste===================================================================================================== */
-    position: fixed; /* Position fixe pour rester en place lors du défilement*/
-    top: 50%;/* Centré verticalement*/
-    left: 50%; /*Centré horizontalement */
-    transform: translate(-50%, -50%); /* Ajustement pour un centrage parfait */
-    z-index: 1000; /* Superposition au-dessus des autres éléments */
-    margin-bottom: 5%; 
-
-  
-    /* =========================================================================================================================================== */
+margin-left: 2%;
+margin-right:10%;
+width: 29vw;
+background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+position: fixed; /* Position fixe pour rester en place lors du défilement*/
+top: 50%;/* Centré verticalement*/
+left: 50%; /*Centré horizontalement */
+transform: translate(-50%, -50%); /* Ajustement pour un centrage parfait */
+z-index: 1000; /* Superposition au-dessus des autres éléments */
+margin-bottom: 5%; 
 }
 
 #panneauDeGauche{
-    background-color:white;
-    }
-    #panneauCentral{
-        display: grid;
-        grid-template-rows: 95% 5%;
-    background-color: white;
-    /* max-height: 100%; Ne pas dépasser la hauteur de la lightbox */
-    }
-    #panneauDeDroite{
-    background-color: white;
-    }
-    #panneauCentral img{
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
+background-color:white;
+}
 
-    /* =============================================================================================================================================== */
-    /* img{
-    /* object-fit: contain; */
-    /* object-fit: cover; */
-    /* height: auto; se servir seulement pour centrer une div horizontalement(mais pas vertical) */
-/* } */ 
+#panneauCentral{
+display: grid;
+grid-template-rows: 95% 5%;
+background-color: white;
+}
+
+#panneauDeDroite{
+background-color: white;
+}
+
+#panneauCentral img{
+width: 100%;
+height: 100%;
+object-fit: contain;
+}
+
 
 #containerLightbox{
-    /* display:flex;  */
-    display:grid; 
-    grid-template-columns: 5% 90% 5%;
-}
-#containerImgLightbox{
-    
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    /* width: 12vw;
-    height: 36vh; */
-    /* max-width: 100%; /* Ne pas dépasser la largeur de la lightbox */
-    /* max-height: 100%; Ne pas dépasser la hauteur de la lightbox */
-    /* object-fit: contain; Ajuste l'image pour qu'elle soit contenue dans son conteneur sans déformation */ 
+display:grid; 
+grid-template-columns: 5% 90% 5%;
 }
 
-/* =============================================================================================================== */
-#panneauDeGauche,
-#panneauDeDroite {
-    display: flex;
-    justify-content: center; /* Centre horizontalement */
-    align-items: center; /* Centre verticalement */
-    height: 100%; /* Assurez-vous que la div occupe toute la hauteur de son parent */
+#containerImgLightbox{
+width: 100%;
+height: 100%;
+overflow: hidden;
+}
+
+#panneauDeGauche, #panneauDeDroite {
+display: flex;
+justify-content: center; /* Centre horizontalement */
+align-items: center; /* Centre verticalement */
+height: 100%; /* Assurez-vous que la div occupe toute la hauteur de son parent */
 }
 
 #containerCroixDeFermeture {
-    position: absolute;
-    top: 0;
-    /* right: 10px; */
+position: absolute;
+top: 0;
+/* right: 10px; */
 }
 
 #myVideoElement{
@@ -293,23 +260,22 @@ margin-right:50px;
 }
 
 #containerTitle, #chevronOuvrant,#chevronFermant, #croixfermeture{
-    /* margin-top:10%; */
-    font-weight: bold;
+font-weight: bold;
 color :#901C1C;
 background: transparent;
 border:none; 
 }
 #chevronOuvrant:focus{
-    outline: 3px solid #901C1C; /* Une bordure bleue claire pour indiquer le focus */
-    outline-offset: 2px; /* Un léger décalage pour éviter de toucher le texte */
+    outline: 3px solid #901C1C; 
+    outline-offset: 2px; 
 }
 #croixFermetureContact:focus{
-    outline: 3px solid #901C1C; /* Une bordure bleue claire pour indiquer le focus */
+    outline: 3px solid #901C1C; /* Une bordure  pour indiquer le focus */
     outline-offset: 2px; /* Un léger décalage pour éviter de toucher le texte */
 
 }
 button:focus, a:focus, input:focus {
-    outline: 3px solid #901C1C; /* Une bordure bleue claire pour indiquer le focus */
+    outline: 3px solid #901C1C; /* Une bordure  pour indiquer le focus */
     outline-offset: 2px; /* Un léger décalage pour éviter de toucher le texte */
 }
 /*permet au lecteur ecran de lire les infos dans le formulaire*/

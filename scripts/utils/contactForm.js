@@ -46,7 +46,6 @@ function displayMedia(mediaTri) {
     const maBoxMedia = document.querySelector('.mesMedias');
     maBoxMedia.textContent = "";
     for (let i = 0; i < mediaTri.length; i++) {
-        // console.log("je suis mediatri", mediaTri[i]);
         const maBoxMedia = document.querySelector('.mesMedias');
         const mediaElement = mediaFactory(mediaTri[i]);
         const maSousBoxImgTitle = document.createElement('div');
@@ -60,7 +59,6 @@ function displayMedia(mediaTri) {
         let heartIcon = document.createElement('div');
         heartIcon.id = 'heartIcon';
         heartIcon.className = 'fas fa-heart';
-
         maSousBoxImgTitle.appendChild(mediaElement);
         basSousBox.appendChild(titleMedia);
         basSousBox.appendChild(likeMedia);
@@ -68,7 +66,18 @@ function displayMedia(mediaTri) {
         maSousBoxImgTitle.appendChild(basSousBox);
         maBoxMedia.appendChild(maSousBoxImgTitle);
 
+        // Ajouter l'écouteur d'événement pour ouvrir la lightbox lorsqu'un média est cliqué ou activé avec la touche Entrée
         mediaElement.addEventListener('click', () => {
+            openLightBox();
+        });
+
+        mediaElement.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                openLightBox();
+            }
+        });
+
+        function openLightBox() {
             const maLightBox = document.querySelector('.lightBox');
             while (maLightBox.firstChild) {
                 maLightBox.removeChild(maLightBox.firstChild);
@@ -78,16 +87,18 @@ function displayMedia(mediaTri) {
 
             const containerLightbox = document.createElement('div');
             containerLightbox.setAttribute("id", "containerLightbox");
+
+            // Panneau de gauche avec le chevron ouvrant
             const panneauDeGauche = document.createElement('div');
             panneauDeGauche.setAttribute("id", "panneauDeGauche");
-            let chevronOuvrant = document.createElement('button'); // Utiliser un bouton pour l'accessibilité
+            const chevronOuvrant = document.createElement('button');
             chevronOuvrant.id = 'chevronOuvrant';
             chevronOuvrant.className = 'fa-solid fa-chevron-left';
-            chevronOuvrant.setAttribute("aria-label", "Média précédent"); // ARIA label pour l'accessibilité
-            chevronOuvrant.setAttribute("tabindex", "0"); // Rendre le bouton focusable
-           
+            chevronOuvrant.setAttribute("aria-label", "Média précédent");
+            chevronOuvrant.setAttribute("tabindex", "0");
             panneauDeGauche.appendChild(chevronOuvrant);
 
+            // Panneau central avec l'image ou la vidéo
             const panneauCentral = document.createElement('div');
             panneauCentral.setAttribute("id", "panneauCentral");
             const containerImgLightbox = document.createElement('div');
@@ -104,8 +115,6 @@ function displayMedia(mediaTri) {
                 mediaElementLightbox = document.createElement('video');
                 mediaElementLightbox.setAttribute("src", `assets/images/Sample Photos/${photographer.name}/${mediaTri[i].video}`);
                 mediaElementLightbox.setAttribute("alt", mediaTri[i].title);
-                // mediaElementLightbox.setAttribute("autoplay", true);  // cet attribut démarre automatiquement la vidéo
-                // mediaElementLightbox.setAttribute("muted", true);     // cet attribut  coupe le son (recommandé pour autoplay)
                 mediaElementLightbox.setAttribute("id", "videoMedia");
             }
 
@@ -119,40 +128,44 @@ function displayMedia(mediaTri) {
             containerTitle.appendChild(h2SousTitle);
             panneauCentral.appendChild(containerTitle);
 
+            // Panneau de droite avec les chevrons et la croix de fermeture
             const panneauDeDroite = document.createElement('div');
             panneauDeDroite.setAttribute("id", "panneauDeDroite");
-            let containerCroixDeFermeture = document.createElement('div');
+
+            const containerCroixDeFermeture = document.createElement('div');
             containerCroixDeFermeture.setAttribute("id", "containerCroixDeFermeture");
-          let croixFermeture = document.createElement('button'); // Utiliser un bouton pour l'accessibilité
+            const croixFermeture = document.createElement('button');
             croixFermeture.setAttribute("id", "croixfermeture");
             croixFermeture.textContent = "X";
-            croixFermeture.setAttribute("aria-label", "Fermer la lightbox"); // ARIA label pour l'accessibilité
-            croixFermeture.setAttribute("tabindex", "0"); // Rendre le bouton focusable
+            croixFermeture.setAttribute("aria-label", "Fermer la lightbox");
+            croixFermeture.setAttribute("tabindex", "0");
             croixFermeture.addEventListener('click', () => {
-                closeLightbox(); // Fonction pour fermer la lightbox
+                closeLightBox();
             });
             containerCroixDeFermeture.appendChild(croixFermeture);
             panneauDeDroite.appendChild(containerCroixDeFermeture);
-            let containerChevronFermant = document.createElement('div');
+
+            const containerChevronFermant = document.createElement('div');
             containerChevronFermant.setAttribute("id", "containerChevronFermant");
-         
-            //         Création du chevron pour naviguer vers la droite
-            let chevronFermant = document.createElement('button'); // Utiliser un bouton pour l'accessibilité
+            const chevronFermant = document.createElement('button');
             chevronFermant.setAttribute("id", "chevronFermant");
             chevronFermant.className = 'fa-solid fa-chevron-right';
-            chevronFermant.setAttribute("aria-label", "Média suivant"); // ARIA label pour l'accessibilité
-            chevronFermant.setAttribute("tabindex", "0"); // Rendre le bouton focusable
-            // chevronFermant.addEventListener('click', () => {
-            //     navigateToNextMedia(); // Fonction pour passer au média suivant
-            // });
+            chevronFermant.setAttribute("aria-label", "Média suivant");
+            chevronFermant.setAttribute("tabindex", "0");
             containerChevronFermant.appendChild(chevronFermant);
             panneauDeDroite.appendChild(containerChevronFermant);
+
+            // Ajout des panneaux au container principal
             const maBox = document.querySelector('.lightBox');
             containerLightbox.appendChild(panneauDeGauche);
             containerLightbox.appendChild(panneauCentral);
             containerLightbox.appendChild(panneauDeDroite);
             maBox.appendChild(containerLightbox);
 
+            // Focus sur le chevron ouvrant
+            chevronOuvrant.focus();
+
+            // Gestion des événements de clic pour les chevrons
             chevronFermant.addEventListener('click', () => {
                 handleChevronClick(1);
             });
@@ -161,25 +174,25 @@ function displayMedia(mediaTri) {
                 handleChevronClick(-1);
             });
 
-            //======================================= ceux sont mes ecouteurs d'evenement pour l'accessibilité =================================================      
+            // Gestion des événements de clavier pour les chevrons
             chevronOuvrant.addEventListener('keypress', function (event) {
                 if (event.key === 'Enter') {
-                    // handleChevronClick();
                     handleChevronClick(-1);
                 }
             });
+
             chevronFermant.addEventListener('keypress', function (event) {
                 if (event.key === 'Enter') {
                     handleChevronClick(1);
-                    // handleChevronClick();
                 }
             });
-            //==================================================================================================================================================
+
+            // Gestion de la fermeture de la lightbox
             croixFermeture.addEventListener('click', () => {
-                console.log("j'ai cliqué sur la div croix de fermeture et cela a fermé la lightbox");
                 closeLightBox();
             });
-        });
+        }
+
     }
 
     function handleChevronClick(modificator) {
@@ -208,6 +221,7 @@ function displayMedia(mediaTri) {
             mediaElement.src = `assets/images/Sample Photos/${photographer.name}/${newMedia.image}`;
             mediaElement.alt = "image de mon carroussel"
             mediaElement.id = "imagelightBox";
+            // mediaElement.setAttribute("role", "button");
         } else if (newMedia.video) {
             mediaElement = document.createElement('video');
             mediaElement.src = `assets/images/Sample Photos/${photographer.name}/${newMedia.video}`;
@@ -216,9 +230,11 @@ function displayMedia(mediaTri) {
             mediaElement.autoplay = true;
             mediaElement.muted = true;
             mediaElement.id = "videoMedia";
+            // mediaElement.setAttribute("role", "button");
         }
 
         mediaContainer.appendChild(mediaElement);
+        // mediaElement.focus();
 
         const containerTitle = document.getElementById("containerTitle");
         containerTitle.textContent = "";
@@ -231,29 +247,21 @@ function displayMedia(mediaTri) {
 //============================================== MediaFactory ===================================
 // Fonction pour créer les éléments HTML en fonction du type de média
 function mediaFactory(media) {
-    // Vérifie si l'objet media contient une propriété 'video'
-    // console.log("AAAAAAAAAAA")
-    // console.log (media)
     if (media.video) {
-        // console.log("Ceci est un fichier vidéo.");
-        // console.log(media.video)
         const videoElement = document.createElement('video');
         videoElement.src = `assets/images/Sample Photos/${photographer.name}/${media.video}`;
         videoElement.id = 'myVideoElement';
+        videoElement.tabIndex = 0;
         videoElement.alt = media.title;
-        // Appliquer les styles CSS pour la taille
-        //  videoElement.style.width = '100%';
-        //  videoElement.style.height = '250px';
         videoElement.controls = true;
         return videoElement; // Retourne l'élément vidéo
     } else if (media.image) {
-        // console.log("Ceci est un fichier image.");
         const imageElement = document.createElement('img');
         imageElement.src = `assets/images/Sample Photos/${photographer.name}/${media.image}`;
         imageElement.alt = media.title; // Ajouter un attribut alt pour l'accessibilité
+        imageElement.tabIndex = 0;// creation d'un focus
         return imageElement; // Retourne l'élément image
     } else {
-        // console.log("Format de fichier non pris en charge.");
         const errorElement = document.createElement('div');
         errorElement.textContent = "Format de fichier non pris en charge.";
         return errorElement; // Retourne un élément div pour les formats non pris en charge
@@ -279,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {// Attendre que le DOM soit
         closeModal();
     });
 });
-// Ajouter un écouteur d'événement pour l'image
+// Ajouter un écouteur d'événement pour l'image croix
 document.getElementById('croixFermetureContact').addEventListener('click', closeModal);
 
 // Ajouter un écouteur d'événement pour la touche 'Enter'
@@ -293,13 +301,10 @@ document.getElementById('croixFermetureContact').addEventListener('keydown', fun
 function displayModal() {// Afficher le modal
     const modal = document.getElementById("contact_modal");
     modal.style.display = "block";
-
-
     const prenomInput = document.getElementById('firstName');
     // Mettre le focus sur le champ Prénom
     prenomInput.focus();
-    //   const croixDeFermeture =document.getElementById('croixDeFermeture');
-    //   croixDeFermeture.focus();
+
 }
 function closeModal() {// Fermer le modal
     const modal = document.getElementById("contact_modal");
@@ -324,8 +329,8 @@ function closeLightBox() {//Mes fonctions , afin de fermer la lightBox
 // Récupérer les paramètres de l'URL
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
-// console.log("Mon id est le : " + id); // Affiche l'ID récupéré (par exemple, '123')
-// console.log("je suis passé par le fichier contactForm.js");
+// console.log("Mon id est le : " + id); // Affiche l'ID récupéré 
+
 
 // Fonction pour obtenir les photographes
 async function getPhotographers() {
@@ -334,8 +339,7 @@ async function getPhotographers() {
     return data;
 }
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//=====================================================================================================================================================
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 async function main() {
     // Fonction principale pour traiter les données
     const data = await getPhotographers();
@@ -540,6 +544,8 @@ async function main() {
                     const containerImgLightbox = document.getElementById('containerImgLightbox');
                     containerImgLightbox.innerHTML = '';
                     containerImgLightbox.appendChild(newMediaElement);
+
+
                 }
 
                 document.getElementById('chevronOuvrant').addEventListener('click', () => handleChevronClick(-1));
@@ -580,16 +586,13 @@ async function main() {
 // ============================================================ CODE POUR LE CARROUSSEL DU SELECT ====================================================
 document.addEventListener('DOMContentLoaded', () => {
 
-    // let mediaTri = media;
+  
     const selectElement = document.getElementById('order-by');
 
     selectElement.addEventListener('change', (event) => {
         let mediaTri = mediaItems;
-        // console.log("mediaitems" + mediaItems);
-        // console.log("mediaTri" + mediaTri);
         const selectedValue = event.target.value;
-        // console.log(`Selected order: ${selectedValue}`);
-        // Vous pouvez ajouter ici votre logique de tri en fonction de selectedValue
+ 
         if (selectedValue === "date") {
             mediaTri.sort((a, b) => new Date(b.date) - new Date(a.date));
             displayMedia(mediaTri);
